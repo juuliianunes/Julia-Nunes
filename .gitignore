@@ -1,3 +1,4 @@
 *.tmp
 _*.png
 _*.html
+dev/site/.vercel
