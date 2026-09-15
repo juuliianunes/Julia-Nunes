@@ -141,6 +141,8 @@ p{margin:0}
     0 26px 62px -20px rgba(194,39,126,.7);
 }
 .btn:active{transform:translateY(0);filter:saturate(1.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 14px -6px rgba(235,111,186,.85)}
+.arw{display:inline-flex}
+.arw svg{display:block;width:.8em;height:.8em}
 .btn .arw{transition:transform .3s var(--ease)}
 .btn:hover .arw{transform:translate(3px,-3px)}
 .btn--sm{min-height:44px;padding:10px 20px;font-size:14px}
@@ -166,7 +168,7 @@ p{margin:0}
   background:linear-gradient(to bottom,rgba(255,255,255,.52),rgba(255,255,255,.80));
   backdrop-filter:saturate(180%) blur(26px);
   -webkit-backdrop-filter:saturate(180%) blur(26px);
-  border-top:1px solid rgba(255,255,255,.7);
+  border-top:1px solid rgba(255,255,255,.35);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.9),
     0 -12px 36px -20px rgba(90,20,60,.30);
@@ -250,7 +252,7 @@ p{margin:0}
   font-family:"Inter Tight",sans-serif;font-size:27px;font-weight:600;letter-spacing:-.03em;
   text-decoration:none;padding:16px 0;border-bottom:1px solid var(--line-2);
 }
-.menu .btn{margin-top:26px;align-self:flex-start}
+.menu .btn{margin-top:26px;align-self:flex-start;font-size:18px}
 
 @media (max-width:900px){
   .nav__links,.nav__cta{display:none}
@@ -584,7 +586,7 @@ section{padding-block:var(--sec-y);position:relative}
       <a href="#sobre">Sobre</a>
     </nav>
 
-    <a class="btn btn--sm nav__cta js-contato" href="#contato">Falar sobre meu projeto <span class="arw" aria-hidden="true">↗</span></a>
+    <a class="btn btn--sm nav__cta js-contato" href="#contato">Falar sobre meu projeto <span class="arw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
 
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
       <span></span><span></span><span></span>
@@ -597,7 +599,7 @@ section{padding-block:var(--sec-y);position:relative}
   <a href="#trabalhos">Trabalhos</a>
   <a href="#o-que-eu-crio">O que eu crio</a>
   <a href="#sobre">Sobre</a>
-  <a class="btn js-contato" href="#contato">Falar sobre meu projeto <span class="arw" aria-hidden="true">↗</span></a>
+  <a class="btn js-contato" href="#contato">Falar sobre meu projeto <span class="arw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
 </div>
 
 <main id="main">
@@ -621,7 +623,7 @@ section{padding-block:var(--sec-y);position:relative}
       </p>
 
       <div class="hero__cta rv">
-        <a class="btn js-contato" href="#contato">Falar sobre meu projeto <span class="arw" aria-hidden="true">↗</span></a>
+        <a class="btn js-contato" href="#contato">Falar sobre meu projeto <span class="arw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
         <a class="btn btn--dark" href="#trabalhos">Ver trabalhos</a>
       </div>
 
@@ -718,7 +720,7 @@ section{padding-block:var(--sec-y);position:relative}
       <h3 class="lightbox__title" id="lbTitle"></h3>
       <p class="lightbox__desc" id="lbDesc"></p>
       <ul class="lightbox__tags" id="lbTags"></ul>
-      <a class="lightbox__live" id="lbLive" href="#" target="_blank" rel="noopener" hidden>Ver ao vivo <span aria-hidden="true">↗</span></a>
+      <a class="lightbox__live" id="lbLive" href="#" target="_blank" rel="noopener" hidden>Ver ao vivo <span class="arw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
       <div class="lightbox__thumbs" id="lbThumbs" role="list"></div>
     </div>
     <div class="lightbox__bar"><i></i><i></i><i></i><em id="lbUrl"></em></div>
@@ -771,6 +773,8 @@ section{padding-block:var(--sec-y);position:relative}
       <img src="assets/pc-itg-desktop.jpg" loading="lazy" decoding="async" alt="">
       <img src="assets/pc-itg2-youtube.jpg" loading="lazy" decoding="async" alt="">
       <img src="assets/pc-pam-feed.jpg" loading="lazy" decoding="async" alt="">
+      <img src="assets/pc-creatina-capa.jpg" loading="lazy" decoding="async" alt="">
+      <img src="assets/pc-otelmo-capa.jpg" loading="lazy" decoding="async" alt="">
     </div>
   </div>
 
@@ -783,7 +787,7 @@ section{padding-block:var(--sec-y);position:relative}
       <img src="assets/pc-itg2-minicurso.jpg" loading="lazy" decoding="async" alt="">
       <img src="assets/pc-pam-bio.jpg" loading="lazy" decoding="async" alt="">
       <img src="assets/pc-itg2-livro.jpg" loading="lazy" decoding="async" alt="">
-      <img src="assets/pc-pam-email.jpg" loading="lazy" decoding="async" alt="">
+      <img src="assets/pc-magnesio-capa.jpg" loading="lazy" decoding="async" alt="">
       <img src="assets/pc-itg2-100mil.jpg" loading="lazy" decoding="async" alt="">
       <img src="assets/pc-itg2-reconecte.jpg" loading="lazy" decoding="async" alt="">
       <img src="assets/pc-itg-lateral.jpg" loading="lazy" decoding="async" alt="">
@@ -831,7 +835,7 @@ section{padding-block:var(--sec-y);position:relative}
           design, UI/UX e estratégia de conversão para transformar ofertas em experiências claras,
           consistentes e feitas para vender.
         </p>
-        <p class="lead rv">Também desenvolvo projetos para perpétuos, produtos físicos e suplementos.</p>
+        <p class="lead rv">Também desenvolvo projetos para landing pages de prestadores de serviços, perpétuo, lançamento pago, funil VSL e produtos físicos.</p>
       </div>
     </div>
     <div class="about__img rv">
@@ -853,7 +857,7 @@ section{padding-block:var(--sec-y);position:relative}
         <h2 class="h-lg">Sua campanha precisa parecer tão boa quanto a oferta é.</h2>
         <p class="cta__lines">Da identidade à página.<br>Do criativo ao checkout.</p>
         <p class="lead">Vamos construir uma experiência visual consistente para colocar seu próximo produto no mercado.</p>
-        <a class="btn js-contato" href="#contato">Quero falar sobre meu projeto <span class="arw" aria-hidden="true">↗</span></a>
+        <a class="btn js-contato" href="#contato">Quero falar sobre meu projeto <span class="arw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
       </div>
     </div>
   </div>
@@ -865,7 +869,7 @@ section{padding-block:var(--sec-y);position:relative}
 <div class="stickcta" id="stickCta">
   <div class="stickcta__in">
     <span class="stickcta__txt">Tem um lançamento em mente?</span>
-    <a class="btn btn--sm js-contato" href="#contato">Falar sobre meu projeto <span class="arw" aria-hidden="true">↗</span></a>
+    <a class="btn btn--sm js-contato" href="#contato">Falar sobre meu projeto <span class="arw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
   </div>
 </div>
 
@@ -925,6 +929,10 @@ const PROJETOS = [
       { img:'assets/pc-pam-avatar.jpg', w:520, h:520, label:'Avatar', alt:'Avatar redondo usado nos perfis da campanha.' },
       { img:'assets/pc-pam-revelado.jpg', w:1000, h:227, label:'Capa do YouTube', alt:'Banner do canal do YouTube da campanha.' }
     ]},
+  { cliente:'ClarusTrack', titulo:'Dashboards de marketing',
+    desc:'Landing page para SaaS de dashboards de marketing em tempo real.',
+    tags:['Landing Page','SaaS'],
+    items:[ { img:'assets/work-clarustrack.jpg', w:900, h:4454, label:'Landing page', url:'', alt:'Página de vendas da ClarusTrack, em azul e branco, com dashboard de marketing.' } ]},
   { cliente:'Áurea', titulo:'Ágora',
     desc:'Uma direção visual sofisticada e consistente, desdobrada em diferentes experiências e materiais do produto.',
     tags:['Identidade','Landing Page','Sistema Visual','Campanha'],
@@ -1071,6 +1079,7 @@ function renderLbItem() {
   lbImg.alt = it.alt || '';
   lbImg.width = it.w; lbImg.height = it.h;
   const lbBody = lbImg.parentElement;
+  lbBody.scrollTop = 0;
   lbBody.classList.toggle('is-full', !!it.full);
   if (it.full) {
     lbImg.style.maxHeight = 'none';
