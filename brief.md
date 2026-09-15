@@ -87,11 +87,24 @@ confirmada) para criar o card sem inventar o que a página mostra.
 Todas moram no objeto `CFG`, no topo do `<script>` de `index.html`. Campo vazio faz o link
 desaparecer da página, então nada quebra e nada é inventado.
 
-- `CFG.contato` — destino de **todos** os CTAs (WhatsApp ou e-mail).
-- `CFG.projetos.agora` — URL do Ágora (CBI e PAM já preenchidos e verificados).
-- `CFG.social` — Instagram, LinkedIn e e-mail do rodapé.
+- ~~`CFG.contato`~~ — preenchido: WhatsApp `19989080803`, com mensagem inicial fixa.
+- `CFG.social` — Instagram, LinkedIn e e-mail do rodapé, ainda `[PLACEHOLDER]`.
+
+Não há mais `CFG.projetos.agora`: a URL ao vivo agora é uma propriedade (`url`) de cada
+item dentro de `PROJETOS` (ver seção 6). Ágora continua sem URL confirmada.
 
 ## 8. Deploy
 
-`[PLACEHOLDER]` — domínio e repositório ainda não definidos. A página é estática e independente:
-basta subir a pasta `dev/site/` inteira.
+- **Repositório:** `github.com/juuliianunes/Julia-Nunes` (conta pessoal da Julia, não
+  msolucoes). Deploy publicado a partir de `dev/site/`.
+- **Vercel:** projeto `site` na conta pessoal `julia-2983` (login `jjuliaapnunes-5591`).
+  URL de produção: `https://site-lake-three-88.vercel.app`.
+- **Domínio:** `julianunesdesign.com.br` (registrado no registro.br) já adicionado ao
+  projeto na Vercel. Falta criar no registro.br o registro:
+  `A  julianunesdesign.com.br  →  76.76.21.21`
+  A Vercel verifica automaticamente e avisa por e-mail quando propagar.
+- **Auto-deploy no push:** ainda não ativo. A Vercel recusou conectar o repositório
+  (`Failed to link ... Login Connection`) porque a conta pessoal não tem o GitHub
+  vinculado como método de login/conexão — precisa ser feito uma vez pelo painel
+  (Account Settings → Login Connections → conectar GitHub) antes de `vercel git connect`
+  funcionar. Até lá, cada atualização exige `vercel deploy --prod --cwd dev/site` manual.
