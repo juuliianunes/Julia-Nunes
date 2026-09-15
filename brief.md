@@ -103,8 +103,14 @@ item dentro de `PROJETOS` (ver seção 6). Ágora continua sem URL confirmada.
   projeto na Vercel. Falta criar no registro.br o registro:
   `A  julianunesdesign.com.br  →  76.76.21.21`
   A Vercel verifica automaticamente e avisa por e-mail quando propagar.
-- **Auto-deploy no push:** ainda não ativo. A Vercel recusou conectar o repositório
+- **Autor do commit:** o repositório está configurado (`git config` local) para commitar como
+  `juuliianunes <293200985+juuliianunes@users.noreply.github.com>`. Commit assinado por
+  `criacao@msolucoes.digital` faz o deploy automático voltar *"Deployment Blocked — the commit
+  author did not have contributing access to the project on Vercel"*: o plano Hobby da conta
+  pessoal não aceita colaborador. Conferir `git config user.email` antes de commitar.
+- **Auto-deploy no push:** instável. A Vercel já recusou conectar o repositório
   (`Failed to link ... Login Connection`) porque a conta pessoal não tem o GitHub
   vinculado como método de login/conexão — precisa ser feito uma vez pelo painel
-  (Account Settings → Login Connections → conectar GitHub) antes de `vercel git connect`
-  funcionar. Até lá, cada atualização exige `vercel deploy --prod --cwd dev/site` manual.
+  (Account Settings → Login Connections → conectar GitHub). O caminho confiável é o deploy
+  manual pela CLI, que ignora o gatilho do GitHub e não é bloqueado:
+  `vercel deploy --prod --cwd dev/site` (com `vercel whoami` = `jjuliaapnunes-5591`).
