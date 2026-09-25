@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Briefing de Criação — Julia Nunes</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23101012'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23EB6FBA'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://tally.so">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+
+<style>
+/* tokens: mesmos do portfólio (/index.html) */
+:root{
+  --ink:#101012;
+  --muted:#6e6e73;
+  --muted-2:#86868b;
+  --line:rgba(0,0,0,.10);
+  --bg:#ffffff;
+  --bg-dark:#0a0a0b;
+  --pink:#eb6fba;
+  --pink-deep:#c2277e;
+  --gutter:clamp(20px,5vw,48px);
+  --maxw:1240px;
+  --r-lg:28px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --nav-h:62px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  min-height:100vh;display:flex;flex-direction:column;
+}
+a{color:inherit}
+h1{
+  font-family:"Inter Tight","Inter",sans-serif;font-weight:600;
+  letter-spacing:-.045em;line-height:.99;margin:0;text-wrap:balance;
+  font-size:clamp(36px,6vw,72px);
+}
+::selection{background:var(--pink);color:#160810}
+:focus-visible{outline:2px solid var(--pink-deep);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+
+/* aurora */
+.aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.aurora i{position:absolute;display:block;border-radius:50%;filter:blur(96px);opacity:.5}
+.aurora i:nth-child(1){width:40vw;height:40vw;left:-14vw;top:-8vw;background:rgba(235,111,186,.26);animation:drift1 22s ease-in-out infinite alternate}
+.aurora i:nth-child(2){width:32vw;height:32vw;right:-12vw;top:0;background:rgba(249,217,236,.7);animation:drift2 27s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate3d(7vw,5vw,0) scale(1.15)}}
+@keyframes drift2{to{transform:translate3d(-6vw,7vw,0) scale(1.1)}}
+@media (prefers-reduced-motion:reduce){.aurora i{animation:none}}
+
+/* nav */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--line);
+}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:var(--nav-h)}
+.brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none;min-height:44px;justify-content:center}
+.brand b{font-family:"Inter Tight",sans-serif;font-size:16.5px;font-weight:600;letter-spacing:-.025em}
+.brand span{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted-2);margin-top:3px}
+.nav__back{
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 14px;border-radius:999px;
+  font-size:13.5px;color:var(--muted);text-decoration:none;
+  transition:color .2s var(--ease),background .2s var(--ease);
+}
+.nav__back:hover{color:var(--ink);background:rgba(0,0,0,.04)}
+@media (max-width:640px){ .brand span{display:none} }
+
+/* conteúdo */
+main{flex:1;position:relative}
+.head{position:relative;padding-block:clamp(56px,9vw,120px) clamp(32px,4vw,48px);text-align:center}
+.head .wrap{position:relative;z-index:1}
+.eyebrow{
+  font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--pink-deep);margin:0 0 22px;
+}
+.form{position:relative;z-index:1;padding-bottom:clamp(64px,9vw,120px)}
+.form__card{
+  max-width:760px;margin-inline:auto;
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:clamp(20px,4vw,48px);
+  box-shadow:0 30px 80px -40px rgba(90,20,60,.25);
+}
+.form__card iframe{display:block;border:0;width:100%}
+
+/* footer */
+.foot{background:var(--bg-dark);color:rgba(245,245,247,.6);padding-block:28px}
+.foot__bar{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12.5px}
+@media (max-width:640px){ .foot__bar{justify-content:center;text-align:center} }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="/">
+      <b>Julia Nunes</b>
+      <span>Designer para Lançamentos &amp; Produtos Digitais</span>
+    </a>
+    <a class="nav__back" href="/">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Portfólio
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="head">
+    <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+    <div class="wrap">
+      <p class="eyebrow">Briefing</p>
+      <h1>Briefing de Criação</h1>
+    </div>
+  </section>
+
+  <section class="form">
+    <div class="wrap">
+      <div class="form__card">
+        <iframe data-tally-src="https://tally.so/embed/QKLXA1?hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" loading="lazy" width="100%" height="948" frameborder="0" marginheight="0" marginwidth="0" title="Briefing de Criação"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__bar">
+    <span>&copy; <span id="ano"></span> Julia Nunes. Todos os direitos reservados.</span>
+    <span>Identidade · Páginas · Checkout · Campanha</span>
+  </div>
+</footer>
+
+<script>document.getElementById('ano').textContent=new Date().getFullYear();</script>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+</body>
+</html>
