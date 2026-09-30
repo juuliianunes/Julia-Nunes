@@ -1,0 +1,16 @@
+{
+  "name": "julia-nunes-portfolio",
+  "version": "1.0.0",
+  "description": "Julia Nunes Portfolio Website",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Static site - open dev/site/index.html in browser'",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [],
+  "author": "Julia Nunes",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
