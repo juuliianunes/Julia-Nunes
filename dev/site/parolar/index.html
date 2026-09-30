@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script>try{if(sessionStorage.getItem("pa-ok")!=="1")document.documentElement.classList.add("gated")}catch(e){document.documentElement.classList.add("gated")}</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <style>
 :root{
   --ink:#101012; --ink-2:#1d1d1f; --muted:#6e6e73; --muted-2:#86868b;
@@ -568,6 +570,15 @@ ul.list.no li .ic{color:var(--muted-2)}
 .etp h3{font-size:24px;margin-bottom:12px}
 .etp p+p{margin-top:10px}
 .etp p i{display:block;font-style:normal;font-size:13.5px;color:var(--ink-2);background:var(--bg-rose);border-radius:10px;padding:10px 12px}
+.etp.ctr{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;border:2px solid var(--pink-deep);box-shadow:0 30px 60px -34px rgba(194,39,126,.35)}
+.ctr-hd{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.ctr-hd .etn{margin:0}
+.ctr-hd .ic{width:34px;height:34px;color:var(--pink-deep)}
+.ctr-tx p{max-width:62ch}
+.ctr-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.ctr-chips span{font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:999px;background:var(--bg-rose);color:var(--ink-2)}
+@media (min-width:641px) and (max-width:900px){.g3.etps>.etp.etp:last-child{grid-column:auto}}
+@media (max-width:640px){.etp.ctr{grid-template-columns:1fr;gap:12px}.ctr-hd{flex-direction:row;align-items:center}}
 .prazo{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
 .prz-big{font-family:var(--display);font-weight:600;font-size:clamp(64px,9vw,128px);letter-spacing:-.06em;line-height:.9}
 .prz-big .w{display:block;font-size:.5em;letter-spacing:-.04em;margin-top:.12em}
@@ -1226,13 +1237,13 @@ html.gated .gate{display:grid}
   <div class="wrap">
     <div class="kicker">Etapas do projeto</div>
     <h2>Do briefing à&nbsp;entrega.</h2>
-    <div class="grid g3 mt etps">
-      <div class="card etp"><span class="etn">01</span><h3>Briefing e alinhamento</h3><p>Entendemos as necessidades da Parolar, a estrutura atual dos catálogos e a organização do&nbsp;portfólio.</p><p>Juntos, definimos prioridades, categorias, segmentos, vitrines e a experiência para representantes e&nbsp;lojistas.</p></div>
-      <div class="card etp"><span class="etn">02</span><h3>Estrutura e experiência</h3><p>Desenhamos a arquitetura da plataforma e a organização das&nbsp;informações.</p><p>Aqui ficam definidos os caminhos de navegação: busca, categorias, segmentos, vitrines, listas e mixes&nbsp;personalizados.</p></div>
-      <div class="card etp"><span class="etn">03</span><h3>Criação visual</h3><p>Criamos a interface e a identidade visual da plataforma para computador, tablet e&nbsp;celular.</p><p>Vocês aprovam o visual antes de seguirmos para o&nbsp;desenvolvimento.</p></div>
-      <div class="card etp"><span class="etn">04</span><h3>Desenvolvimento e implementação</h3><p>Com o visual aprovado, transformamos a interface em uma plataforma&nbsp;funcionando.</p><p>Implementamos páginas, navegação, busca, filtros, painel, vitrines, listas e as demais funções do escopo&nbsp;aprovado.</p></div>
-      <div class="card etp"><span class="etn">05</span><h3>Cadastro e configuração inicial</h3><p>Cadastramos até 5.000 produtos e configuramos a plataforma para ela chegar pronta para&nbsp;usar.</p><p>Depois da entrega, sua equipe mantém produtos, vitrines e informações atualizados pelo&nbsp;painel.</p></div>
-      <div class="card etp"><span class="etn">06</span><h3>Testes e entrega</h3><p>Antes de publicar, testamos a navegação, o funcionamento em cada tela e os principais&nbsp;fluxos.</p><p>Feitos os ajustes finais, a plataforma vai ao ar e é entregue para sua&nbsp;equipe.</p></div>
+    <div class="grid g3 mt etps"><div class="card etp ctr"><div class="ctr-hd"><span class="etn">01</span><svg class="ic"><use href="#i-shield"/></svg></div><div class="ctr-tx"><h3>Contrato assinado</h3><p>Antes de começar, formalizamos tudo em contrato. Escopo, prazos, valores e condições de pagamento ficam registrados e assinados pelas duas&nbsp;partes.</p><div class="ctr-chips"><span>Escopo</span><span>Prazos</span><span>Valores e pagamento</span><span>Aprovações</span><span>Entregáveis</span></div></div></div>
+      <div class="card etp"><span class="etn">02</span><h3>Briefing e alinhamento</h3><p>Entendemos as necessidades da Parolar, a estrutura atual dos catálogos e a organização do&nbsp;portfólio.</p><p>Juntos, definimos prioridades, categorias, segmentos, vitrines e a experiência para representantes e&nbsp;lojistas.</p></div>
+      <div class="card etp"><span class="etn">03</span><h3>Estrutura e experiência</h3><p>Desenhamos a arquitetura da plataforma e a organização das&nbsp;informações.</p><p>Aqui ficam definidos os caminhos de navegação: busca, categorias, segmentos, vitrines, listas e mixes&nbsp;personalizados.</p></div>
+      <div class="card etp"><span class="etn">04</span><h3>Criação visual</h3><p>Criamos a interface e a identidade visual da plataforma para computador, tablet e&nbsp;celular.</p><p>Vocês aprovam o visual antes de seguirmos para o&nbsp;desenvolvimento.</p></div>
+      <div class="card etp"><span class="etn">05</span><h3>Desenvolvimento e implementação</h3><p>Com o visual aprovado, transformamos a interface em uma plataforma&nbsp;funcionando.</p><p>Implementamos páginas, navegação, busca, filtros, painel, vitrines, listas e as demais funções do escopo&nbsp;aprovado.</p></div>
+      <div class="card etp"><span class="etn">06</span><h3>Cadastro e configuração inicial</h3><p>Cadastramos até 5.000 produtos e configuramos a plataforma para ela chegar pronta para&nbsp;usar.</p><p>Depois da entrega, sua equipe mantém produtos, vitrines e informações atualizados pelo&nbsp;painel.</p></div>
+      <div class="card etp"><span class="etn">07</span><h3>Testes e entrega</h3><p>Antes de publicar, testamos a navegação, o funcionamento em cada tela e os principais&nbsp;fluxos.</p><p>Feitos os ajustes finais, a plataforma vai ao ar e é entregue para sua&nbsp;equipe.</p></div>
     </div>
   </div>
 </section>
