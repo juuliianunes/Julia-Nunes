@@ -1,0 +1,1426 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo Parolar</title>
+<meta name="description" content="Proposta de Julia Nunes para a Parolar: duas soluções para tornar um portfólio com milhares de produtos mais fácil de apresentar, explorar e vender.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>try{if(sessionStorage.getItem("pa-ok")!=="1")document.documentElement.classList.add("gated")}catch(e){document.documentElement.classList.add("gated")}</script>
+<style>
+:root{
+  --ink:#101012; --ink-2:#1d1d1f; --muted:#6e6e73; --muted-2:#86868b;
+  --line:rgba(0,0,0,.10); --line-dark:rgba(255,255,255,.14);
+  --bg:#ffffff; --bg-soft:#f5f5f7; --bg-rose:#fbf0f6; --bg-dark:#0a0a0b;
+  --pink:#eb6fba; --pink-deep:#c2277e; --pink-soft:#f9d9ec;
+  --r-sm:12px; --r-md:20px; --r-lg:28px;
+  --display:"Inter Tight","Inter",sans-serif;
+  --body:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* barra fixa */
+.top{position:fixed;top:0;left:0;right:0;height:64px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 20px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.mark{width:28px;height:28px;flex:none}
+.brand b{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.02em}
+.brand span{font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;font-family:var(--display);font-weight:600;font-size:18px;line-height:1;letter-spacing:-.01em;padding:13px 20px;border-radius:999px;white-space:nowrap;border:2px solid var(--ink)}
+.cta .ic{width:20px;height:20px;color:var(--pink)}
+.cta.big{font-size:22px;padding:18px 28px;background:var(--pink);border-color:var(--pink);color:var(--ink)}
+.cta.big .ic{color:var(--ink)}
+.cta .s{display:none}
+
+/* slides */
+.slide{display:grid;place-items:center;padding:128px 24px 112px;position:relative}
+.slide:first-of-type{min-height:100vh}
+.slide.soft{background:var(--bg-soft)}
+.slide.rose{background:var(--bg-rose)}
+.slide.dark{background:var(--bg-dark);color:#fff}
+.slide.ink{background:var(--ink);color:#fff}
+.wrap{width:min(1120px,100%);position:relative}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:22px}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.dark .kicker,.ink .kicker{color:var(--pink)}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance}
+h1{font-size:clamp(44px,7vw,92px);letter-spacing:-.045em;line-height:.98}
+h2{font-size:clamp(32px,4.6vw,60px);letter-spacing:-.038em;line-height:1.02;margin-bottom:22px}
+h3{font-size:clamp(20px,2vw,26px);letter-spacing:-.025em;line-height:1.15}
+.lead{font-size:clamp(17px,1.5vw,21px);color:var(--muted);max-width:60ch;text-wrap:pretty}
+.dark .lead,.ink .lead{color:rgba(255,255,255,.72)}
+.pk{color:var(--pink-deep)}
+.dark .pk,.ink .pk{color:var(--pink)}
+p,li{text-wrap:pretty}
+
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:26px}
+.soft .card{background:#fff}
+.dark .card,.ink .card{background:rgba(255,255,255,.05);border-color:var(--line-dark)}
+.card .ic{width:30px;height:30px;color:var(--pink-deep);margin-bottom:16px}
+.dark .card .ic,.ink .card .ic{color:var(--pink)}
+.card h3{margin-bottom:8px}
+.card p{font-size:15px;color:var(--muted)}
+.dark .card p,.ink .card p{color:rgba(255,255,255,.7)}
+.unit{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dark .unit,.ink .unit{color:rgba(255,255,255,.6)}
+
+.ic{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+ul.list{list-style:none;display:grid;gap:12px}
+ul.list li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+ul.list li .ic{width:22px;height:22px;color:var(--pink-deep);margin-top:2px}
+ul.list.no li .ic{color:var(--muted-2)}
+.dark ul.list li .ic,.ink ul.list li .ic{color:var(--pink)}
+
+.ph{border:2px dashed var(--pink-deep);border-radius:var(--r-lg);display:grid;place-items:center;color:var(--pink-deep);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:16px;background:rgba(235,111,186,.08);min-height:200px}
+.dark .ph,.ink .ph{border-color:var(--pink);color:var(--pink);background:rgba(255,255,255,.04)}
+.shot{border-radius:var(--r-lg);overflow:hidden;background:var(--bg-soft)}
+.shot img{width:100%;height:100%;object-fit:cover}
+
+/* fluxo de pontos de contato */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;counter-reset:f}
+.flow .node{padding:0 18px 0 0;position:relative}
+.flow .node::before{counter-increment:f;content:counter(f,decimal-leading-zero);font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--pink);display:block;margin-bottom:12px}
+.flow .node::after{content:"";position:absolute;top:8px;left:34px;right:8px;height:1px;background:var(--line-dark)}
+.flow .node:last-child::after{display:none}
+.flow h3{font-size:clamp(22px,2.4vw,32px)}
+.flow p{font-size:14.5px;color:rgba(255,255,255,.65);margin-top:6px}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.steps.s3{grid-template-columns:repeat(3,1fr)}
+.step{padding:26px 24px 24px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md)}
+.soft .step{background:#fff}
+.dark .step,.ink .step{background:rgba(255,255,255,.05);border-color:var(--line-dark)}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:var(--display);font-weight:600;font-size:34px;letter-spacing:-.03em;line-height:1;color:var(--pink-deep);display:block;margin-bottom:14px}
+.dark .step::before,.ink .step::before{color:var(--pink)}
+.step h3{font-size:20px;margin-bottom:6px}
+.step p{font-size:14.5px;color:var(--muted)}
+.dark .step p,.ink .step p{color:rgba(255,255,255,.7)}
+
+.principles{display:grid;gap:0;border-top:1px solid var(--line-dark)}
+.principles div{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line-dark)}
+.principles b{font-family:var(--display);font-weight:600;font-size:clamp(24px,3vw,40px);letter-spacing:-.035em}
+.principles span{font-size:16px;color:rgba(255,255,255,.65)}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:500;font-size:15px;display:inline-flex;align-items:center;gap:8px}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--pink);display:inline-block}
+
+.tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.tbl th,.tbl td{padding:12px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14.5px}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:var(--bg-soft);font-weight:600}
+.tbl td:first-child{font-weight:600;width:30%}
+.tbl td:last-child{color:var(--muted)}
+.video{aspect-ratio:16/9;min-height:0}
+.tablet{aspect-ratio:4/3;width:100%;min-height:0}
+.phone{aspect-ratio:9/17;width:min(230px,100%);margin:0 auto;border-radius:28px}
+.diagram{display:grid;grid-template-columns:1fr auto 1.4fr;gap:22px;align-items:center}
+.base{background:var(--ink);color:#fff;border-radius:var(--r-lg);padding:30px;text-align:center}
+.base .big{font-family:var(--display);font-weight:600;font-size:clamp(40px,4.6vw,60px);letter-spacing:-.04em;line-height:1}
+.base .unit{color:rgba(255,255,255,.65);margin-top:8px}
+.arrow{width:44px;height:44px;color:var(--pink-deep)}
+
+.price{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.price .card{padding:32px}
+.card .val{font-family:var(--display);font-weight:600;font-size:28px;letter-spacing:-.03em;margin-top:10px}
+.price .val{font-family:var(--display);font-weight:600;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.035em;margin:12px 0 8px}
+.todo{display:inline-block;border:2px dashed var(--pink-deep);color:var(--pink-deep);border-radius:10px;padding:6px 12px;font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
+
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.tl{border-top:3px solid var(--pink);padding-top:14px}
+.tl small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tl b{display:block;font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.025em;line-height:1.15}
+.tl span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+
+/* capa */
+.cover{overflow:hidden}
+.cover .dotbig{position:absolute;right:-8vw;top:50%;transform:translateY(-50%);width:min(52vw,640px);aspect-ratio:1;border-radius:50%;background:var(--pink);opacity:.9;pointer-events:none}
+.cover .wrap{z-index:1}
+.cover h1{max-width:13ch}
+.cover .lead{margin-top:26px}
+.cover .meta{margin-top:40px;display:flex;gap:28px;flex-wrap:wrap;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cover .who{display:flex;align-items:center;gap:14px;margin-bottom:38px;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em}
+.cover .who .mark{width:40px;height:40px}
+
+.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line-dark);padding-top:26px;margin-top:40px;font-size:14px;color:rgba(255,255,255,.7)}
+.foot b{font-family:var(--display);font-weight:600;font-size:18px;color:#fff;letter-spacing:-.02em}
+.mt{margin-top:28px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+
+@media (max-width:900px){
+  .slide{min-height:0;padding:96px 16px 56px}
+  .g2,.g3,.g4,.steps,.steps.s3,.price,.two,.flow,.diagram{grid-template-columns:1fr}
+  .arrow{transform:rotate(90deg);margin:0 auto}
+  .flow{gap:22px}.flow .node::after{display:none}
+  .timeline{grid-template-columns:1fr 1fr}
+  .brand span{display:none}
+  .cover .dotbig{width:70vw;right:-30vw;top:6vh;transform:none;opacity:.35}
+  .tbl td:first-child{width:38%}
+  .tbl th,.tbl td{padding:12px}
+  .principles div{grid-template-columns:1fr;gap:6px}
+}
+@media (max-width:400px){
+  .cta{font-size:17px;padding:11px 14px}
+  .cta.big{font-size:20px;padding:14px 18px}
+  .cta .l{display:none}.cta .s{display:inline}
+  .top{padding:0 14px}
+}
+@media print{
+  .top{display:none}
+  .slide{min-height:0;page-break-after:always;padding:40px 24px}
+}
+
+
+/* telas do sistema (mockups) */
+.dev{container-type:inline-size;background:#fff;color:#1d1d1f;overflow:hidden;position:relative;font-family:var(--body);letter-spacing:-.01em;line-height:1.3;text-align:left}
+.dev .scr{height:100%;display:flex;flex-direction:column}
+.dev svg.u{width:1.25em;height:1.25em;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.dev .fill{flex:1 1 auto;min-height:0;overflow:hidden}
+.ph-dev{width:min(236px,100%);aspect-ratio:9/18.6;margin:0 auto;border-radius:38px;border:7px solid #1d1d1f;box-shadow:0 30px 60px -24px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.05)}
+.ph-dev::before{content:"";position:absolute;top:7px;left:50%;width:30%;height:17px;border-radius:999px;background:#1d1d1f;transform:translateX(-50%);z-index:3}
+.ph-dev .scr{font-size:4.4cqw}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:.95em 1.7em .45em;font-size:.82em;font-weight:600;flex:none}
+.sb .bat{width:2.1em;height:1em}
+.hd{display:flex;justify-content:space-between;align-items:center;padding:.35em 1.1em .6em;flex:none}
+.logo{font-family:var(--display);font-weight:600;font-size:1.1em;letter-spacing:-.035em;display:flex;align-items:center;gap:.35em}
+.logo::before{content:"";width:.55em;height:.55em;border-radius:50%;background:#eb6fba}
+.hero{margin:0 1.1em;padding:1.1em 1.1em 1.2em;border-radius:1.2em;background:linear-gradient(140deg,#1d1d1f,#3b3b41);color:#fff;flex:none}
+.hero small{font-size:.66em;text-transform:uppercase;letter-spacing:.14em;color:#eb6fba;font-weight:600}
+.hero strong{display:block;font-family:var(--display);font-size:1.9em;font-weight:600;letter-spacing:-.045em;line-height:1.05;margin:.12em 0 .25em}
+.hero span{font-size:.76em;color:rgba(255,255,255,.72)}
+.uchips{display:flex;gap:.4em;padding:.8em 1.1em .1em;white-space:nowrap;overflow:hidden;flex:none}
+.uchips span{font-size:.74em;padding:.45em .9em;border-radius:999px;background:#f2f2f4;font-weight:500;flex:none;display:inline-flex;align-items:center;gap:.35em}
+.uchips .on{background:#1d1d1f;color:#fff}
+.sec{display:flex;justify-content:space-between;align-items:baseline;padding:.9em 1.1em .5em;font-weight:600;font-size:.9em;flex:none}
+.sec em{font-style:normal;font-size:.8em;color:#c2277e;font-weight:500}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:.7em .6em;padding:0 1.1em;align-content:start}
+.pc{min-width:0}
+.th{aspect-ratio:1;border-radius:.9em;display:grid;place-items:center;position:relative}
+.th>svg{width:64%;height:64%}
+.th em{position:absolute;top:.55em;left:.55em;font-style:normal;font-size:.6em;font-weight:600;background:rgba(255,255,255,.92);padding:.25em .6em;border-radius:999px}
+.th em.hot{background:#eb6fba;color:#fff}
+.th .add{position:absolute;right:.45em;bottom:.45em;width:1.7em;height:1.7em;border-radius:50%;background:#1d1d1f;color:#fff;display:grid;place-items:center}
+.th .add svg.u{width:.95em;height:.95em}
+.t1{background:#eef3fa}.t2{background:#fdf0f6}.t3{background:#edf7f1}.t4{background:#faf4ea}.t5{background:#f2f2f5}.t6{background:#fdf6e4}
+.pc b{display:block;font-size:.76em;font-weight:600;margin-top:.45em;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc small{display:block;font-size:.64em;color:#86868b;margin-top:.1em}
+.tabbar{display:flex;justify-content:space-around;padding:.6em 0 1.2em;border-top:1px solid #ececf0;font-size:.62em;color:#86868b;flex:none;background:#fff}
+.tabbar span{display:flex;flex-direction:column;align-items:center;gap:.25em;position:relative}
+.tabbar svg.u{width:2em;height:2em}
+.tabbar .on{color:#1d1d1f;font-weight:600}
+.tabbar i{position:absolute;top:-.3em;right:-.5em;background:#eb6fba;color:#fff;font-style:normal;font-weight:700;border-radius:999px;padding:.05em .45em;font-size:.9em}
+.srch{margin:.2em 1.1em .1em;display:flex;align-items:center;gap:.5em;background:#f2f2f4;border-radius:.8em;padding:.6em .8em;font-size:.84em;flex:none}
+.srch svg.u{color:#86868b}
+.srch .cur{width:1.5px;height:1.1em;background:#eb6fba;margin-left:-.3em}
+.srch .hint{color:#86868b}
+.cnt{padding:.6em 1.1em .15em;font-size:.68em;color:#86868b;flex:none}
+.rw{display:flex;align-items:center;gap:.7em;padding:.55em 1.1em;border-bottom:1px solid #f0f0f3}
+.rw .th{width:3.3em;flex:none;border-radius:.7em}
+.rw .rt{flex:1;min-width:0}
+.rw b{display:block;font-size:.78em;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rw small{font-size:.64em;color:#86868b}
+.stp{display:flex;align-items:center;gap:.55em;background:#f2f2f4;border-radius:999px;padding:.3em .65em;font-size:.72em;font-weight:600;flex:none}
+.stp i{font-style:normal;color:#86868b;font-weight:500}
+.addb{font-size:.7em;font-weight:600;padding:.4em .85em;border-radius:999px;border:1px solid #d2d2d7;flex:none}
+.qty{font-size:.74em;font-weight:600;flex:none}
+.cart{margin:.7em 1.1em 1.2em;display:flex;align-items:center;justify-content:space-between;background:#1d1d1f;color:#fff;border-radius:1em;padding:.85em 1em;font-size:.78em;font-weight:600;flex:none}
+.cart em{font-style:normal;color:#eb6fba}
+.back{display:flex;align-items:center;gap:.2em;padding:.25em .8em .3em;font-size:.8em;color:#c2277e;flex:none}
+.back svg.u{width:1.1em;height:1.1em}
+.ttl{padding:0 1.1em .3em;font-family:var(--display);font-weight:600;font-size:1.55em;letter-spacing:-.04em;line-height:1.1;flex:none}
+.ttl small{display:block;font-family:var(--body);font-size:.46em;letter-spacing:0;color:#86868b;font-weight:500;margin-top:.2em}
+.frm{margin:.7em 1.1em 0;background:#f5f5f7;border-radius:1em;padding:.15em .9em;flex:none}
+.frm div{display:flex;justify-content:space-between;gap:.5em;padding:.6em 0;border-bottom:1px solid #e6e6ea;font-size:.72em}
+.frm div:last-child{border:0}
+.frm span{color:#86868b}
+.frm b{font-weight:600}
+.btnp{margin:.8em 1.1em 0;background:#1d1d1f;color:#fff;border-radius:.9em;padding:.85em;display:flex;align-items:center;justify-content:center;gap:.5em;font-size:.78em;font-weight:600;flex:none}
+.btnp svg.u{color:#eb6fba}
+.btns{display:flex;gap:.5em;margin:.5em 1.1em 1.3em;flex:none}
+.btns span{flex:1;display:flex;align-items:center;justify-content:center;gap:.35em;border:1px solid #d2d2d7;border-radius:.9em;padding:.65em .3em;font-size:.7em;font-weight:600}
+/* tablet */
+.tab-dev{width:100%;aspect-ratio:4/3;border-radius:26px;border:9px solid #1d1d1f;box-shadow:0 34px 70px -28px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.05)}
+.tab-dev .scr{font-size:1.75cqw}
+.tb-top{display:flex;align-items:center;gap:1.2em;padding:.9em 1.3em;border-bottom:1px solid #ececf0;flex:none}
+.tb-top .srch{flex:1;margin:0}
+.lstb{display:flex;align-items:center;gap:.45em;background:#1d1d1f;color:#fff;border-radius:999px;padding:.55em 1em;font-size:.84em;font-weight:600}
+.lstb em{font-style:normal;background:#eb6fba;border-radius:999px;padding:0 .5em}
+.tb-body{flex:1;display:grid;grid-template-columns:23% 1fr;min-height:0}
+.flt{border-right:1px solid #ececf0;padding:1.1em;font-size:.84em;background:#fbfbfd}
+.flt h6{font-size:.7em;text-transform:uppercase;letter-spacing:.12em;color:#86868b;margin:1.3em 0 .5em;font-weight:600}
+.flt h6:first-child{margin-top:0}
+.flt .sel{display:block;background:#1d1d1f;color:#fff;border-radius:.6em;padding:.45em .7em;font-weight:600;margin-bottom:.3em}
+.flt .opt{display:block;padding:.35em .7em;color:#424245}
+.ck{display:flex;align-items:center;gap:.55em;padding:.3em 0;color:#424245}
+.ck::before{content:"";width:1.05em;height:1.05em;border-radius:.3em;border:1.5px solid #c7c7cc;flex:none}
+.ck.on{color:#1d1d1f;font-weight:500}
+.ck.on::before{border-color:#1d1d1f;background:#1d1d1f url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/80% no-repeat}
+.tb-main{padding:1.1em 1.3em;overflow:hidden}
+.bn{border-radius:1em;background:linear-gradient(120deg,#fdeef6,#f3f0fb);padding:1em 1.3em;display:flex;justify-content:space-between;align-items:center;gap:1em}
+.bn small{font-size:.66em;text-transform:uppercase;letter-spacing:.14em;color:#c2277e;font-weight:600}
+.bn b{display:block;font-family:var(--display);font-weight:600;font-size:1.45em;letter-spacing:-.04em;line-height:1.1;margin:.1em 0 .15em}
+.bn span{font-size:.78em;color:#6e6e73}
+.bn i{font-style:normal;background:#1d1d1f;color:#fff;border-radius:999px;padding:.55em 1em;font-size:.78em;font-weight:600;white-space:nowrap}
+.g3u{display:grid;grid-template-columns:repeat(3,1fr);gap:.9em;margin-top:1em}
+/* painel */
+.win{width:100%;aspect-ratio:16/7.4;border-radius:14px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.1)}
+.win .scr{font-size:1.1cqw}
+.wbar{display:flex;align-items:center;gap:.45em;padding:.7em 1em;background:#f5f5f7;border-bottom:1px solid #e5e5ea;flex:none}
+.wbar i{width:.85em;height:.85em;border-radius:50%;background:#ff5f57}
+.wbar i:nth-child(2){background:#febc2e}.wbar i:nth-child(3){background:#28c840}
+.wbar span{margin:0 auto;font-size:.78em;color:#86868b;background:#fff;border-radius:.5em;padding:.25em 3em;border:1px solid #e5e5ea}
+.pn-body{flex:1;display:grid;grid-template-columns:17% 1fr;min-height:0}
+.nav{background:#f5f5f7;padding:1.2em .9em;font-size:.9em;border-right:1px solid #e5e5ea}
+.nav .logo{margin:0 0 1.1em .6em}
+.nav span:not(.logo){display:flex;align-items:center;gap:.6em;padding:.5em .7em;border-radius:.6em;color:#424245;margin-bottom:.15em}
+.nav .on{background:#fff;color:#1d1d1f !important;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.pn-main{padding:1.4em 1.8em;overflow:hidden}
+.pn-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:1em}
+.pn-hd small{font-size:.8em;color:#86868b}
+.pn-hd h5{font-family:var(--display);font-size:1.9em;letter-spacing:-.04em;font-weight:600;line-height:1.1}
+.acts{display:flex;gap:.5em}
+.acts span{font-size:.84em;font-weight:600;padding:.55em 1.1em;border-radius:999px;border:1px solid #d2d2d7}
+.acts .pri{background:#1d1d1f;color:#fff;border-color:#1d1d1f}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.8em;margin:1.1em 0 1em}
+.kpis div{background:#f5f5f7;border-radius:.9em;padding:.8em 1em;min-width:0}
+.kpis small{display:block;font-size:.74em;color:#86868b}
+.kpis b{display:block;font-family:var(--display);font-weight:600;font-size:1.5em;letter-spacing:-.03em;margin-top:.15em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpis b.s{font-size:1em;margin-top:.45em;font-family:var(--body);letter-spacing:-.01em}
+.utbl{width:100%;border-collapse:collapse;font-size:.84em}
+.utbl th{font-size:.82em;color:#86868b;font-weight:500;text-align:left;padding:.35em .6em;border-bottom:1px solid #e5e5ea}
+.utbl td{padding:.45em .6em;border-bottom:1px solid #f0f0f3;vertical-align:middle;color:#424245}
+.utbl .pp{display:flex;align-items:center;gap:.7em;font-weight:600;color:#1d1d1f}
+.utbl .th{width:2.3em;border-radius:.5em;flex:none}
+.mk{font-size:.8em;padding:.2em .65em;border-radius:999px;background:#f2f2f4;font-weight:600}
+.mk.ol{background:#fdeef6;color:#c2277e}
+.tg{display:inline-block;width:2.3em;height:1.35em;border-radius:999px;background:#e5e5ea;position:relative;vertical-align:middle}
+.tg::after{content:"";position:absolute;top:.17em;left:.17em;width:1em;height:1em;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.tg.on{background:#eb6fba}.tg.on::after{left:1.13em}
+@media (max-width:900px){.win{aspect-ratio:auto;height:auto}.win .scr{font-size:max(1.1cqw,6px)}.pn-body{grid-template-columns:1fr}.nav{display:none}.kpis{grid-template-columns:1fr 1fr}.tab-dev .scr{font-size:max(1.75cqw,6.5px)}}
+.two.wide-r{grid-template-columns:.75fr 1.25fr}
+@media (max-width:900px){.two.wide-r{grid-template-columns:1fr}}
+
+/* v2: copy da proposta em duas soluções */
+.cover h1{max-width:14ch}
+.body-p{font-size:17px;color:var(--muted);max-width:56ch}
+.dark .body-p,.ink .body-p{color:rgba(255,255,255,.7)}
+.small-note{font-size:14px;color:var(--muted-2)}
+.stats{display:grid;gap:18px}
+.stats .base{text-align:left;padding:34px}
+.solnum{font-family:var(--display);font-weight:600;font-size:clamp(120px,22vw,280px);line-height:.8;letter-spacing:-.07em;color:var(--pink);text-align:right}
+.statement{margin-top:48px;padding-top:32px;border-top:1px solid var(--line-dark)}
+.statement p{font-size:18px;color:rgba(255,255,255,.65)}
+.statement h3{font-size:clamp(28px,3.4vw,44px);letter-spacing:-.035em;line-height:1.1;margin-top:8px;max-width:24ch}
+.feat{display:grid;gap:24px}
+.feat div{padding-left:18px;border-left:3px solid var(--pink)}
+.feat b{display:block;font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.025em}
+.feat span{display:block;font-size:15px;color:var(--muted);margin-top:4px}
+.pages{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.pages .cap{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:12px;text-align:center}
+.pages .cap.pk{color:var(--pink-deep)}
+.pdfph{aspect-ratio:1/1.414;min-height:0;border-radius:6px}
+.pdfp{container-type:inline-size;aspect-ratio:1/1.414;background:#fff;border-radius:6px;box-shadow:0 24px 50px -20px rgba(0,0,0,.3),0 0 0 1px rgba(0,0,0,.06);overflow:hidden;color:#1d1d1f;font-family:var(--body);line-height:1.3}
+.pdfp .in{font-size:3.4cqw;height:100%;display:flex;flex-direction:column;padding:1.6em 1.5em 1.2em}
+.pdh{display:flex;justify-content:space-between;align-items:center;font-size:.8em;color:#86868b;padding-bottom:.8em;border-bottom:1px solid #e5e5ea}
+.pdh .logo{font-size:1.3em;color:#1d1d1f}
+.pdt{margin:1em 0 .9em}
+.pdt small{font-size:.72em;text-transform:uppercase;letter-spacing:.14em;color:#c2277e;font-weight:600}
+.pdt b{display:block;font-family:var(--display);font-weight:600;font-size:2em;letter-spacing:-.04em;line-height:1.05;margin-top:.1em}
+.pdg{display:grid;grid-template-columns:1fr 1fr;gap:1em;align-content:start}
+.pdi .th{border-radius:.6em}
+.pdi b{display:block;font-size:.9em;font-weight:600;margin:.5em 0 .3em;line-height:1.2}
+.pdi dl{display:grid;grid-template-columns:auto 1fr;gap:.15em .6em;font-size:.72em}
+.pdi dt{color:#86868b}
+.pdi dd{font-weight:500}
+.pdf-ft{display:flex;justify-content:space-between;font-size:.7em;color:#86868b;border-top:1px solid #e5e5ea;padding-top:.7em;margin-top:auto}
+.how .dev{margin-bottom:22px}
+.how h3{font-size:24px;margin-bottom:6px;display:flex;align-items:baseline;gap:10px}
+.how h3 small{font-family:var(--body);font-size:13px;color:var(--pink-deep);font-weight:600;letter-spacing:.04em}
+.how p{font-size:15px;color:var(--muted)}
+.punch{margin-top:44px;font-family:var(--display);font-weight:600;font-size:clamp(24px,2.8vw,36px);letter-spacing:-.03em;line-height:1.15;text-align:center;text-wrap:balance}
+.seg{display:flex;margin:.1em 1.1em .7em;background:#f2f2f4;border-radius:.7em;padding:.2em;flex:none}
+.seg span{flex:1;text-align:center;font-size:.72em;padding:.45em 0;border-radius:.55em;color:#6e6e73;font-weight:500}
+.seg .on{background:#fff;color:#1d1d1f;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.hero.sm strong{font-size:1.5em;margin:.2em 0 .3em}
+/* árvore de vitrines */
+.tree .base{max-width:360px;margin:0 auto}
+.tree .trunk{width:2px;height:32px;background:#d2d2d7;margin:0 auto}
+.brow{--n:6;--g:14px;--cw:calc((100% - (var(--n) - 1) * var(--g)) / var(--n));display:flex;justify-content:center;gap:var(--g);position:relative;padding-top:32px}
+.brow::before{content:"";position:absolute;top:0;left:calc(var(--cw) / 2);right:calc(var(--cw) / 2);height:2px;background:#d2d2d7}
+.brow .chip{position:relative;flex:0 0 var(--cw);justify-content:center;text-align:center;min-height:48px}
+.brow .chip i{display:none}
+.brow .chip::before{content:"";position:absolute;top:-33px;left:50%;width:2px;height:32px;margin-left:-1px;background:#d2d2d7}
+/* mix */
+.vflow{list-style:none;margin-top:24px;max-width:340px}
+.vflow li{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 16px;font-size:15px;font-weight:500}
+.vflow li+li{margin-top:26px}
+.vflow li+li::before{content:"";position:absolute;left:24px;top:-27px;width:2px;height:20px;background:#b0b0b5}
+.vflow li+li::after{content:"";position:absolute;left:20px;top:-9px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #b0b0b5}
+.vflow li:first-child{border-color:var(--pink-deep)}
+.vflow li:last-child{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600}
+.mx-crumb{flex:1;font-size:.84em;color:#86868b}
+.mx-crumb b{color:#1d1d1f;font-weight:600}
+.flt .srch{margin:0;font-size:.95em;padding:.5em .6em}
+.mix .tb-main{display:flex;flex-direction:column}
+.mx-hd{margin-bottom:.4em}
+.mx-hd small{font-size:.72em;color:#86868b}
+.mx-hd b{display:block;font-family:var(--display);font-weight:600;font-size:1.5em;letter-spacing:-.035em}
+.mix .rw{padding:.5em 0}
+.mix .cart{margin:auto 0 0}
+.tag{font-size:.64em;font-weight:600;padding:.25em .65em;border-radius:999px;background:#f2f2f4;color:#6e6e73;flex:none}
+.tag.add{background:#fdeef6;color:#c2277e}
+.rw.rm{opacity:.45}
+.rw.rm b{text-decoration:line-through}
+/* ganhos, comparativo, investimento, encerramento */
+.area .unit{display:flex;align-items:center;gap:10px;color:var(--pink-deep);margin-bottom:18px}
+.area .unit .ic{width:22px;height:22px;margin:0}
+.cmp th,.cmp td{width:50%}
+.tbl.cmp td:first-child{font-weight:400;width:50%;color:var(--muted)}
+.tbl.cmp td:last-child{color:var(--ink);font-weight:500}
+.tbl.cmp th:last-child{color:var(--pink-deep)}
+.inv .card h3{margin:12px 0 6px}
+.inv .card p{font-size:15px;color:var(--muted)}
+.inv .val{font-size:clamp(36px,4.4vw,56px);margin:22px 0 14px}
+.fee{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.fee b{font-weight:600;color:var(--ink);white-space:nowrap}
+.stack{margin-top:28px;border-top:1px solid var(--line-dark)}
+.stack div{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.6vw,34px);letter-spacing:-.03em;padding:12px 0;border-bottom:1px solid var(--line-dark);color:rgba(255,255,255,.55)}
+.stack div:first-child{color:#fff}
+.closing{margin-top:32px;font-family:var(--display);font-weight:600;font-size:clamp(28px,3.6vw,48px);letter-spacing:-.04em;line-height:1.05}
+@media (max-width:900px){
+  .solnum{text-align:left;font-size:110px}
+  .tree .trunk{display:none}
+  .brow{flex-direction:column;gap:10px;padding:0 0 0 26px}
+  .brow::before{left:0;right:auto;top:0;bottom:24px;width:2px;height:auto}
+  .brow .chip{flex:none;justify-content:flex-start;text-align:left;min-height:0}
+  .brow .chip::before{top:50%;left:-27px;width:26px;height:2px;margin:-1px 0 0}
+  .fee{flex-direction:column;gap:2px}
+}
+
+/* capa com foto */
+.cover-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
+.cover-grid h1{font-size:clamp(40px,5.4vw,76px);max-width:none}
+.cover-photo{width:100%;height:auto;max-width:560px;justify-self:end}
+/* slide 5: PDF no tablet */
+.pages .tab-dev{border-width:8px}
+.tab-dev .pdfph{aspect-ratio:auto;height:100%;border-radius:0;border-width:0;background:#f5f5f7;border:2px dashed #d2d2d7;color:var(--muted)}
+.pdl{padding:1.6em 1.8em 1.4em}
+.pdl .pdh{font-size:.8em}
+.pdl .pdt{margin:.9em 0 .8em}
+.pdl .pdt b{font-size:1.9em}
+.pdg3{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1em .8em}
+.pdg3 .pdi{min-width:0}
+.pdg3 .pdi .th{aspect-ratio:4/3;border-radius:.6em}
+.pdg3 .pdi .th>svg{width:auto;height:78%}
+.pdg3 .pdi b{display:block;font-size:.74em;font-weight:600;margin:.5em 0 .25em;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdg3 .pdi span{display:block;font-size:.58em;color:#1d1d1f;line-height:1.45;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdg3 .pdi i{font-style:normal;color:#86868b}
+.feat.row4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){
+  .cover-grid{grid-template-columns:1fr}
+  .cover-photo{justify-self:center;max-width:420px}
+  .pages{grid-template-columns:1fr}
+  .feat.row4{grid-template-columns:1fr}
+}
+
+/* slide 5: tablets na vertical */
+.tab-dev.vert{aspect-ratio:3/4;width:min(380px,100%);margin:0 auto}
+.tab-dev.vert .scr{font-size:2.5cqw}
+.tab-dev.vert .pdl{padding:1.4em 1.3em 1.2em}
+.tab-dev.vert .pdh span:nth-child(2){display:none}
+.tab-dev.vert .pdg3{gap:1em .6em}
+.tab-dev.vert .pdg3 .pdi b{font-size:.62em;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:2.4em}
+.tab-dev.vert .pdg3 .pdi span{font-size:.5em;line-height:1.4}
+
+.qa h3{font-size:19px}
+.qa p{font-size:14.5px}
+
+.tab-dev.vert .pdg3{grid-template-columns:repeat(4,1fr);gap:1em .7em}
+.tab-dev.vert .pdg3 .pdi .th{aspect-ratio:3/2}
+.tab-dev.vert .pdg3 .pdi b{font-size:.66em}
+.tab-dev.vert .pdg3 .pdi span{font-size:.54em}
+
+.faq-t{margin-top:40px;font-size:clamp(22px,2.2vw,28px)}
+.faq{display:grid;grid-template-columns:1fr 1fr;column-gap:40px;margin-top:18px;border-top:1px solid var(--line-dark)}
+.faq div{padding:18px 0;border-bottom:1px solid var(--line-dark)}
+.faq dt{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.faq dt::before{content:"?";flex:none;width:24px;height:24px;border-radius:50%;background:var(--pink);color:var(--ink);font-size:14px;display:grid;place-items:center}
+.faq dd{margin:6px 0 0 34px;font-size:15px;color:rgba(255,255,255,.7)}
+@media (max-width:900px){.faq{grid-template-columns:1fr}}
+
+/* investimento: cards de preço comparativos */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px}
+.plan.hl{border:2px solid var(--pink-deep);box-shadow:0 30px 60px -30px rgba(194,39,126,.35)}
+.plan .badge{position:absolute;top:-14px;left:32px;background:var(--pink-deep);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.plan h3{margin:10px 0 6px}
+.plan>p{font-size:15px;color:var(--muted);min-height:3.1em}
+.pr-box{margin:20px 0 22px;min-height:190px}
+.pr-box .val{font-family:var(--display);font-weight:600;font-size:clamp(38px,4.4vw,56px);letter-spacing:-.04em;line-height:1}
+.pr-box small{display:block;font-size:13px;color:var(--muted);margin:6px 0 14px}
+.plan-cta{display:block;text-align:center;text-decoration:none;font-family:var(--display);font-weight:600;font-size:17px;padding:14px 18px;border-radius:999px;border:1.5px solid var(--ink);color:var(--ink)}
+.plan-cta.pri{background:var(--ink);color:#fff}
+.plan-cta:hover{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+.feat-t{margin:28px 0 12px;padding-top:22px;border-top:1px solid var(--line)}
+.flist{list-style:none;display:grid;gap:12px}
+.flist li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.flist .ic{width:20px;height:20px;margin-top:2px}
+.flist li.y .ic{color:var(--pink-deep)}
+.flist li.n{color:var(--muted-2)}
+.flist li.n .ic{color:#c7c7cc}
+.flist li.n{color:var(--muted-2)}
+.flist .dash{width:20px;flex:none;text-align:center;color:#c7c7cc;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:900px){.plans{grid-template-columns:1fr;gap:34px}.pr-box,.plan>p{min-height:0}}
+
+/* v3 */
+.chgs{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.chg{display:flex;flex-direction:column;gap:12px;background:var(--bg-soft);border-radius:var(--r-md);padding:20px;font-size:15px;font-weight:500}
+.chg .ic{width:24px;height:24px;color:var(--pink-deep)}
+.ink-b{color:var(--ink);font-weight:600}
+.punch.left{text-align:left}
+.plan .ideal{font-size:14.5px;color:var(--ink-2);background:var(--bg-soft);border-radius:12px;padding:10px 14px;margin-top:14px;min-height:0}
+.plan .ideal b{font-weight:600;color:var(--pink-deep)}
+.plan>p{min-height:0}
+.dpp .card{padding:30px}
+.dpp .card.hl{border:2px solid var(--pink-deep)}
+.dpp .unit{color:var(--muted)}
+.dpp .card.hl .unit{color:var(--pink-deep)}
+.dpp-big{font-family:var(--display);font-weight:600;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.04em;line-height:1.05;margin-top:8px}
+.dpp .vflow{max-width:none}
+.dpp .vflow li{background:var(--bg-soft);border-color:transparent}
+.dpp .vflow li:first-child{background:#fff;border-color:var(--pink-deep)}
+.dpp .vflow.pdfv li:last-child{background:var(--bg-soft);color:var(--ink);border-color:transparent;font-weight:500}
+.dpp .vflow.navv li:last-child{background:var(--pink-deep);border-color:var(--pink-deep);color:#fff}
+@media (max-width:900px){.chgs{grid-template-columns:1fr}}
+
+/* como funcionaria: componentes de UI soltos (apenas visuais) */
+.ui-stage{height:210px;margin-bottom:22px;border-radius:var(--r-md);background:#fff;display:grid;place-items:center;padding:22px;user-select:none;pointer-events:none;font-size:15px;background-image:radial-gradient(circle at 50% 40%,#fff 0,#fff 45%,#f7f7f9 100%)}
+.ui-stage svg.u{width:18px;height:18px}
+.ui-search{display:flex;align-items:center;gap:10px;width:100%;background:#fff;border:1px solid #e5e5ea;border-radius:14px;padding:14px 16px;box-shadow:0 14px 30px -14px rgba(0,0,0,.22)}
+.ui-search svg.u{color:#86868b}
+.ui-search .cur{width:1.5px;height:18px;background:#eb6fba;margin-left:-8px}
+.ui-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.ui-chips span{padding:9px 16px;border-radius:999px;background:#fff;border:1px solid #e5e5ea;font-weight:500;font-size:14px;box-shadow:0 8px 20px -12px rgba(0,0,0,.2)}
+.ui-chips .on{background:#1d1d1f;color:#fff;border-color:#1d1d1f}
+.ui-prod{display:flex;align-items:center;gap:12px;width:100%;background:#fff;border:1px solid #ececf0;border-radius:16px;padding:10px 12px 10px 10px;box-shadow:0 14px 30px -14px rgba(0,0,0,.22)}
+.ui-prod .th{width:58px;flex:none;border-radius:11px}
+.ui-prod .rt{flex:1;min-width:0}
+.ui-prod b{display:block;font-size:14px;font-weight:600;line-height:1.25}
+.ui-prod small{font-size:12px;color:#86868b}
+.ui-add{width:34px;height:34px;flex:none;border-radius:50%;background:#1d1d1f;color:#fff;display:grid;place-items:center}
+.ui-share{display:grid;gap:8px;width:100%}
+.ui-share span{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;border:1px solid #d2d2d7;background:#fff;font-weight:600;font-size:14px}
+.ui-share .pri{background:#1d1d1f;color:#fff;border-color:#1d1d1f;box-shadow:0 14px 30px -14px rgba(0,0,0,.35)}
+.ui-share .pri svg.u{color:#eb6fba}
+.ui-share div{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* mix personalizado em 3 etapas */
+.mixsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.mixsteps .card{border:0;padding:28px}
+.mixsteps .unit{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:13px;margin-bottom:14px}
+.mixsteps .unit em{font-style:normal;font-family:var(--display);color:var(--pink-deep);letter-spacing:.02em}
+.mixsteps p{font-size:15px;color:var(--muted)}
+.mixlist{display:grid;gap:8px;margin-top:16px}
+.mixlist span{padding:11px 14px;border-radius:12px;background:var(--bg-soft);font-weight:500;font-size:15px}
+.mixlist .on{background:#fff;border:1.5px solid var(--pink-deep)}
+.mixsteps .vflow{margin-top:16px;max-width:none}
+.mixsteps .vflow li{background:var(--bg-soft);border-color:transparent}
+.mixsteps .vflow li:first-child{background:var(--bg-soft);border-color:transparent}
+.mixsteps .vflow li:last-child{background:var(--bg-soft);color:var(--ink);border-color:transparent;font-weight:500}
+.mixres{background:var(--ink);color:rgba(255,255,255,.7);border-radius:16px;padding:22px;font-size:14px;margin-bottom:16px}
+.mixres b{display:block;font-family:var(--display);font-weight:600;font-size:30px;letter-spacing:-.035em;color:#fff;margin-top:4px}
+@media (max-width:900px){.mixsteps{grid-template-columns:1fr}}
+
+.proc{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:pr}
+.proc li{position:relative;background:#fff;border-radius:14px;padding:18px 16px;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em;margin-right:28px}
+.proc li::before{counter-increment:pr;content:counter(pr,decimal-leading-zero);display:block;font-family:var(--body);font-size:12px;color:var(--pink-deep);letter-spacing:.06em;margin-bottom:6px}
+.proc li:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:50%;transform:translateY(-50%);color:var(--muted-2);font-family:var(--body);font-weight:400}
+.proc li:last-child{margin-right:0}
+.proc2{grid-template-columns:1fr 1fr;gap:56px}
+.proc.vert{grid-template-columns:1fr;max-width:380px;width:100%;justify-self:end}
+.proc.vert li{margin:0;display:flex;align-items:baseline;gap:14px;padding:14px 20px}
+.proc.vert li::before{margin:0}
+.proc.vert li+li{margin-top:22px}
+.proc.vert li:not(:last-child)::after{content:"↓";right:auto;left:32px;top:auto;bottom:-21px;transform:none;line-height:20px}
+.proc.vert li:last-child{background:var(--ink);color:#fff}
+@media (max-width:900px){.proc2{grid-template-columns:1fr;gap:28px}.proc.vert{justify-self:start}.proc.vert li+li{margin-top:10px}}
+@media (max-width:900px){.proc{grid-template-columns:1fr;gap:10px}.proc li{margin-right:0}.proc li::after{display:none}}
+.dpp-n{max-width:820px;margin-left:auto;margin-right:auto}
+.pr-box .val .per{font-size:.4em;letter-spacing:-.01em;color:var(--muted);margin-left:4px}
+.pr-box small.from{margin:0 0 4px}
+.tab-dev .scr.cur{background:#fff;display:flex;align-items:center;justify-content:center}
+.tab-dev .scr.cur img{width:100%;height:100%;object-fit:contain;display:block}
+/* etapas, prazo, condições */
+.etps{gap:18px}
+.etp{padding:30px}
+.etp .etn{display:block;font-family:var(--display);font-weight:600;font-size:44px;letter-spacing:-.05em;line-height:1;color:var(--pink-deep);margin-bottom:18px}
+.etp h3{font-size:24px;margin-bottom:12px}
+.etp p+p{margin-top:10px}
+.etp p i{display:block;font-style:normal;font-size:13.5px;color:var(--ink-2);background:var(--bg-rose);border-radius:10px;padding:10px 12px}
+.prazo{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.prz-big{font-family:var(--display);font-weight:600;font-size:clamp(64px,9vw,128px);letter-spacing:-.06em;line-height:.9}
+.prz-big .w{display:block;font-size:.5em;letter-spacing:-.04em;margin-top:.12em}
+.prz-big .dsh{margin:0 .12em}
+.prz-big small{display:block;font-size:.26em;letter-spacing:-.01em;color:rgba(255,255,255,.6);margin-top:14px}
+.conds .card{padding:30px}
+.conds .unit{color:var(--pink-deep);margin-bottom:16px}
+.clist{list-style:none;margin-top:14px}
+.clist li{position:relative;padding:0 0 10px 18px;font-size:15px;color:var(--muted)}
+.clist li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--pink)}
+.clist b{color:var(--ink);font-weight:600}
+.validade{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:14px;margin-top:8px;font-size:15px;color:var(--muted)}
+.validade b{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:-.02em}
+.split{display:flex;gap:6px;margin-bottom:16px}
+.split div{border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.split b{font-family:var(--display);font-weight:600;font-size:34px;letter-spacing:-.04em;line-height:1}
+.split span{font-size:13.5px}
+.sp1{flex:50;background:var(--pink-deep);color:#fff}
+.sp2{flex:50;background:var(--bg-soft);color:var(--ink)}
+@media (max-width:900px){.prazo{grid-template-columns:1fr;gap:24px}}
+/* qualidade, implantação, entregáveis */
+.qv .card{padding:30px}
+.qv .card.hl{border:2px solid var(--pink-deep)}
+.qv .unit{margin-bottom:10px}
+.qv .card.hl .unit{color:var(--pink-deep)}
+.qv .card p{font-size:clamp(17px,1.5vw,20px);color:var(--ink-2)}
+.impl{grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.impl-big{margin-top:32px;font-family:var(--display);font-weight:600;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.03em;color:var(--muted)}
+.impl-big b{display:block;font-size:clamp(72px,9vw,120px);letter-spacing:-.06em;line-height:.9;color:var(--pink-deep)}
+.impl-big small{display:block;font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.dlv{grid-template-columns:repeat(3,1fr);gap:14px 28px}
+.dlv li{padding:14px 0;border-top:1px solid var(--line-dark);font-size:17px}
+@media (max-width:900px){.impl{grid-template-columns:1fr;gap:24px}.dlv{grid-template-columns:1fr;gap:0}}
+/* animações dos componentes de UI (só CSS, ciclo de 6s) */
+.ui-stage{position:relative}
+.ui-cur{position:absolute;width:20px;height:20px;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.ui-search .typed{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;animation:uiType 6s steps(18,end) infinite both}
+.ui-search .cur{animation:uiBlink 1s steps(2,start) infinite}
+@keyframes uiType{0%,8%{max-width:0}50%,86%{max-width:9.6em}96%,100%{max-width:0}}
+@keyframes uiBlink{to{visibility:hidden}}
+.ui-chips span{position:relative;animation:uiChip 6s infinite both}
+.ui-chips span:nth-child(2),.ui-chips span:nth-child(2) .ui-cur{animation-delay:2s}
+.ui-chips span:nth-child(3),.ui-chips span:nth-child(3) .ui-cur{animation-delay:4s}
+.ui-chips .ui-cur{right:8px;bottom:-12px;animation:uiHover 6s infinite both}
+@keyframes uiChip{0%,5%{background:#fff;color:#1d1d1f;border-color:#e5e5ea}9%,30%{background:#1d1d1f;color:#fff;border-color:#1d1d1f}34%,100%{background:#fff;color:#1d1d1f;border-color:#e5e5ea}}
+@keyframes uiHover{0%{opacity:0;transform:translate(14px,10px)}5%{opacity:1;transform:none}7%{transform:scale(.82)}9%{transform:none}30%{opacity:1}34%,100%{opacity:0;transform:translate(10px,6px)}}
+.ui-add{position:relative;animation:uiAdd 6s infinite both}
+.ui-add svg.u{grid-area:1/1}
+.ui-add .pl{animation:uiOut 6s infinite both}
+.ui-add .ck{opacity:0;animation:uiIn 6s infinite both}
+.ui-add .ui-cur{right:-12px;bottom:-16px;animation:uiTap 6s infinite both}
+@keyframes uiAdd{0%,38%{background:#1d1d1f;transform:none}42%{transform:scale(.86)}46%,86%{background:var(--pink-deep);transform:none}92%,100%{background:#1d1d1f}}
+@keyframes uiOut{0%,40%{opacity:1}44%,88%{opacity:0}92%,100%{opacity:1}}
+@keyframes uiIn{0%,40%{opacity:0}44%,88%{opacity:1}92%,100%{opacity:0}}
+@keyframes uiTap{0%,14%{opacity:0;transform:translate(34px,30px)}22%{opacity:1}36%{transform:none}40%{transform:scale(.82)}44%{transform:none;opacity:1}58%,100%{opacity:0;transform:translate(16px,18px)}}
+.ui-share .cp{position:relative;animation:uiCp 6s infinite both}
+.ui-share .cp .ui-cur{right:14px;bottom:-10px;animation:uiTap 6s infinite both}
+@keyframes uiCp{0%,38%{border-color:#d2d2d7;background:#fff;transform:none}41%{transform:scale(.95);background:#f5f5f7}45%,86%{border-color:var(--pink-deep);background:#fff;transform:none}92%,100%{border-color:#d2d2d7}}
+.ui-toast{position:absolute;top:14px;left:50%;display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;background:#1d1d1f;color:#fff;font-size:13px;font-weight:600;white-space:nowrap;box-shadow:0 12px 24px -10px rgba(0,0,0,.4);opacity:0;transform:translate(-50%,-6px);animation:uiToast 6s infinite both}
+.ui-toast svg.u{width:15px;height:15px;color:#eb6fba;stroke-width:2.6}
+@keyframes uiToast{0%,43%{opacity:0;transform:translate(-50%,-6px)}48%,84%{opacity:1;transform:translate(-50%,0)}90%,100%{opacity:0;transform:translate(-50%,-6px)}}
+@media (prefers-reduced-motion:reduce){
+  .ui-stage *{animation:none!important}
+  .ui-search .typed{max-width:none}
+}
+
+.pages.one{grid-template-columns:1fr}
+.evo{grid-template-columns:1fr 1fr;gap:56px}
+.evo .feat{gap:28px}
+.dark .pages .cap{color:rgba(255,255,255,.6)}
+.dark .pages .cap.pk{color:var(--pink)}
+.dark .tab-dev{border-color:#2c2c2e;box-shadow:0 34px 70px -28px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.12)}
+@media (max-width:900px){.evo{grid-template-columns:1fr;gap:36px}}
+.fim .wrap{text-align:center}
+.fim h2{max-width:22ch;margin-inline:auto}
+.fim .lead{max-width:60ch;margin-inline:auto}
+.fim .foot{justify-content:center}
+.bulw{margin:36px auto 0;max-width:1000px;padding:20px 0;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}
+.bul0{font-family:var(--display);font-weight:600;font-size:clamp(20px,2vw,26px);letter-spacing:-.025em;color:#fff;margin-bottom:12px}
+.bul{list-style:none;display:flex;flex-wrap:nowrap;justify-content:center}
+.bul li{display:flex;align-items:center;white-space:nowrap;font-family:var(--display);font-weight:600;font-size:clamp(13px,1.55vw,20px);letter-spacing:-.02em;color:rgba(255,255,255,.7)}
+.bul li+li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pink);margin:0 16px;flex:none}
+@media (max-width:640px){.bul{flex-direction:column;align-items:center;gap:10px}.bul li::before,.bul li+li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pink);margin:0 10px 0 0;flex:none}}
+/* tablet (641–900px): duas colunas quando couber */
+@media (min-width:641px) and (max-width:900px){
+  .slide{padding:104px 28px 72px}
+  .g2,.g3,.g4,.dlv,.chgs,.faq{grid-template-columns:1fr 1fr}
+  .g3>:last-child:nth-child(odd),.chgs>:last-child:nth-child(odd){grid-column:1/-1}
+  .two,.two.wide-r,.cover-grid,.proc2,.impl,.prazo,.evo{grid-template-columns:1fr 1fr;gap:28px}
+  .dlv{gap:0 24px}
+  .faq{column-gap:28px}
+  .plans{grid-template-columns:1fr 1fr;gap:16px}
+  .plan{padding:24px 20px}
+  .plan .badge{left:20px}
+  .solnum{text-align:right;font-size:clamp(110px,18vw,160px)}
+  .proc.vert{justify-self:end}
+  .cover-photo{justify-self:end}
+  .etp,.conds .card,.qv .card,.dpp .card{padding:24px}
+  .etp .etn{font-size:36px;margin-bottom:12px}
+  .etp h3{font-size:20px}
+  .prz-big{font-size:clamp(64px,12vw,100px)}
+  .impl-big b{font-size:clamp(64px,11vw,96px)}
+  .tab-dev.vert{width:100%}
+}
+/* solução 02: Utilidades -> Brinquedos -> Cama, mesa e banho, com rolagem (ciclo 20s) */
+.s2chips{display:flex;gap:.4em;margin:.9em 0 0;flex:none;white-space:nowrap}
+.s2chips span{position:relative;font-size:.66em;font-weight:600;padding:.45em .85em;border-radius:999px;background:#f2f2f4;color:#424245}
+.s2chips .c1{animation:s2On1 20s infinite both paused}
+.s2chips .c3{animation:s2On3 20s infinite both paused}
+.s2chips .c4{animation:s2On4 20s infinite both paused}
+.s2cur{position:absolute;right:-.2em;bottom:-1.4em;width:2.2em;height:2.2em;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.s2cur.k3{animation:s2Cur3 20s infinite both paused}
+.s2cur.k4{right:1.5em;animation:s2Cur4 20s infinite both paused}
+.s2t{display:grid}
+.s2t>div,.s2vp>div{grid-area:1/1;min-height:0}
+.s2t .la,.s2vp>.la{animation:s2LA 20s infinite both paused}
+.s2t .lb,.s2vp>.lb{animation:s2LB 20s infinite both paused}
+.s2t .lc,.s2vp>.lc{animation:s2LC 20s infinite both paused}
+.s2vp{flex:1 1 auto;min-height:0;overflow:hidden;display:grid;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 2.4em),transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 2.4em),transparent 100%)}
+.s2roll{will-change:transform;animation:20s cubic-bezier(.6,0,.25,1) infinite both paused}
+.s2roll.rb{animation-name:s2RollB}.s2roll.rc{animation-name:s2RollC}
+.slide.in .s2chips span,.slide.in .s2cur,.slide.in .s2t>div,.slide.in .s2vp>div,.slide.in .s2roll{animation-play-state:running}
+@keyframes s2On1{0%,16%{background:#1d1d1f;color:#fff}17.5%,94%{background:#f2f2f4;color:#424245}97%,100%{background:#1d1d1f;color:#fff}}
+@keyframes s2On3{0%,16%{background:#f2f2f4;color:#424245;transform:none}16.6%{transform:scale(.92)}17.5%,51.5%{background:#1d1d1f;color:#fff;transform:none}52.5%,100%{background:#f2f2f4;color:#424245}}
+@keyframes s2On4{0%,51.5%{background:#f2f2f4;color:#424245;transform:none}52%{transform:scale(.94)}52.8%,94%{background:#1d1d1f;color:#fff;transform:none}97%,100%{background:#f2f2f4;color:#424245}}
+@keyframes s2Cur3{0%,9%{opacity:0;transform:translate(-9em,6em)}11%{opacity:1}16%{opacity:1;transform:none}16.8%{transform:scale(.8)}17.6%{transform:none;opacity:1}21%,100%{opacity:0;transform:translate(.6em,.8em)}}
+@keyframes s2Cur4{0%,44%{opacity:0;transform:translate(-7em,5em)}46%{opacity:1}51.4%{opacity:1;transform:none}52.2%{transform:scale(.8)}53%{transform:none;opacity:1}56%,100%{opacity:0;transform:translate(.6em,.8em)}}
+@keyframes s2LA{0%,17%{opacity:1;transform:none}19.5%,94%{opacity:0;transform:translateY(-.6em)}97%,100%{opacity:1;transform:none}}
+@keyframes s2LB{0%,17.5%{opacity:0;transform:translateY(.8em)}20%,52.5%{opacity:1;transform:none}55%,100%{opacity:0;transform:translateY(-.6em)}}
+@keyframes s2LC{0%,53%{opacity:0;transform:translateY(.8em)}55.5%,93%{opacity:1;transform:none}96%,100%{opacity:0;transform:none}}
+@keyframes s2RollB{0%,25%{transform:translateY(0)}31%,36%{transform:translateY(-16.667%)}42%,97%{transform:translateY(-33.333%)}98%,100%{transform:translateY(0)}}
+@keyframes s2RollC{0%,59%{transform:translateY(0)}65%,70%{transform:translateY(-16.667%)}76%,97%{transform:translateY(-33.333%)}98%,100%{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.s2chips span,.s2cur,.s2t>div,.s2vp>div,.s2roll{animation:none!important}.s2t .lb,.s2t .lc,.s2vp>.lb,.s2vp>.lc{opacity:0}.s2chips .c1{background:#1d1d1f;color:#fff}}
+/* responsivo: computador -> tablet -> celular (ciclo 12s) */
+.rsp{max-width:760px;margin-inline:auto}
+.rsp-stage{container-type:inline-size;position:relative;aspect-ratio:16/11}
+.rsp-frame{position:absolute;left:50%;top:50%;width:100%;height:81.8%;transform:translate(-50%,-50%);border:8px solid #1d1d1f;border-radius:14px;box-shadow:0 34px 70px -28px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.05);animation:rspF 12s cubic-bezier(.7,0,.25,1) infinite both paused;container-type:normal}
+.rsp-l{position:absolute;inset:0;display:flex;flex-direction:column;font-size:1.45cqw;opacity:0;animation:12s infinite both paused}
+.rsp-l.d{animation-name:rspD}.rsp-l.t{animation-name:rspT}.rsp-l.m{animation-name:rspM}
+.rsp-top{display:flex;align-items:center;gap:1.4em;padding:.9em 1.3em;border-bottom:1px solid #ececf0;flex:none}
+.rsp-top .logo{font-size:1.25em}
+.rsp-srch{flex:1;display:flex;align-items:center;gap:.5em;background:#f2f2f4;border-radius:.8em;padding:.55em .8em;font-size:.8em;color:#86868b;min-width:0;white-space:nowrap;overflow:hidden}
+.rsp-body{flex:1;min-height:0;overflow:hidden;padding:.9em 1.3em}
+.rsp-body>.rsp-srch{margin-bottom:.8em;flex:none}
+.rsp-chips{display:flex;gap:.45em}
+.rsp-chips span{font-size:.72em;font-weight:600;padding:.45em .95em;border-radius:999px;background:#f2f2f4;color:#424245;white-space:nowrap}
+.rsp-chips .on{background:#1d1d1f;color:#fff}
+.rsp .pdt{margin:.8em 0 .7em}
+.rsp .pdt b{font-size:1.6em}
+.rsp .pdg3{gap:1em .8em}
+.rsp-l.d .pdg3{grid-template-columns:repeat(5,1fr)}
+.rsp-l.t .pdg3{grid-template-columns:repeat(3,1fr)}
+.rsp-l.m .pdg3{grid-template-columns:repeat(2,1fr)}
+.rsp-l.t,.rsp-l.m{font-size:1.45cqw}
+.rsp-l.m .rsp-body,.rsp-l.m .rsp-top{padding-inline:1em}
+.rsp-lbl{display:flex;justify-content:center;gap:10px;margin-top:22px}
+.rsp-lbl span{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;color:var(--muted);background:var(--bg-soft);animation:12s infinite both paused}
+.rsp-lbl .d{animation-name:rspLD}.rsp-lbl .t{animation-name:rspLT}.rsp-lbl .m{animation-name:rspLM}
+.slide.in .rsp-frame,.slide.in .rsp-l,.slide.in .rsp-lbl span{animation-play-state:running}
+@keyframes rspF{0%,24%{width:100%;height:81.8%;border-radius:14px}33%,58%{width:44.3%;height:86%;border-radius:24px}67%,88%{width:37.1%;height:96%;border-radius:32px}97%,100%{width:100%;height:81.8%;border-radius:14px}}
+@keyframes rspD{0%,25%{opacity:1}29%,91%{opacity:0}97%,100%{opacity:1}}
+@keyframes rspT{0%,28%{opacity:0}32%,59%{opacity:1}63%,100%{opacity:0}}
+@keyframes rspM{0%,62%{opacity:0}66%,88%{opacity:1}92%,100%{opacity:0}}
+@keyframes rspLD{0%,26%{background:var(--ink);color:#fff}30%,93%{background:var(--bg-soft);color:var(--muted)}97%,100%{background:var(--ink);color:#fff}}
+@keyframes rspLT{0%,28%{background:var(--bg-soft);color:var(--muted)}32%,60%{background:var(--ink);color:#fff}64%,100%{background:var(--bg-soft);color:var(--muted)}}
+@keyframes rspLM{0%,62%{background:var(--bg-soft);color:var(--muted)}66%,89%{background:var(--ink);color:#fff}93%,100%{background:var(--bg-soft);color:var(--muted)}}
+@media (max-width:640px){.rsp-stage{aspect-ratio:4/5}@keyframes rspF{0%,24%{width:100%;height:45%;border-radius:12px}33%,58%{width:70%;height:74.7%;border-radius:20px}67%,88%{width:56.25%;height:80%;border-radius:26px}97%,100%{width:100%;height:45%;border-radius:12px}}.rsp-l{font-size:2.2cqw!important}.rsp-lbl span{font-size:11px;padding:7px 10px;letter-spacing:.08em}}
+@media (prefers-reduced-motion:reduce){.rsp-frame,.rsp-l,.rsp-lbl span{animation:none!important}.rsp-l.d{opacity:1}.rsp-lbl .d{background:var(--ink);color:#fff}}
+/* tela de acesso */
+.gate{display:none}
+html.gated{overflow:hidden}
+html.gated .gate{display:grid}
+.gate{position:fixed;inset:0;z-index:100;place-items:center;padding:88px 24px 48px;background:var(--ink);color:#fff;overflow:auto;transition:opacity .7s ease,transform .9s cubic-bezier(.7,0,.2,1)}
+.gate::before{content:"";position:fixed;top:50%;left:50%;width:min(80vw,760px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(235,111,186,.32),rgba(235,111,186,0) 66%);transform:translate(-50%,-50%);pointer-events:none;animation:gGlow 9s ease-in-out infinite alternate}
+@keyframes gGlow{to{transform:translate(-50%,-50%) scale(1.14)}}
+.g-brand{position:fixed;top:22px;left:24px;display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.02em}
+.g-step{position:relative;width:min(440px,100%);text-align:center;transition:opacity .5s ease,transform .6s cubic-bezier(.22,1,.36,1)}
+.g-login h1{font-size:clamp(34px,5vw,50px);letter-spacing:-.04em;line-height:1.05;margin-bottom:16px}
+.g-login p{font-size:17px;color:rgba(255,255,255,.7);text-wrap:pretty}
+.g-login.out{opacity:0;transform:translateY(-14px)}
+.g-form{margin-top:34px;display:grid;gap:10px;text-align:left}
+.g-form label{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.g-form input{width:100%;font:inherit;font-size:18px;letter-spacing:.08em;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px 18px;outline:none;transition:border-color .2s,box-shadow .2s}
+.g-form input::placeholder{color:rgba(255,255,255,.35);letter-spacing:0}
+.g-form input:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(235,111,186,.22)}
+.g-form.bad input{border-color:#ff6fa8;animation:gShake .4s}
+@keyframes gShake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.g-err{min-height:1.5em;font-size:14px;color:#ff9fcf;text-align:center}
+.g-btn{margin-top:6px;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding:18px 24px;border:0;border-radius:999px;background:var(--pink);color:var(--ink);cursor:pointer;transition:transform .2s,background .2s}
+.g-btn:hover{background:#f28bc8}
+.g-btn:active{transform:scale(.98)}
+.g-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.g-hi{width:min(780px,100%)}
+.g-hi h1{font-size:clamp(52px,9vw,112px);letter-spacing:-.05em;line-height:.95}
+.g-hi .g-l1{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.6vw,32px);letter-spacing:-.03em;line-height:1.2;margin-top:28px;text-wrap:balance}
+.g-hi .g-l2{font-size:clamp(17px,1.5vw,20px);color:rgba(255,255,255,.7);margin-top:16px;text-wrap:balance}
+.g-hi .g-btn{margin-top:40px;padding:18px 30px}
+.g-hi>*{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.g-hi.on>*{opacity:1;transform:none}
+.g-hi.on>:nth-child(2){transition-delay:.4s}
+.g-hi.on>:nth-child(3){transition-delay:.8s}
+.g-hi.on>:nth-child(4){transition-delay:1.2s}
+.gate.out{opacity:0;transform:translateY(-3%);pointer-events:none}
+@media (prefers-reduced-motion:reduce){
+  .gate,.gate *,.gate::before{transition:none!important;animation:none!important}
+  .g-hi>*{opacity:1;transform:none}
+}
+@media print{.gate{display:none!important}html.gated{overflow:visible}}
+/* movimento: revelação única ao entrar na tela, sem loop */
+.prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:40;background:linear-gradient(90deg,var(--pink),var(--pink-deep));transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1) var(--d,0ms),transform .8s cubic-bezier(.22,1,.36,1) var(--d,0ms)}
+.js .rv.on{opacity:1;transform:none}
+.js .rv.card,.js .rv.plan,.js .rv.etp{transform:translateY(22px) scale(.985)}
+.js .rv.on.card,.js .rv.on.plan,.js .rv.on.etp{transform:none}
+.js .solnum.rv{transform:translateX(-24px);transition-duration:1s,1.1s}
+.js .solnum.rv.on{transform:none}
+.countup{font-variant-numeric:tabular-nums}
+.punch .pk{color:inherit;background-image:linear-gradient(transparent 58%,rgba(235,111,186,.38) 58%);background-repeat:no-repeat;background-size:100% 100%;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.js .punch .pk{background-size:0% 100%;transition:background-size 1.1s cubic-bezier(.22,1,.36,1) calc(var(--d,0ms) + .45s)}
+.js .punch.on .pk{background-size:100% 100%}
+.js .plan.hl .badge{transform:scale(.6);opacity:0;transition:transform .5s cubic-bezier(.34,1.56,.64,1) calc(var(--d,0ms) + .5s),opacity .3s calc(var(--d,0ms) + .5s)}
+.js .plan.hl.on .badge{transform:none;opacity:1}
+.js .slide:not(.in) .ui-stage *{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){
+  .js .rv,.js .punch .pk,.js .plan.hl .badge{opacity:1;transform:none;transition:none;background-size:100% 100%}
+  .prog{display:none}
+}
+@media print{
+  .js .rv,.js .plan.hl .badge{opacity:1!important;transform:none!important}
+  .js .punch .pk{background-size:100% 100%}
+  .prog{display:none}
+}
+</style>
+</head>
+<body>
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="g-t">
+  <div class="g-brand"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#1d1d1f"/><circle cx="16" cy="16" r="6" fill="#EB6FBA"/></svg>Julia Nunes</div>
+  <div class="g-step g-login">
+    <div class="kicker">Acesso exclusivo</div>
+    <h1 id="g-t">Acesse sua proposta</h1>
+    <p>Preparamos uma experiência exclusiva para apresentar uma nova visão para o catálogo&nbsp;Parolar.</p>
+    <form class="g-form" novalidate>
+      <label for="g-pw">Senha de acesso</label>
+      <input id="g-pw" type="password" name="senha" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Digite a senha" required>
+      <p class="g-err" role="alert" aria-live="assertive"></p>
+      <button class="g-btn" type="submit">Conhecer a proposta</button>
+    </form>
+  </div>
+  <div class="g-step g-hi" hidden>
+    <h1>Olá, <span class="pk">Parolar.</span></h1>
+    <p class="g-l1">Um portfólio com milhares de produtos merece uma experiência à mesma&nbsp;altura.</p>
+    <p class="g-l2">Conheça duas possibilidades para o próximo capítulo do catálogo&nbsp;Parolar.</p>
+    <div><button class="g-btn" type="button">Explorar proposta&nbsp;↓</button></div>
+  </div>
+</div>
+<script>
+(function(){
+  var r=document.documentElement;
+  var g=document.getElementById('gate');
+  if(!r.classList.contains('gated')){g.remove();return}
+  var f=g.querySelector('.g-form'),inp=f.querySelector('input'),er=g.querySelector('.g-err'),lg=g.querySelector('.g-login'),hi=g.querySelector('.g-hi'),go=hi.querySelector('.g-btn');
+  // a senha não fica escrita no arquivo: comparamos só um código gerado a partir dela
+  function h(s){var x=2166136261;for(var k=0;k<s.length;k++){x^=s.charCodeAt(k);x=Math.imul(x,16777619)>>>0}return x}
+  setTimeout(function(){try{inp.focus()}catch(e){}},250);
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(h(inp.value.trim().toLowerCase())!==1066987406){
+      f.classList.remove('bad');void f.offsetWidth;f.classList.add('bad');
+      er.textContent='Senha incorreta. Confira a senha enviada junto com o link.';
+      inp.select();return;
+    }
+    try{sessionStorage.setItem('pa-ok','1')}catch(e){}
+    er.textContent='';inp.blur();lg.classList.add('out');
+    setTimeout(function(){
+      lg.hidden=true;hi.hidden=false;
+      requestAnimationFrame(function(){requestAnimationFrame(function(){hi.classList.add('on');try{go.focus({preventScroll:true})}catch(e){}})});
+    },500);
+  });
+  go.addEventListener('click',function(){
+    scrollTo(0,0);g.classList.add('out');
+    setTimeout(function(){r.classList.remove('gated');g.remove();document.dispatchEvent(new Event('gate:open'))},750);
+  });
+})();
+</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/><path d="m3 17.5 9 5 9-5"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12.5V4h8.5L21 13.5 12.5 22z"/><circle cx="8" cy="9" r="1.5"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M21.5 20a6.5 6.5 0 0 0-4.5-6.2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5 4 6v6c0 5 3.5 8.5 8 9.5 4.5-1 8-4.5 8-9.5V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M3 9.5 5 4h14l2 5.5"/><path d="M3 9.5c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3"/><path d="M5 12.5V20h14v-7.5"/><path d="M10 20v-5h4v5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-whats" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M9.2 8.6c.2-.5.5-.5.8-.5h.6c.2 0 .4.1.5.4l.8 1.8c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.4-.2.6-.1l1.8.8c.3.1.4.3.4.5v.6c0 .3 0 .6-.5.8-.6.4-1.5.6-2.6.1a9.4 9.4 0 0 1-4.9-4.9c-.5-1.1-.3-2 .1-2.6z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></symbol>
+  <symbol id="p-pote" viewBox="0 0 40 40"><rect x="9" y="15" width="22" height="17" rx="3.5" fill="#d6e4f5"/><rect x="7.5" y="10.5" width="25" height="5.5" rx="2.2" fill="#6f9fd6"/><rect x="12" y="19" width="16" height="2" rx="1" fill="#fff" opacity=".7"/></symbol>
+  <symbol id="p-balde" viewBox="0 0 40 40"><path d="M11 14a9 7.5 0 0 1 18 0" fill="none" stroke="#c9679c" stroke-width="1.7"/><path d="M9.5 14h21l-2.8 18.5H12.3z" fill="#f4a8cc"/><rect x="9" y="13" width="22" height="3" rx="1.5" fill="#e27fb0"/></symbol>
+  <symbol id="p-garrafa" viewBox="0 0 40 40"><rect x="15.5" y="5.5" width="9" height="4.5" rx="1.2" fill="#4fae83"/><path d="M14 13.5c0-2.2 1.8-3.5 3.5-3.5h5c1.7 0 3.5 1.3 3.5 3.5v18.5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 14 32z" fill="#c6ebd8"/><rect x="14" y="19" width="12" height="6" fill="#8fd1b1"/></symbol>
+  <symbol id="p-cesto" viewBox="0 0 40 40"><path d="M8.5 16h23l-3 16H11.5z" fill="#f1dcbc"/><path d="M11 20.5h18M11.8 24.5h16.4M12.6 28.5h14.8" stroke="#c9a06a" stroke-width="1.3"/><rect x="7" y="13.5" width="26" height="3.5" rx="1.7" fill="#d4ab74"/></symbol>
+  <symbol id="p-escorredor" viewBox="0 0 40 40"><path d="M11 22V12.5M15.5 22V10.5M20 22V10M24.5 22V10.5M29 22V12.5" stroke="#a1a1a8" stroke-width="1.8" stroke-linecap="round"/><rect x="7.5" y="21.5" width="25" height="10" rx="2.5" fill="#dcdce1"/><rect x="11" y="25" width="18" height="2" rx="1" fill="#fff" opacity=".8"/></symbol>
+  <symbol id="p-copos" viewBox="0 0 40 40"><path d="M9.5 12h10l-1.6 20h-6.8z" fill="#f8dc98"/><path d="M19.5 14h10.5l-1.7 18h-7.1z" fill="#f1b644"/></symbol>
+  <symbol id="t-bola" viewBox="0 0 40 40"><circle cx="20" cy="21" r="12" fill="#f28aa0"/><path d="M8.5 18c6 3 17 3 23 0M20 9c-4 7-4 17 0 24" fill="none" stroke="#fff" stroke-width="2"/></symbol><symbol id="t-carro" viewBox="0 0 40 40"><path d="M7 25v-5l4-6h14l5 6h3v5z" fill="#5b8def"/><path d="M13 15.5h5v4.5h-7.5zM20 15.5h4.5l3.5 4.5h-8z" fill="#dfe9fb"/><circle cx="13" cy="26" r="3.4" fill="#2c2c30"/><circle cx="27" cy="26" r="3.4" fill="#2c2c30"/></symbol><symbol id="t-blocos" viewBox="0 0 40 40"><rect x="8" y="21" width="11" height="11" rx="1.5" fill="#f5b73b"/><rect x="21" y="21" width="11" height="11" rx="1.5" fill="#4cb782"/><rect x="14.5" y="9" width="11" height="11" rx="1.5" fill="#eb6fba"/></symbol><symbol id="t-urso" viewBox="0 0 40 40"><circle cx="12.5" cy="11" r="4" fill="#b07a4f"/><circle cx="27.5" cy="11" r="4" fill="#b07a4f"/><circle cx="20" cy="18" r="9" fill="#c48b5c"/><ellipse cx="20" cy="31" rx="8" ry="5.5" fill="#c48b5c"/><ellipse cx="20" cy="21" rx="3.6" ry="2.8" fill="#ecd3b8"/><circle cx="16.6" cy="16.5" r="1.2" fill="#2c2c30"/><circle cx="23.4" cy="16.5" r="1.2" fill="#2c2c30"/></symbol><symbol id="m-toalha" viewBox="0 0 40 40"><rect x="8" y="12" width="24" height="18" rx="3" fill="#7fb8e6"/><rect x="8" y="12" width="24" height="6" rx="3" fill="#a9d0f0"/><path d="M8 25h24" stroke="#fff" stroke-width="1.6"/></symbol><symbol id="m-travesseiro" viewBox="0 0 40 40"><path d="M7 14c4-3 22-3 26 0 2 4 2 10 0 14-4 3-22 3-26 0-2-4-2-10 0-14z" fill="#e8e3f7"/><path d="M11 17c5-1.5 13-1.5 18 0" fill="none" stroke="#c8bfe8" stroke-width="1.4"/></symbol><symbol id="m-lencol" viewBox="0 0 40 40"><rect x="8" y="23" width="24" height="7" rx="2" fill="#f2a7c4"/><rect x="9" y="16.5" width="22" height="7" rx="2" fill="#f7c9da"/><rect x="10" y="10" width="20" height="7" rx="2" fill="#fbe3ec"/></symbol><symbol id="m-tapete" viewBox="0 0 40 40"><rect x="7" y="13" width="26" height="15" rx="4" fill="#9ccfae"/><rect x="10.5" y="16.5" width="19" height="8" rx="2" fill="none" stroke="#fff" stroke-width="1.6"/></symbol><symbol id="p-termica" viewBox="0 0 40 40"><rect x="13" y="6" width="14" height="5" rx="1.5" fill="#3a3a40"/><rect x="12" y="10.5" width="16" height="23" rx="3.5" fill="#c9ccd3"/><rect x="12" y="16" width="16" height="2" fill="#a6aab3"/><path d="M28 15h2.5a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H28" fill="none" stroke="#3a3a40" stroke-width="1.8"/></symbol>
+  <symbol id="p-jarra" viewBox="0 0 40 40"><path d="M12 9h14l-1 23a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z" fill="#dcecf7"/><path d="M26 13h2.5a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5H25.5" fill="none" stroke="#8fb9dc" stroke-width="1.8"/><path d="M12.6 20h12.8l-.5 12H13z" fill="#a9cfee"/></symbol>
+  <symbol id="p-tabua" viewBox="0 0 40 40"><rect x="8" y="12" width="24" height="18" rx="4" fill="#e3c08e"/><circle cx="28" cy="16" r="1.6" fill="#fff"/><path d="M12 25h13" stroke="#c9a06a" stroke-width="1.3" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#101012"/><circle cx="16" cy="16" r="6" fill="#EB6FBA"/></svg>
+    <b>Julia Nunes</b>
+    <span>Proposta · Catálogo&nbsp;Parolar</span>
+  </div>
+  <a class="cta" href="https://wa.me/5519989080803?text=Quero%20conversar%20sobre%20a%20proposta%20do%20cat%C3%A1logo%20Parolar" target="_blank" rel="noopener"><svg class="ic"><use href="#i-whats"/></svg>Falar sobre a&nbsp;proposta</a>
+</header>
+
+<!-- 01 CAPA -->
+<section class="slide cover" id="s01">
+  <div class="wrap cover-grid">
+    <div>
+    <div class="who"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#101012"/><circle cx="16" cy="16" r="6" fill="#EB6FBA"/></svg>Julia Nunes</div>
+    <div class="kicker">Proposta</div>
+    <h1>Uma nova experiência para o catálogo&nbsp;Parolar</h1>
+    <p class="lead">Duas propostas para a Parolar apresentar, explorar e vender um portfólio de milhares de produtos com mais&nbsp;facilidade.</p>
+    </div>
+    <img class="cover-photo" src="img/hero-julia.webp" width="1288" height="1235" alt="Julia Nunes segurando um notebook, com exemplos de páginas que ela criou ao fundo">
+  </div>
+</section>
+
+<!-- 02 O CENÁRIO -->
+<section class="slide soft" id="s02">
+  <div class="wrap two">
+    <div>
+      <div class="kicker">O cenário</div>
+      <h2>Um grande portfólio também traz um grande&nbsp;desafio.</h2>
+      <p class="lead">Atualmente, a Parolar tem mais de 5.000 itens no portfólio e atende lojistas de perfis diferentes. Tudo isso está distribuído em 5 catálogos, que somam 761&nbsp;páginas.</p>
+      <p class="body-p mt">O catálogo atual cumpre seu papel. Mas, com o portfólio crescendo, dá para tornar essa experiência:</p>
+      <ul class="list" style="margin-top:14px">
+        <li><svg class="ic"><use href="#i-check"/></svg><span>mais rápida de&nbsp;consultar,</span></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><span>mais fácil de&nbsp;segmentar</span></li>
+        <li><svg class="ic"><use href="#i-check"/></svg><span>e mais simples de&nbsp;atualizar.</span></li>
+      </ul>
+    </div>
+    <div class="stats">
+      <div class="base"><div class="big">5.000+</div><div class="unit">itens no portfólio</div></div>
+      <div class="base"><div class="big">5</div><div class="unit">catálogos em PDF</div></div>
+      <div class="base"><div class="big">761</div><div class="unit">páginas somadas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02B O DESAFIO -->
+<section class="slide" id="s02b">
+  <div class="wrap">
+    <div class="kicker">O desafio</div>
+    <h2>761 páginas não significam apenas um grande volume para&nbsp;consultar.</h2>
+    <p class="lead">São centenas de páginas que precisam acompanhar um portfólio em constante&nbsp;mudança.</p>
+    <div class="chgs mt">
+      <div class="chg"><svg class="ic"><use href="#i-x"/></svg><span>Um produto pode ficar&nbsp;indisponível.</span></div>
+      <div class="chg"><svg class="ic"><use href="#i-image"/></svg><span>Uma imagem pode ser&nbsp;atualizada.</span></div>
+      <div class="chg"><svg class="ic"><use href="#i-plus"/></svg><span>Um novo item pode entrar no&nbsp;portfólio.</span></div>
+      <div class="chg"><svg class="ic"><use href="#i-layers"/></svg><span>Uma categoria pode&nbsp;crescer.</span></div>
+      <div class="chg"><svg class="ic"><use href="#i-calendar"/></svg><span>Uma campanha pode exigir uma nova&nbsp;seleção.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02C O DESAFIO: PROCESSO -->
+<section class="slide rose" id="s02c">
+  <div class="wrap">
+    <div class="kicker">O desafio</div>
+    <div class="two proc2">
+      <div>
+        <h2>No PDF, essas mudanças fazem parte de um processo&nbsp;editorial.</h2>
+        <p class="body-p mt">Cada ajuste exige localizar, alterar, revisar, exportar e enviar uma nova versão do&nbsp;material.</p>
+        <p class="body-p" style="margin-top:12px">Além disso, com milhares de produtos e imagens, é preciso reduzir a resolução para o arquivo não ficar pesado demais para abrir, baixar e&nbsp;compartilhar.</p>
+      </div>
+      <ol class="proc vert"><li>Localizar</li><li>Alterar</li><li>Revisar</li><li>Exportar</li><li>Disponibilizar</li></ol>
+    </div>
+    <p class="punch left">O desafio não é só criar o catálogo. É <span class="pk">manter 761 páginas de informação comercial&nbsp;atualizadas.</span></p>
+  </div>
+</section>
+
+<!-- 03 A OPORTUNIDADE -->
+<section class="slide dark" id="s03">
+  <div class="wrap">
+    <div class="kicker">A oportunidade</div>
+    <h2>Mais do que mudar o visual do&nbsp;catálogo.</h2>
+    <p class="lead">A oportunidade é facilitar tudo o que acontece ao redor&nbsp;dele.</p>
+    <div class="grid g3 mt">
+      <div class="card"><svg class="ic"><use href="#i-users"/></svg><h3>Para o representante</h3><p>Encontra e apresenta produtos mais rápido durante o&nbsp;atendimento.</p></div>
+      <div class="card"><svg class="ic"><use href="#i-store"/></svg><h3>Para o lojista</h3><p>Navega pelo portfólio com facilidade e encontra o que faz sentido para o seu&nbsp;negócio.</p></div>
+      <div class="card"><svg class="ic"><use href="#i-calendar"/></svg><h3>Para o marketing</h3><p>Trabalha categorias, segmentos e datas comerciais sem precisar criar um material novo a cada&nbsp;vez.</p></div>
+    </div>
+    <p class="lead mt">A partir disso, proponho <span class="pk">dois caminhos&nbsp;possíveis</span>.</p>
+  </div>
+</section>
+
+<!-- 04 SOLUÇÃO 01 -->
+<section class="slide rose" id="s04">
+  <div class="wrap two">
+    <div>
+      <div class="kicker">Solução 01</div>
+      <h2>Evolução dos Catálogos em&nbsp;PDF</h2>
+      <p class="lead">Manter o formato atual e evoluir a&nbsp;apresentação.</p>
+      <p class="body-p mt">Uma nova estrutura visual deixa os catálogos mais organizados, consistentes e fáceis de consultar, sem mudar o formato que seus representantes e lojistas já&nbsp;conhecem.</p>
+    </div>
+    <div class="solnum" aria-hidden="true">01</div>
+  </div>
+</section>
+
+<!-- 05 O QUE MUDA NO PDF -->
+<section class="slide" id="s05">
+  <div class="wrap">
+    <div class="kicker">Solução 01</div>
+    <h2>O que&nbsp;evolui</h2>
+    <div class="two evo mt">
+      <div class="pages one">
+        <div>
+          <div class="dev tab-dev vert"><div class="scr cur"><img src="img/catalogo-atual.png" width="525" height="745" alt="Página do catálogo atual da Parolar: lançamentos Santana e Termolar com selos de estoque disponível em breve"></div></div>
+          <div class="cap">Hoje</div>
+        </div>
+      </div>
+      <div class="feat">
+        <div><b>Mais clareza</b><span>Melhor hierarquia entre imagem, produto, código, referência e&nbsp;especificações.</span></div>
+        <div><b>Mais consistência</b><span>Um sistema visual padronizado para todo o&nbsp;portfólio.</span></div>
+        <div><b>Melhor navegação</b><span>Categorias e índices organizados para agilizar a&nbsp;consulta.</span></div>
+        <div><b>Mais valor percebido</b><span>Uma apresentação mais atual e profissional para os produtos e para a&nbsp;marca.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 SOLUÇÃO 02 -->
+<section class="slide dark" id="s06">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <div class="kicker">Solução 02</div>
+        <h2>Catálogo Comercial&nbsp;Navegável</h2>
+        <p class="lead">O catálogo deixa de ser um arquivo e vira uma ferramenta de&nbsp;venda.</p>
+        <p class="body-p mt">Uma plataforma responsiva para seus representantes e lojistas explorarem o portfólio Parolar com rapidez e&nbsp;facilidade.</p>
+        <p class="body-p" style="margin-top:12px">A loja virtual B2B de vocês continua como&nbsp;está.</p>
+      </div>
+      <div class="pages one s2dev">
+        <div>
+          <div class="dev tab-dev vert" role="img" aria-label="Proposta de tela do catálogo navegável no tablet: começa em Utilidades com garrafas, a pessoa toca no filtro Brinquedos e desliza o catálogo, depois toca em Cama, mesa e banho e os produtos mudam de novo"><div class="scr pdl">
+            <div class="pdh"><span class="logo">Parolar</span><span>Utilidades domésticas · Cozinha</span><span>42</span></div>
+            <div class="s2chips"><span class="c1">Utilidades</span><span>Hotelaria</span><span class="c3">Brinquedos<svg class="s2cur k3" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span class="c4">Cama, mesa e banho<svg class="s2cur k4" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span></div><div class="pdt s2t"><div class="la"><small>Utilidades</small><b>Garrafas, jarras e copos</b></div><div class="lb" aria-hidden="true"><small>Brinquedos</small><b>Bolas, carrinhos e pelúcias</b></div><div class="lc" aria-hidden="true"><small>Cama, mesa e banho</small><b>Toalhas, lençóis e tapetes</b></div></div><div class="s2vp"><div class="la"><div class="pdg3"><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> OL-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> OL-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> DP-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> OL-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> OL-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> DP-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> OL-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> OL-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> DP-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> DP-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,8 L</b><span><i>Cód.</i> DP-7140</span><span><i>Ref.</i> JT-18</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-jarra"/></svg></div><b>Jarra com tampa 2 L</b><span><i>Cód.</i> OL-5542</span><span><i>Ref.</i> JC-20</span><span>2 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-garrafa"/></svg></div><b>Squeeze 750 ml</b><span><i>Cód.</i> OL-3307</span><span><i>Ref.</i> SQ-750</span><span>750 ml · cx 36</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-garrafa"/></svg></div><b>Squeeze 500 ml</b><span><i>Cód.</i> OL-3302</span><span><i>Ref.</i> SQ-500</span><span>500 ml · cx 36</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-garrafa"/></svg></div><b>Garrafa de vidro 1 L</b><span><i>Cód.</i> DP-3350</span><span><i>Ref.</i> GV-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-garrafa"/></svg></div><b>Garrafa infantil 400 ml</b><span><i>Cód.</i> OL-3290</span><span><i>Ref.</i> GI-400</span><span>400 ml · cx 24</span></div></div></div><div class="lb" aria-hidden="true"><div class="s2roll rb"><div class="pdg3"><div class="pdi"><div class="th t2"><svg><use href="#t-bola"/></svg></div><b>Bola de vinil 23 cm</b><span><i>Cód.</i> BR-1102</span><span><i>Ref.</i> BV-23</span><span>un · cx 24</span></div><div class="pdi"><div class="th t6"><svg><use href="#t-carro"/></svg></div><b>Carrinho fricção</b><span><i>Cód.</i> BR-2210</span><span><i>Ref.</i> CF-01</span><span>un · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#t-blocos"/></svg></div><b>Blocos de montar 50 pç</b><span><i>Cód.</i> BR-3305</span><span><i>Ref.</i> BM-50</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#t-urso"/></svg></div><b>Urso de pelúcia 30 cm</b><span><i>Cód.</i> BR-4120</span><span><i>Ref.</i> UP-30</span><span>un · cx 6</span></div><div class="pdi"><div class="th t3"><svg><use href="#t-carro"/></svg></div><b>Caminhão caçamba</b><span><i>Cód.</i> BR-2215</span><span><i>Ref.</i> CC-02</span><span>un · cx 6</span></div><div class="pdi"><div class="th t5"><svg><use href="#t-bola"/></svg></div><b>Bola de futebol nº 5</b><span><i>Cód.</i> BR-1110</span><span><i>Ref.</i> BF-05</span><span>un · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#t-blocos"/></svg></div><b>Blocos gigantes 30 pç</b><span><i>Cód.</i> BR-3310</span><span><i>Ref.</i> BG-30</span><span>un · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#t-urso"/></svg></div><b>Coelho de pelúcia</b><span><i>Cód.</i> BR-4125</span><span><i>Ref.</i> CP-25</span><span>un · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#t-bola"/></svg></div><b>Bola pula-pula</b><span><i>Cód.</i> BR-1115</span><span><i>Ref.</i> PP-45</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#t-carro"/></svg></div><b>Carrinho de corrida</b><span><i>Cód.</i> BR-2220</span><span><i>Ref.</i> CR-03</span><span>un · cx 24</span></div><div class="pdi"><div class="th t3"><svg><use href="#t-blocos"/></svg></div><b>Kit construção 120 pç</b><span><i>Cód.</i> BR-3320</span><span><i>Ref.</i> KC-120</span><span>un · cx 6</span></div><div class="pdi"><div class="th t5"><svg><use href="#t-urso"/></svg></div><b>Urso bebê 20 cm</b><span><i>Cód.</i> BR-4130</span><span><i>Ref.</i> UB-20</span><span>un · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#t-carro"/></svg></div><b>Trator de brinquedo</b><span><i>Cód.</i> BR-2225</span><span><i>Ref.</i> TB-04</span><span>un · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#t-bola"/></svg></div><b>Bola de praia</b><span><i>Cód.</i> BR-1120</span><span><i>Ref.</i> BP-40</span><span>un · cx 24</span></div><div class="pdi"><div class="th t1"><svg><use href="#t-urso"/></svg></div><b>Cachorro de pelúcia</b><span><i>Cód.</i> BR-4135</span><span><i>Ref.</i> CP-28</span><span>un · cx 6</span></div><div class="pdi"><div class="th t4"><svg><use href="#t-blocos"/></svg></div><b>Blocos encaixe 80 pç</b><span><i>Cód.</i> BR-3325</span><span><i>Ref.</i> BE-80</span><span>un · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#t-bola"/></svg></div><b>Bola de vôlei</b><span><i>Cód.</i> BR-1125</span><span><i>Ref.</i> BO-65</span><span>un · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#t-carro"/></svg></div><b>Ônibus escolar</b><span><i>Cód.</i> BR-2230</span><span><i>Ref.</i> OE-05</span><span>un · cx 6</span></div><div class="pdi"><div class="th t2"><svg><use href="#t-blocos"/></svg></div><b>Torre de encaixe</b><span><i>Cód.</i> BR-3330</span><span><i>Ref.</i> TE-10</span><span>un · cx 12</span></div><div class="pdi"><div class="th t6"><svg><use href="#t-urso"/></svg></div><b>Unicórnio de pelúcia</b><span><i>Cód.</i> BR-4140</span><span><i>Ref.</i> UN-35</span><span>un · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#t-carro"/></svg></div><b>Carrinho de bombeiro</b><span><i>Cód.</i> BR-2235</span><span><i>Ref.</i> CB-06</span><span>un · cx 6</span></div><div class="pdi"><div class="th t4"><svg><use href="#t-bola"/></svg></div><b>Bola de basquete</b><span><i>Cód.</i> BR-1130</span><span><i>Ref.</i> BB-07</span><span>un · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#t-urso"/></svg></div><b>Gatinho de pelúcia</b><span><i>Cód.</i> BR-4145</span><span><i>Ref.</i> GP-22</span><span>un · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#t-blocos"/></svg></div><b>Blocos letras 26 pç</b><span><i>Cód.</i> BR-3335</span><span><i>Ref.</i> BL-26</span><span>un · cx 12</span></div></div></div></div><div class="lc" aria-hidden="true"><div class="s2roll rc"><div class="pdg3"><div class="pdi"><div class="th t1"><svg><use href="#m-toalha"/></svg></div><b>Toalha de banho 70×140</b><span><i>Cód.</i> CM-5101</span><span><i>Ref.</i> TB-70</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#m-travesseiro"/></svg></div><b>Travesseiro fibra 50×70</b><span><i>Cód.</i> CM-6201</span><span><i>Ref.</i> TF-50</span><span>un · cx 6</span></div><div class="pdi"><div class="th t2"><svg><use href="#m-lencol"/></svg></div><b>Jogo de lençol casal</b><span><i>Cód.</i> CM-7301</span><span><i>Ref.</i> JL-CS</span><span>jg · cx 6</span></div><div class="pdi"><div class="th t3"><svg><use href="#m-tapete"/></svg></div><b>Tapete de banheiro</b><span><i>Cód.</i> CM-8401</span><span><i>Ref.</i> TP-40</span><span>un · cx 12</span></div><div class="pdi"><div class="th t6"><svg><use href="#m-toalha"/></svg></div><b>Toalha de rosto 50×80</b><span><i>Cód.</i> CM-5105</span><span><i>Ref.</i> TR-50</span><span>un · cx 24</span></div><div class="pdi"><div class="th t5"><svg><use href="#m-lencol"/></svg></div><b>Jogo de lençol solteiro</b><span><i>Cód.</i> CM-7305</span><span><i>Ref.</i> JL-SL</span><span>jg · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#m-travesseiro"/></svg></div><b>Travesseiro viscoelástico</b><span><i>Cód.</i> CM-6205</span><span><i>Ref.</i> TV-50</span><span>un · cx 6</span></div><div class="pdi"><div class="th t4"><svg><use href="#m-tapete"/></svg></div><b>Tapete antiderrapante</b><span><i>Cód.</i> CM-8405</span><span><i>Ref.</i> TA-60</span><span>un · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#m-toalha"/></svg></div><b>Jogo de toalhas 5 pç</b><span><i>Cód.</i> CM-5110</span><span><i>Ref.</i> JT-05</span><span>jg · cx 6</span></div><div class="pdi"><div class="th t3"><svg><use href="#m-lencol"/></svg></div><b>Edredom casal</b><span><i>Cód.</i> CM-7310</span><span><i>Ref.</i> ED-CS</span><span>un · cx 4</span></div><div class="pdi"><div class="th t6"><svg><use href="#m-travesseiro"/></svg></div><b>Almofada decorativa</b><span><i>Cód.</i> CM-6210</span><span><i>Ref.</i> AD-45</span><span>un · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#m-tapete"/></svg></div><b>Passadeira de cozinha</b><span><i>Cód.</i> CM-8410</span><span><i>Ref.</i> PC-120</span><span>un · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#m-toalha"/></svg></div><b>Toalha de mesa 1,40 m</b><span><i>Cód.</i> CM-5120</span><span><i>Ref.</i> TM-140</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#m-lencol"/></svg></div><b>Colcha queen</b><span><i>Cód.</i> CM-7315</span><span><i>Ref.</i> CQ-QN</span><span>un · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#m-travesseiro"/></svg></div><b>Protetor de travesseiro</b><span><i>Cód.</i> CM-6215</span><span><i>Ref.</i> PT-50</span><span>un · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#m-tapete"/></svg></div><b>Tapete sala 1,00×1,50</b><span><i>Cód.</i> CM-8415</span><span><i>Ref.</i> TS-150</span><span>un · cx 4</span></div><div class="pdi"><div class="th t6"><svg><use href="#m-toalha"/></svg></div><b>Guardanapo de tecido</b><span><i>Cód.</i> CM-5125</span><span><i>Ref.</i> GT-40</span><span>un · cx 48</span></div><div class="pdi"><div class="th t5"><svg><use href="#m-lencol"/></svg></div><b>Fronha avulsa</b><span><i>Cód.</i> CM-7320</span><span><i>Ref.</i> FA-50</span><span>un · cx 24</span></div><div class="pdi"><div class="th t1"><svg><use href="#m-travesseiro"/></svg></div><b>Travesseiro infantil</b><span><i>Cód.</i> CM-6220</span><span><i>Ref.</i> TI-30</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#m-tapete"/></svg></div><b>Capacho de entrada</b><span><i>Cód.</i> CM-8420</span><span><i>Ref.</i> CE-60</span><span>un · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#m-toalha"/></svg></div><b>Toalha de piso</b><span><i>Cód.</i> CM-5130</span><span><i>Ref.</i> TP-48</span><span>un · cx 24</span></div><div class="pdi"><div class="th t3"><svg><use href="#m-lencol"/></svg></div><b>Manta de sofá</b><span><i>Cód.</i> CM-7325</span><span><i>Ref.</i> MS-150</span><span>un · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#m-travesseiro"/></svg></div><b>Almofada de assento</b><span><i>Cód.</i> CM-6225</span><span><i>Ref.</i> AA-40</span><span>un · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#m-tapete"/></svg></div><b>Jogo de tapetes 3 pç</b><span><i>Cód.</i> CM-8425</span><span><i>Ref.</i> JT-03</span><span>jg · cx 6</span></div></div></div></div></div>
+          </div></div>
+          <div class="cap pk">Proposta</div>
+        </div>
+      </div>
+    </div>
+    <div class="statement">
+      <p>Aqui, o objetivo não é realizar a&nbsp;compra.</p>
+      <h3>É <span class="pk">encontrar, apresentar, selecionar e&nbsp;compartilhar</span> produtos.</h3>
+    </div>
+  </div>
+</section>
+
+<!-- 06r RESPONSIVO -->
+<section class="slide" id="s06r">
+  <div class="wrap">
+    <div class="kicker">Responsivo</div>
+    <h2>Um catálogo, qualquer&nbsp;tela.</h2>
+    <p class="lead">Computador, tablet ou celular: o catálogo se reorganiza sozinho para cada&nbsp;tamanho.</p>
+    <div class="rsp mt" role="img" aria-label="Animação: a mesma tela do catálogo passa do computador para o tablet e para o celular, reorganizando as colunas de produtos">
+      <div class="rsp-stage">
+        <div class="rsp-frame dev">
+          <div class="rsp-l d"><div class="rsp-top"><span class="logo">Parolar</span><div class="rsp-srch"><svg class="u"><use href="#i-search"/></svg><span>Buscar produto, código ou referência</span></div></div><div class="rsp-body"><div class="rsp-chips"><span class="on">Utilidades</span><span>Hotelaria</span><span>Brinquedos</span></div><div class="pdt"><small>Utilidades</small><b>Garrafas, jarras e copos</b></div><div class="pdg3"><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> OL-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> OL-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> DP-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> OL-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> OL-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> DP-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> OL-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> OL-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> DP-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> DP-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div></div></div></div>
+          <div class="rsp-l t"><div class="rsp-top"><span class="logo">Parolar</span></div><div class="rsp-body"><div class="rsp-srch"><svg class="u"><use href="#i-search"/></svg><span>Buscar produto, código ou referência</span></div><div class="rsp-chips"><span class="on">Utilidades</span><span>Hotelaria</span><span>Brinquedos</span></div><div class="pdt"><small>Utilidades</small><b>Garrafas, jarras e copos</b></div><div class="pdg3"><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> OL-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> OL-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> DP-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> OL-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> OL-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> DP-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> OL-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> OL-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> DP-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> DP-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> OL-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> OL-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> DP-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> OL-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> OL-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> DP-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> OL-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> OL-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> DP-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> DP-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div></div></div></div>
+          <div class="rsp-l m"><div class="rsp-top"><span class="logo">Parolar</span></div><div class="rsp-body"><div class="rsp-srch"><svg class="u"><use href="#i-search"/></svg><span>Buscar produto, código ou referência</span></div><div class="rsp-chips"><span class="on">Utilidades</span><span>Hotelaria</span><span>Brinquedos</span></div><div class="pdt"><small>Utilidades</small><b>Garrafas, jarras e copos</b></div><div class="pdg3"><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> OL-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> OL-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> DP-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> OL-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> OL-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> DP-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> OL-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> OL-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> DP-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> DP-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> OL-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> OL-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> DP-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> OL-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> OL-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> DP-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> OL-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> OL-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> DP-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> DP-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div></div></div></div>
+        </div>
+      </div>
+      <div class="rsp-lbl" aria-hidden="true"><span class="d">Computador</span><span class="t">Tablet</span><span class="m">Celular</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 COMO FUNCIONARIA -->
+<section class="slide soft" id="s07">
+  <div class="wrap">
+    <div class="kicker">Solução 02</div>
+    <h2>Como&nbsp;funcionaria</h2>
+    <div class="grid g4 mt">
+      <div class="how"><div class="ui-stage dev" role="img" aria-label="Barra de busca com o texto Garrafa térmica 1L"><div class="ui-search"><svg class="u"><use href="#i-search"/></svg><span class="typed">Garrafa térmica 1L</span><span class="cur"></span></div></div><h3><small>01</small>Busque</h3><p>“Garrafa térmica 1L”. Encontre rapidamente por nome, código ou&nbsp;referência.</p></div>
+      <div class="how"><div class="ui-stage dev" role="img" aria-label="Três filtros: Cozinha, Bares e Restaurantes e Dia das Mães"><div class="ui-chips"><span class="on">Cozinha<svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span>Bares e Restaurantes<svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span>Dia das Mães<svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span></div></div><h3><small>02</small>Explore</h3><p>Navegue por categorias, segmentos e&nbsp;vitrines.</p></div>
+      <div class="how"><div class="ui-stage dev" role="img" aria-label="Card de produto com imagem, nome, código e botão de adicionar"><div class="ui-prod"><div class="th t5"><svg><use href="#p-termica"/></svg></div><div class="rt"><b>Garrafa térmica 1 L inox</b><small>OL-3310 · ref. GT-1000</small></div><span class="ui-add"><svg class="u pl"><use href="#i-plus"/></svg><svg class="u ck"><use href="#i-check"/></svg><svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span></div></div><h3><small>03</small>Selecione</h3><p>Adicione os produtos de interesse e ajuste&nbsp;quantidades.</p></div>
+      <div class="how"><div class="ui-stage dev" role="img" aria-label="Botões de compartilhar: WhatsApp, copiar link e PDF; ao copiar o link aparece a mensagem Link copiado"><div class="ui-share"><span class="pri"><svg class="u"><use href="#i-whats"/></svg>Enviar pelo WhatsApp</span><div><span class="cp"><svg class="u"><use href="#i-link"/></svg>Copiar link<svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span><svg class="u"><use href="#i-file"/></svg>PDF</span></div></div><span class="ui-toast"><svg class="u"><use href="#i-check"/></svg>Link copiado</span></div><h3><small>04</small>Compartilhe</h3><p>Envie ao cliente uma seleção feita para aquele&nbsp;atendimento.</p></div>
+    </div>
+    <p class="punch">Menos tempo procurando produtos. <span class="pk">Mais agilidade durante a apresentação&nbsp;comercial.</span></p>
+  </div>
+</section>
+
+<!-- 08 VITRINES -->
+<section class="slide" id="s08">
+  <div class="wrap">
+    <div class="kicker">Vitrines, não novos catálogos</div>
+    <h2>Uma única base de produtos. Diferentes oportunidades de&nbsp;venda.</h2>
+    <p class="lead">Um produto não fica preso a um catálogo. Ele pode estar em uma categoria, em um segmento e em várias campanhas ao longo do&nbsp;ano.</p>
+    <div class="tree mt">
+      <div class="base"><div class="big">1 base</div><div class="unit">todos os produtos, cadastrados&nbsp;uma vez</div></div>
+      <div class="trunk"></div>
+      <div class="brow">
+          <span class="chip"><i></i>Dia das Mães</span>
+          <span class="chip"><i></i>Bares e Restaurantes</span>
+          <span class="chip"><i></i>Hotelaria</span>
+          <span class="chip"><i></i>Lançamentos</span>
+          <span class="chip"><i></i>Mais Vendidos</span>
+          <span class="chip"><i></i>Black Friday</span>
+      </div>
+    </div>
+    <div class="two mt" style="align-items:start">
+      <p class="body-p">Vocês já trabalham várias datas comerciais ao longo do ano: Dia das Mães, Dia dos Pais, Dia das Crianças, Black Friday, Natal e outras&nbsp;sazonalidades.</p>
+      <h3>Em vez de um novo catálogo para cada data, seu marketing cria uma <span class="pk">nova&nbsp;vitrine</span>.</h3>
+    </div>
+  </div>
+</section>
+
+<!-- 09A DE PÁGINAS PARA PRODUTOS -->
+<section class="slide soft" id="s09a">
+  <div class="wrap">
+    <div class="kicker">De páginas para produtos</div>
+    <h2>Quando um produto fica&nbsp;indisponível</h2>
+    <div class="grid g2 mt dpp dpp-n">
+      <div class="card"><div class="unit">PDF · 5 catálogos</div><div class="dpp-big">761 páginas</div>
+        <ol class="vflow pdfv"><li>Produto indisponível</li><li>Localizar no material</li><li>Alterar</li><li>Revisar</li><li>Exportar novamente</li><li>Atualizar arquivo</li></ol>
+      </div>
+      <div class="card hl"><div class="unit">Catálogo navegável</div><div class="dpp-big">Uma base de produtos</div>
+        <ol class="vflow navv"><li>Produto indisponível</li><li>Alterar status no painel</li><li>Atualizado</li></ol>
+      </div>
+    </div>
+    <p class="punch">A diferença não está apenas na forma de visualizar o catálogo. <span class="pk">Está na forma de&nbsp;gerenciá-lo.</span></p>
+  </div>
+</section>
+
+<!-- 09B CATÁLOGO QUE ACOMPANHA O PORTFÓLIO -->
+<section class="slide dark" id="s09b">
+  <div class="wrap">
+    <div class="kicker">Solução 02</div>
+    <h2>Um catálogo que acompanha o&nbsp;portfólio</h2>
+    <p class="lead">O PDF registra o portfólio em um momento. <span class="pk">O catálogo navegável acompanha as mudanças do&nbsp;portfólio.</span></p>
+    <h3 class="faq-t">No dia a dia, direto pelo&nbsp;painel</h3>
+    <dl class="faq">
+      <div><dt>Produto ficou indisponível?</dt><dd>Sua equipe altera o status no painel e o produto é sinalizado ou sai do&nbsp;catálogo.</dd></div>
+      <div><dt>Voltou a ficar disponível?</dt><dd>Basta&nbsp;reativá-lo.</dd></div>
+      <div><dt>Nova imagem ou informação?</dt><dd>Basta editar o cadastro do produto. O catálogo atualiza&nbsp;junto.</dd></div>
+      <div><dt>Novo produto?</dt><dd>Publique e ele já aparece nas categorias, segmentos e vitrines&nbsp;certos.</dd></div>
+    </dl>
+    <p class="body-p mt" style="max-width:72ch">Assim, o material comercial da Parolar fica sempre atualizado, mais bonito e fiel ao que está disponível de verdade, sem precisar de uma nova versão do catálogo a cada&nbsp;alteração.</p>
+  </div>
+</section>
+
+<!-- 09C QUALIDADE VISUAL -->
+<section class="slide soft" id="s09c">
+  <div class="wrap">
+    <div class="kicker">Qualidade visual</div>
+    <h2>Qualidade visual sem depender de um único&nbsp;arquivo.</h2>
+    <div class="grid g2 mt qv">
+      <div class="card"><div class="unit">Catálogo PDF</div><p>Com centenas de páginas, a qualidade das imagens fica limitada pelo peso final do&nbsp;arquivo.</p></div>
+      <div class="card hl"><div class="unit">Catálogo navegável</div><p>O conteúdo carrega aos poucos, conforme a pessoa navega pelo&nbsp;portfólio.</p></div>
+    </div>
+    <p class="punch">Imagens em alta qualidade, experiência ajustada para computador, tablet e celular, <span class="pk">sem carregar centenas de páginas para ver alguns&nbsp;produtos.</span></p>
+  </div>
+</section>
+
+<!-- 10 O GANHO PARA CADA ÁREA -->
+<section class="slide" id="s10">
+  <div class="wrap">
+    <div class="kicker">Benefícios</div>
+    <h2>O ganho para cada&nbsp;área</h2>
+    <div class="grid g3 mt">
+      <div class="card area"><div class="unit"><svg class="ic"><use href="#i-users"/></svg>Representante</div>
+        <ul class="list">
+          <li><svg class="ic"><use href="#i-check"/></svg><span>Encontra produtos mais&nbsp;rápido.</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span>Apresenta o portfólio de forma mais&nbsp;organizada.</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span>Cria mixes personalizados para cada&nbsp;cliente.</span></li>
+        </ul>
+      </div>
+      <div class="card area"><div class="unit"><svg class="ic"><use href="#i-store"/></svg>Lojista</div>
+        <ul class="list">
+          <li><svg class="ic"><use href="#i-check"/></svg><span>Navega sem precisar criar&nbsp;conta.</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span>Encontra produtos relevantes para seu&nbsp;negócio.</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span>Recebe uma seleção mais objetiva e&nbsp;personalizada.</span></li>
+        </ul>
+      </div>
+      <div class="card area"><div class="unit"><svg class="ic"><use href="#i-calendar"/></svg>Marketing</div>
+        <ul class="list">
+          <li><svg class="ic"><use href="#i-check"/></svg><span>Cria vitrines e seleções&nbsp;comerciais.</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span>Reaproveita a mesma base de&nbsp;produtos.</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span>Reduz a necessidade de novos materiais para&nbsp;cada&nbsp;segmentação.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11A IMPLANTAÇÃO INICIAL -->
+<section class="slide rose" id="s11a">
+  <div class="wrap">
+    <div class="kicker">Implantação inicial do portfólio</div>
+    <div class="two impl">
+      <div>
+        <h2>Vocês recebem a plataforma com o portfólio já&nbsp;cadastrado.</h2>
+        <div class="impl-big">até <b>5.000</b> produtos<small>implantação inicial</small></div>
+      </div>
+      <div>
+        <p class="body-p">Cadastramos até 5.000 produtos, com as informações e imagens que a Parolar nos&nbsp;enviar.</p>
+        <p class="body-p" style="margin-top:12px">Cada produto entra na nova base já ligado à sua categoria. O catálogo chega pronto para&nbsp;usar.</p>
+        <p class="body-p" style="margin-top:12px">Depois disso, sua equipe faz atualizações e novos cadastros direto pelo&nbsp;painel.</p>
+      </div>
+    </div>
+    <p class="punch left">Vocês não recebem só a plataforma. Recebem <span class="pk">um catálogo pronto para começar a&nbsp;usar.</span></p>
+  </div>
+</section>
+
+<!-- 11B O QUE SERÁ ENTREGUE -->
+<section class="slide dark" id="s11b">
+  <div class="wrap">
+    <div class="kicker">O que será entregue</div>
+    <h2>Uma solução preparada para a operação comercial da&nbsp;Parolar.</h2>
+    <ul class="list dlv mt">
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Catálogo responsivo para desktop, tablet e celular</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Busca por produto, código ou referência</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Categorias e organização do portfólio</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Segmentação por perfil de negócio</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Vitrines comerciais</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Listas oficiais Parolar</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Criação de mixes personalizados</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Seleção de produtos e quantidades</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Compartilhamento da seleção</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Painel administrativo exclusivo do catálogo (não é o sistema de gestão da&nbsp;empresa)</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Gerenciamento da disponibilidade dos produtos</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Implantação inicial de até 5.000 produtos</span></li>
+      <li><svg class="ic"><use href="#i-check"/></svg><span>Publicação e configuração do ambiente</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 12A ETAPAS DO PROJETO -->
+<section class="slide soft" id="s12a">
+  <div class="wrap">
+    <div class="kicker">Etapas do projeto</div>
+    <h2>Do briefing à&nbsp;entrega.</h2>
+    <div class="grid g3 mt etps">
+      <div class="card etp"><span class="etn">01</span><h3>Briefing e alinhamento</h3><p>Entendemos as necessidades da Parolar, a estrutura atual dos catálogos e a organização do&nbsp;portfólio.</p><p>Juntos, definimos prioridades, categorias, segmentos, vitrines e a experiência para representantes e&nbsp;lojistas.</p></div>
+      <div class="card etp"><span class="etn">02</span><h3>Estrutura e experiência</h3><p>Desenhamos a arquitetura da plataforma e a organização das&nbsp;informações.</p><p>Aqui ficam definidos os caminhos de navegação: busca, categorias, segmentos, vitrines, listas e mixes&nbsp;personalizados.</p></div>
+      <div class="card etp"><span class="etn">03</span><h3>Criação visual</h3><p>Criamos a interface e a identidade visual da plataforma para computador, tablet e&nbsp;celular.</p><p>Vocês aprovam o visual antes de seguirmos para o&nbsp;desenvolvimento.</p></div>
+      <div class="card etp"><span class="etn">04</span><h3>Desenvolvimento e implementação</h3><p>Com o visual aprovado, transformamos a interface em uma plataforma&nbsp;funcionando.</p><p>Implementamos páginas, navegação, busca, filtros, painel, vitrines, listas e as demais funções do escopo&nbsp;aprovado.</p></div>
+      <div class="card etp"><span class="etn">05</span><h3>Cadastro e configuração inicial</h3><p>Cadastramos até 5.000 produtos e configuramos a plataforma para ela chegar pronta para&nbsp;usar.</p><p>Depois da entrega, sua equipe mantém produtos, vitrines e informações atualizados pelo&nbsp;painel.</p></div>
+      <div class="card etp"><span class="etn">06</span><h3>Testes e entrega</h3><p>Antes de publicar, testamos a navegação, o funcionamento em cada tela e os principais&nbsp;fluxos.</p><p>Feitos os ajustes finais, a plataforma vai ao ar e é entregue para sua&nbsp;equipe.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12C PRAZO -->
+<section class="slide dark" id="s12c">
+  <div class="wrap">
+    <div class="kicker">Prazo de desenvolvimento</div>
+    <div class="two prazo">
+      <div class="prz-big"><span class="pk">3<span class="dsh">&ndash;</span>6</span><span class="w">semanas</span><small>prazo estimado</small></div>
+      <div>
+        <p class="lead">O projeto leva de 3 a 6 semanas, contadas a partir da aprovação da proposta, do pagamento da entrada e do recebimento dos materiais para&nbsp;começar.</p>
+        <p class="body-p mt">Esse prazo cobre briefing, criação, aprovação, desenvolvimento, configuração, testes e&nbsp;publicação.</p>
+        <p class="body-p" style="margin-top:12px">Para cumprir o prazo, aprovações e materiais precisam chegar nas datas&nbsp;combinadas.</p>
+        <p class="small-note mt">Atrasos no envio de materiais, informações ou aprovações mudam a data de&nbsp;entrega.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 INVESTIMENTO -->
+<section class="slide" id="s12">
+  <div class="wrap">
+    <div class="kicker">Duas opções</div>
+    <h2>Investimento</h2>
+    <p class="lead">As duas opções têm o mesmo objetivo: tornar o portfólio da Parolar mais fácil de apresentar e explorar. O que muda é o tamanho da&nbsp;transformação.</p>
+    <div class="plans mt">
+      <div class="plan">
+        <div class="unit">Opção 01</div>
+        <h3>Catálogo Digital PDF</h3>
+        <p>Redesign e evolução da experiência do catálogo&nbsp;atual.</p>
+        <p class="ideal"><b>Ideal para</b> renovar o catálogo mantendo o formato e a rotina que sua equipe já&nbsp;usa.</p>
+        <div class="pr-box"><small class="from">a partir de</small><div class="val">R$ 5.400</div><small>R$ 12 por página · mínimo de 450&nbsp;páginas</small>
+          <div class="fee"><span>Abaixo de 450 páginas</span><b>valor por página sob&nbsp;consulta</b></div>
+        </div>
+        <a class="plan-cta" href="https://wa.me/5519989080803?text=Quero%20conversar%20sobre%20a%20op%C3%A7%C3%A3o%2001%3A%20Cat%C3%A1logo%20Digital%20PDF" target="_blank" rel="noopener">Escolher opção&nbsp;01</a>
+        <div class="unit feat-t">O que está incluso</div>
+        <ul class="flist">
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Mantém o formato que a equipe já&nbsp;utiliza</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Nova hierarquia visual e padrão consistente entre&nbsp;categorias</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Diagramação das páginas de&nbsp;produtos</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Criação e organização das&nbsp;categorias</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Cores e tipografia seguindo a identidade visual da&nbsp;Parolar</span><em class="sr">incluso</em></li>
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>Imagens em alta qualidade sem arquivo&nbsp;pesado</span><em class="sr">não incluso</em></li>
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>Busca por nome, código ou&nbsp;referência</span><em class="sr">não incluso</em></li>
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>Navegação por categorias, segmentos e&nbsp;vitrines</span><em class="sr">não incluso</em></li>
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>Mix personalizado por&nbsp;cliente</span><em class="sr">não incluso</em></li>
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>Experiência otimizada para cada&nbsp;dispositivo</span><em class="sr">não incluso</em></li>
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>Atualização direta pelo painel, sem exportar tudo de&nbsp;novo</span><em class="sr">não incluso</em></li>
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>Acompanha as mudanças do portfólio: disponibilidade e novos&nbsp;produtos</span><em class="sr">não incluso</em></li>
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>E-book: manual de instrução do&nbsp;sistema</span><em class="sr">não incluso</em></li>
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>Videoaula de treinamento da equipe: cadastrar e excluir produtos, criar listas e&nbsp;mais</span><em class="sr">não incluso</em></li>
+        </ul>
+      </div>
+      <div class="plan hl">
+        <span class="badge">Mais completo</span>
+        <div class="unit">Opção 02</div>
+        <h3>Catálogo Comercial Navegável</h3>
+        <p>UX/UI + desenvolvimento da plataforma responsiva e painel de&nbsp;gerenciamento.</p>
+        <p class="ideal"><b>Ideal para</b> ganhar agilidade no atendimento e manter o catálogo sempre&nbsp;atualizado.</p>
+        <div class="pr-box"><div class="val">R$ 14.200</div><small>implantação</small>
+          <div class="fee"><span>Manutenção e suporte</span><b>a consultar</b></div>
+        </div>
+        <a class="plan-cta pri" href="https://wa.me/5519989080803?text=Quero%20conversar%20sobre%20a%20op%C3%A7%C3%A3o%2002%3A%20Cat%C3%A1logo%20Comercial%20Naveg%C3%A1vel" target="_blank" rel="noopener">Escolher opção&nbsp;02</a>
+        <div class="unit feat-t">O que está incluso</div>
+        <ul class="flist">
+          <li class="n"><span class="dash" aria-hidden="true">—</span><span>Mantém o formato que a equipe já&nbsp;utiliza</span><em class="sr">não incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Nova hierarquia visual e padrão consistente entre&nbsp;categorias</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Criação e organização das&nbsp;categorias</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Cores e tipografia seguindo a identidade visual da&nbsp;Parolar</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Imagens em alta qualidade sem arquivo&nbsp;pesado</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Busca por nome, código ou&nbsp;referência</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Navegação por categorias, segmentos e&nbsp;vitrines</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Mix personalizado por&nbsp;cliente</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Experiência otimizada para cada&nbsp;dispositivo</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Atualização direta pelo painel, sem exportar tudo de&nbsp;novo</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Acompanha as mudanças do portfólio: disponibilidade e novos&nbsp;produtos</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>E-book: manual de instrução do&nbsp;sistema</span><em class="sr">incluso</em></li>
+          <li class="y"><svg class="ic"><use href="#i-check"/></svg><span>Videoaula de treinamento da equipe: cadastrar e excluir produtos, criar listas e&nbsp;mais</span><em class="sr">incluso</em></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small-note mt" style="text-align:center">Não substitui a loja virtual B2B de vocês. O foco é apresentar, descobrir e selecionar&nbsp;produtos.</p>
+  </div>
+</section>
+
+<!-- 12D CONDIÇÕES -->
+<section class="slide" id="s12d">
+  <div class="wrap">
+    <div class="kicker">Condições</div>
+    <h2>Condições comerciais e de&nbsp;pagamento</h2>
+    <div class="grid g2 mt conds">
+      <div class="card">
+        <div class="unit">Condições comerciais</div>
+        <ul class="clist">
+          <li>Estão incluídos os serviços e funções descritos nesta&nbsp;proposta.</li>
+          <li>Pedidos ou funções fora deste escopo são avaliados e orçados à&nbsp;parte.</li>
+          <li>Hospedagem, infraestrutura e manutenção não estão no valor do desenvolvimento. Quando houver, são apresentados à&nbsp;parte.</li>
+        </ul>
+        <div class="validade"><span>Validade da proposta</span><b>15 dias</b></div>
+      </div>
+      <div class="card">
+        <div class="unit">Condições de pagamento</div>
+        <div class="split" role="img" aria-label="50% na aprovação da proposta e 50% na entrega final">
+          <div class="sp1"><b>50%</b><span>na aprovação da&nbsp;proposta</span></div>
+          <div class="sp2"><b>50%</b><span>na entrega&nbsp;final</span></div>
+        </div>
+        <p class="body-p">Os 50% restantes são pagos na entrega, com todas as etapas&nbsp;concluídas.</p>
+        <ul class="clist">
+          <li><b>PIX</b> — à vista, em cada etapa de&nbsp;pagamento.</li>
+          <li><b>Cartão de crédito</b> — parcelado, com os juros e taxas da&nbsp;operadora.</li>
+          <li>O projeto começa assim que a proposta é aprovada e a entrada é&nbsp;paga.</li>
+          <li>Emitimos nota fiscal dos&nbsp;serviços.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 ENCERRAMENTO -->
+<section class="slide ink fim" id="s13">
+  <div class="wrap">
+    <div class="kicker">Dê o próximo passo</div>
+    <h2>De um catálogo para diferentes experiências&nbsp;comerciais.</h2>
+    <p class="lead">Hoje, cada produto novo aumenta o catálogo. Na nova estrutura, o portfólio da Parolar cresce sem virar mais e mais páginas para&nbsp;gerenciar.</p>
+    <div class="bulw"><p class="bul0">Uma única base de&nbsp;produtos</p><ul class="bul"><li>Diferentes&nbsp;categorias</li><li>Diferentes&nbsp;segmentos</li><li>Diferentes&nbsp;vitrines</li><li>Diferentes&nbsp;clientes</li></ul></div>
+    <p class="closing">Cadastrar uma vez. <span class="pk">Apresentar de diferentes&nbsp;formas.</span></p>
+    <div class="mt"><a class="cta big" href="https://wa.me/5519989080803?text=Quero%20conversar%20sobre%20a%20proposta%20do%20cat%C3%A1logo%20Parolar" target="_blank" rel="noopener"><svg class="ic"><use href="#i-whats"/></svg><span class="l">Quero conversar sobre a&nbsp;proposta</span><span class="s">Falar sobre a&nbsp;proposta</span></a></div>
+    <div class="foot">
+      <span>julianunesdesign.com.br</span>
+    </div>
+  </div>
+</section>
+
+<div class="prog" aria-hidden="true"></div>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  var d=document,root=d.documentElement;
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('js');
+
+  // barra de progresso
+  var bar=d.querySelector('.prog'),tick=false;
+  function prog(){var m=root.scrollHeight-innerHeight;bar.style.transform='scaleX('+(m>0?Math.min(1,scrollY/m):0)+')';tick=false}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(prog)}},{passive:true});
+  addEventListener('resize',prog);prog();
+
+  // elementos revelados (o primeiro ancestral marcado vence)
+  var SEL='.kicker,h1,h2,.lead,.body-p,.solnum,.bul0,.bul li,.closing,.stats .base,.card,.plan,.etp,.list li,.clist li,.proc li,.vflow li,.tab-dev,.ph-dev,.ui-stage,.punch,.small-note,.validade,.split,.impl-big,.prz-big,.cta';
+  var els=[].slice.call(d.querySelectorAll('.slide '+SEL.split(',').join(',.slide ')));
+  els=els.filter(function(e){var a=e.parentElement.closest(SEL);return !a||a.matches('.card,.plan,.etp')&&e.matches('.vflow li')});
+  els.forEach(function(e){e.classList.add('rv')});
+
+  // números que contam até o valor
+  function count(el){
+    var w=d.createTreeWalker(el,NodeFilter.SHOW_TEXT),n,re=/\d{1,3}(?:\.\d{3})+|\d+/;
+    while((n=w.nextNode())&&!re.test(n.data));
+    if(!n)return;
+    var m=n.data.match(re),end=parseInt(m[0].replace(/\./g,''),10);
+    if(end<10||still)return;
+    var pre=n.data.slice(0,m.index),post=n.data.slice(m.index+m[0].length),t0=null,dur=end>999?1500:1100;
+    el.classList.add('countup');
+    function f(t){t0=t0||t;var k=Math.min(1,(t-t0)/dur),v=Math.round(end*(1-Math.pow(2,-10*k)));
+      n.data=pre+(k<1?v:end).toLocaleString('pt-BR')+post;if(k<1)requestAnimationFrame(f)}
+    n.data=pre+'0'+post;requestAnimationFrame(f);
+  }
+  var NUM='.stats .big,.impl-big b,.prz-big .pk,.dpp-big';
+
+  var io=new IntersectionObserver(function(ents){
+    var i=0;
+    ents.forEach(function(en){
+      if(!en.isIntersecting)return;
+      var e=en.target,step=e.closest('.pdfv')?240:e.closest('.navv')?140:80;
+      var base=e.matches('.vflow li')?[].indexOf.call(e.parentNode.children,e)*step+200:Math.min(i++*80,560);
+      e.style.setProperty('--d',base+'ms');
+      e.classList.add('on');io.unobserve(e);
+      var nums=e.matches(NUM)?[e]:[].slice.call(e.querySelectorAll(NUM));
+      nums.forEach(function(x){setTimeout(function(){count(x)},base+150)});
+    });
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  function start(){els.forEach(function(e){io.observe(e)})}
+  if(root.classList.contains('gated'))d.addEventListener('gate:open',start,{once:true});else start();
+
+  // mockups animados só rodam com o slide na tela
+  var so=new IntersectionObserver(function(ents){ents.forEach(function(en){en.target.classList.toggle('in',en.isIntersecting)})},{threshold:.3});
+  [].forEach.call(d.querySelectorAll('.slide'),function(s){so.observe(s)});
+})();
+</script>
+</body>
+</html>
