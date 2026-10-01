@@ -1,0 +1,1487 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo Navegável · Julia Nunes</title>
+<meta name="description" content="Catálogo comercial navegável para distribuidoras, atacadistas, fabricantes e representantes: busca, vitrines, seleção por cliente e atualização pelo painel. Meu trabalho é facilitar a sua venda.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101012; --ink-2:#1d1d1f; --muted:#6e6e73; --muted-2:#86868b;
+  --line:rgba(0,0,0,.10); --line-dark:rgba(255,255,255,.14);
+  --bg:#ffffff; --bg-soft:#f5f5f7; --bg-rose:#fbf0f6; --bg-dark:#0a0a0b;
+  --pink:#eb6fba; --pink-deep:#c2277e; --pink-soft:#f9d9ec;
+  --r-sm:12px; --r-md:20px; --r-lg:28px;
+  --display:"Inter Tight","Inter",sans-serif;
+  --body:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* barra fixa */
+.top{position:fixed;top:0;left:0;right:0;height:64px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 20px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.mark{width:28px;height:28px;flex:none}
+.brand b{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.02em}
+.brand span{font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;font-family:var(--display);font-weight:600;font-size:18px;line-height:1;letter-spacing:-.01em;padding:13px 20px;border-radius:999px;white-space:nowrap;border:2px solid var(--ink)}
+.cta .ic{width:20px;height:20px;color:var(--pink)}
+.cta.big{font-size:22px;padding:18px 28px;background:var(--pink);border-color:var(--pink);color:var(--ink)}
+.cta.big .ic{color:var(--ink)}
+.cta .s{display:none}
+
+/* slides */
+.slide{display:grid;place-items:center;padding:128px 24px 112px;position:relative}
+.slide:first-of-type{min-height:100vh}
+.slide.soft{background:var(--bg-soft)}
+.slide.rose{background:var(--bg-rose)}
+.slide.dark{background:var(--bg-dark);color:#fff}
+.slide.ink{background:var(--ink);color:#fff}
+.wrap{width:min(1120px,100%);position:relative}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:22px}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.dark .kicker,.ink .kicker{color:var(--pink)}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance}
+h1{font-size:clamp(44px,7vw,92px);letter-spacing:-.045em;line-height:.98}
+h2{font-size:clamp(32px,4.6vw,60px);letter-spacing:-.038em;line-height:1.02;margin-bottom:22px}
+h3{font-size:clamp(20px,2vw,26px);letter-spacing:-.025em;line-height:1.15}
+.lead{font-size:clamp(17px,1.5vw,21px);color:var(--muted);max-width:60ch;text-wrap:pretty}
+.dark .lead,.ink .lead{color:rgba(255,255,255,.72)}
+.pk{color:var(--pink-deep)}
+.dark .pk,.ink .pk{color:var(--pink)}
+p,li{text-wrap:pretty}
+
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md);padding:26px}
+.soft .card{background:#fff}
+.dark .card,.ink .card{background:rgba(255,255,255,.05);border-color:var(--line-dark)}
+.card .ic{width:30px;height:30px;color:var(--pink-deep);margin-bottom:16px}
+.dark .card .ic,.ink .card .ic{color:var(--pink)}
+.card h3{margin-bottom:8px}
+.card p{font-size:15px;color:var(--muted)}
+.dark .card p,.ink .card p{color:rgba(255,255,255,.7)}
+.unit{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dark .unit,.ink .unit{color:rgba(255,255,255,.6)}
+
+.ic{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+ul.list{list-style:none;display:grid;gap:12px}
+ul.list li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+ul.list li .ic{width:22px;height:22px;color:var(--pink-deep);margin-top:2px}
+ul.list.no li .ic{color:var(--muted-2)}
+.dark ul.list li .ic,.ink ul.list li .ic{color:var(--pink)}
+
+.ph{border:2px dashed var(--pink-deep);border-radius:var(--r-lg);display:grid;place-items:center;color:var(--pink-deep);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:16px;background:rgba(235,111,186,.08);min-height:200px}
+.dark .ph,.ink .ph{border-color:var(--pink);color:var(--pink);background:rgba(255,255,255,.04)}
+.shot{border-radius:var(--r-lg);overflow:hidden;background:var(--bg-soft)}
+.shot img{width:100%;height:100%;object-fit:cover}
+
+/* fluxo de pontos de contato */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;counter-reset:f}
+.flow .node{padding:0 18px 0 0;position:relative}
+.flow .node::before{counter-increment:f;content:counter(f,decimal-leading-zero);font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--pink);display:block;margin-bottom:12px}
+.flow .node::after{content:"";position:absolute;top:8px;left:34px;right:8px;height:1px;background:var(--line-dark)}
+.flow .node:last-child::after{display:none}
+.flow h3{font-size:clamp(22px,2.4vw,32px)}
+.flow p{font-size:14.5px;color:rgba(255,255,255,.65);margin-top:6px}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.steps.s3{grid-template-columns:repeat(3,1fr)}
+.step{padding:26px 24px 24px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-md)}
+.soft .step{background:#fff}
+.dark .step,.ink .step{background:rgba(255,255,255,.05);border-color:var(--line-dark)}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:var(--display);font-weight:600;font-size:34px;letter-spacing:-.03em;line-height:1;color:var(--pink-deep);display:block;margin-bottom:14px}
+.dark .step::before,.ink .step::before{color:var(--pink)}
+.step h3{font-size:20px;margin-bottom:6px}
+.step p{font-size:14.5px;color:var(--muted)}
+.dark .step p,.ink .step p{color:rgba(255,255,255,.7)}
+
+.principles{display:grid;gap:0;border-top:1px solid var(--line-dark)}
+.principles div{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line-dark)}
+.principles b{font-family:var(--display);font-weight:600;font-size:clamp(24px,3vw,40px);letter-spacing:-.035em}
+.principles span{font-size:16px;color:rgba(255,255,255,.65)}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:500;font-size:15px;display:inline-flex;align-items:center;gap:8px}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--pink);display:inline-block}
+
+.tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.tbl th,.tbl td{padding:12px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14.5px}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:var(--bg-soft);font-weight:600}
+.tbl td:first-child{font-weight:600;width:30%}
+.tbl td:last-child{color:var(--muted)}
+.video{aspect-ratio:16/9;min-height:0}
+.tablet{aspect-ratio:4/3;width:100%;min-height:0}
+.phone{aspect-ratio:9/17;width:min(230px,100%);margin:0 auto;border-radius:28px}
+.diagram{display:grid;grid-template-columns:1fr auto 1.4fr;gap:22px;align-items:center}
+.base{background:var(--ink);color:#fff;border-radius:var(--r-lg);padding:30px;text-align:center}
+.base .big{font-family:var(--display);font-weight:600;font-size:clamp(40px,4.6vw,60px);letter-spacing:-.04em;line-height:1}
+.base .unit{color:rgba(255,255,255,.65);margin-top:8px}
+.arrow{width:44px;height:44px;color:var(--pink-deep)}
+
+.price{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.price .card{padding:32px}
+.card .val{font-family:var(--display);font-weight:600;font-size:28px;letter-spacing:-.03em;margin-top:10px}
+.price .val{font-family:var(--display);font-weight:600;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-.035em;margin:12px 0 8px}
+.todo{display:inline-block;border:2px dashed var(--pink-deep);color:var(--pink-deep);border-radius:10px;padding:6px 12px;font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle}
+
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.tl{border-top:3px solid var(--pink);padding-top:14px}
+.tl small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tl b{display:block;font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.025em;line-height:1.15}
+.tl span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+
+/* capa */
+.cover{overflow:hidden}
+.cover .dotbig{position:absolute;right:-8vw;top:50%;transform:translateY(-50%);width:min(52vw,640px);aspect-ratio:1;border-radius:50%;background:var(--pink);opacity:.9;pointer-events:none}
+.cover .wrap{z-index:1}
+.cover h1{max-width:13ch}
+.cover .lead{margin-top:26px}
+.cover .meta{margin-top:40px;display:flex;gap:28px;flex-wrap:wrap;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cover .who{display:flex;align-items:center;gap:14px;margin-bottom:38px;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em}
+.cover .who .mark{width:40px;height:40px}
+
+.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line-dark);padding-top:26px;margin-top:40px;font-size:14px;color:rgba(255,255,255,.7)}
+.foot b{font-family:var(--display);font-weight:600;font-size:18px;color:#fff;letter-spacing:-.02em}
+.mt{margin-top:28px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+
+@media (max-width:900px){
+  .slide{min-height:0;padding:96px 16px 56px}
+  .g2,.g3,.g4,.steps,.steps.s3,.price,.two,.flow,.diagram{grid-template-columns:1fr}
+  .arrow{transform:rotate(90deg);margin:0 auto}
+  .flow{gap:22px}.flow .node::after{display:none}
+  .timeline{grid-template-columns:1fr 1fr}
+  .brand span{display:none}
+  .cover .dotbig{width:70vw;right:-30vw;top:6vh;transform:none;opacity:.35}
+  .tbl td:first-child{width:38%}
+  .tbl th,.tbl td{padding:12px}
+  .principles div{grid-template-columns:1fr;gap:6px}
+}
+@media (max-width:400px){
+  .cta{font-size:17px;padding:11px 14px}
+  .cta.big{font-size:20px;padding:14px 18px}
+  .cta .l{display:none}.cta .s{display:inline}
+  .top{padding:0 14px}
+}
+@media print{
+  .top{display:none}
+  .slide{min-height:0;page-break-after:always;padding:40px 24px}
+}
+
+
+/* telas do sistema (mockups) */
+.dev{container-type:inline-size;background:#fff;color:#1d1d1f;overflow:hidden;position:relative;font-family:var(--body);letter-spacing:-.01em;line-height:1.3;text-align:left}
+.dev .scr{height:100%;display:flex;flex-direction:column}
+.dev svg.u{width:1.25em;height:1.25em;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.dev .fill{flex:1 1 auto;min-height:0;overflow:hidden}
+.ph-dev{width:min(236px,100%);aspect-ratio:9/18.6;margin:0 auto;border-radius:38px;border:7px solid #1d1d1f;box-shadow:0 30px 60px -24px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.05)}
+.ph-dev::before{content:"";position:absolute;top:7px;left:50%;width:30%;height:17px;border-radius:999px;background:#1d1d1f;transform:translateX(-50%);z-index:3}
+.ph-dev .scr{font-size:4.4cqw}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:.95em 1.7em .45em;font-size:.82em;font-weight:600;flex:none}
+.sb .bat{width:2.1em;height:1em}
+.hd{display:flex;justify-content:space-between;align-items:center;padding:.35em 1.1em .6em;flex:none}
+.logo{font-family:var(--display);font-weight:600;font-size:1.1em;letter-spacing:-.035em;display:flex;align-items:center;gap:.35em}
+.logo::before{content:"";width:.55em;height:.55em;border-radius:50%;background:#eb6fba}
+.hero{margin:0 1.1em;padding:1.1em 1.1em 1.2em;border-radius:1.2em;background:linear-gradient(140deg,#1d1d1f,#3b3b41);color:#fff;flex:none}
+.hero small{font-size:.66em;text-transform:uppercase;letter-spacing:.14em;color:#eb6fba;font-weight:600}
+.hero strong{display:block;font-family:var(--display);font-size:1.9em;font-weight:600;letter-spacing:-.045em;line-height:1.05;margin:.12em 0 .25em}
+.hero span{font-size:.76em;color:rgba(255,255,255,.72)}
+.uchips{display:flex;gap:.4em;padding:.8em 1.1em .1em;white-space:nowrap;overflow:hidden;flex:none}
+.uchips span{font-size:.74em;padding:.45em .9em;border-radius:999px;background:#f2f2f4;font-weight:500;flex:none;display:inline-flex;align-items:center;gap:.35em}
+.uchips .on{background:#1d1d1f;color:#fff}
+.sec{display:flex;justify-content:space-between;align-items:baseline;padding:.9em 1.1em .5em;font-weight:600;font-size:.9em;flex:none}
+.sec em{font-style:normal;font-size:.8em;color:#c2277e;font-weight:500}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:.7em .6em;padding:0 1.1em;align-content:start}
+.pc{min-width:0}
+.th{aspect-ratio:1;border-radius:.9em;display:grid;place-items:center;position:relative}
+.th>svg{width:64%;height:64%}
+.th em{position:absolute;top:.55em;left:.55em;font-style:normal;font-size:.6em;font-weight:600;background:rgba(255,255,255,.92);padding:.25em .6em;border-radius:999px}
+.th em.hot{background:#eb6fba;color:#fff}
+.th .add{position:absolute;right:.45em;bottom:.45em;width:1.7em;height:1.7em;border-radius:50%;background:#1d1d1f;color:#fff;display:grid;place-items:center}
+.th .add svg.u{width:.95em;height:.95em}
+
+.pc b{display:block;font-size:.76em;font-weight:600;margin-top:.45em;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc small{display:block;font-size:.64em;color:#86868b;margin-top:.1em}
+.tabbar{display:flex;justify-content:space-around;padding:.6em 0 1.2em;border-top:1px solid #ececf0;font-size:.62em;color:#86868b;flex:none;background:#fff}
+.tabbar span{display:flex;flex-direction:column;align-items:center;gap:.25em;position:relative}
+.tabbar svg.u{width:2em;height:2em}
+.tabbar .on{color:#1d1d1f;font-weight:600}
+.tabbar i{position:absolute;top:-.3em;right:-.5em;background:#eb6fba;color:#fff;font-style:normal;font-weight:700;border-radius:999px;padding:.05em .45em;font-size:.9em}
+.srch{margin:.2em 1.1em .1em;display:flex;align-items:center;gap:.5em;background:#f2f2f4;border-radius:.8em;padding:.6em .8em;font-size:.84em;flex:none}
+.srch svg.u{color:#86868b}
+.srch .cur{width:1.5px;height:1.1em;background:#eb6fba;margin-left:-.3em}
+.srch .hint{color:#86868b}
+.cnt{padding:.6em 1.1em .15em;font-size:.68em;color:#86868b;flex:none}
+.rw{display:flex;align-items:center;gap:.7em;padding:.55em 1.1em;border-bottom:1px solid #f0f0f3}
+.rw .th{width:3.3em;flex:none;border-radius:.7em}
+.rw .rt{flex:1;min-width:0}
+.rw b{display:block;font-size:.78em;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rw small{font-size:.64em;color:#86868b}
+.stp{display:flex;align-items:center;gap:.55em;background:#f2f2f4;border-radius:999px;padding:.3em .65em;font-size:.72em;font-weight:600;flex:none}
+.stp i{font-style:normal;color:#86868b;font-weight:500}
+.addb{font-size:.7em;font-weight:600;padding:.4em .85em;border-radius:999px;border:1px solid #d2d2d7;flex:none}
+.qty{font-size:.74em;font-weight:600;flex:none}
+.cart{margin:.7em 1.1em 1.2em;display:flex;align-items:center;justify-content:space-between;background:#1d1d1f;color:#fff;border-radius:1em;padding:.85em 1em;font-size:.78em;font-weight:600;flex:none}
+.cart em{font-style:normal;color:#eb6fba}
+.back{display:flex;align-items:center;gap:.2em;padding:.25em .8em .3em;font-size:.8em;color:#c2277e;flex:none}
+.back svg.u{width:1.1em;height:1.1em}
+.ttl{padding:0 1.1em .3em;font-family:var(--display);font-weight:600;font-size:1.55em;letter-spacing:-.04em;line-height:1.1;flex:none}
+.ttl small{display:block;font-family:var(--body);font-size:.46em;letter-spacing:0;color:#86868b;font-weight:500;margin-top:.2em}
+.frm{margin:.7em 1.1em 0;background:#f5f5f7;border-radius:1em;padding:.15em .9em;flex:none}
+.frm div{display:flex;justify-content:space-between;gap:.5em;padding:.6em 0;border-bottom:1px solid #e6e6ea;font-size:.72em}
+.frm div:last-child{border:0}
+.frm span{color:#86868b}
+.frm b{font-weight:600}
+.btnp{margin:.8em 1.1em 0;background:#1d1d1f;color:#fff;border-radius:.9em;padding:.85em;display:flex;align-items:center;justify-content:center;gap:.5em;font-size:.78em;font-weight:600;flex:none}
+.btnp svg.u{color:#eb6fba}
+.btns{display:flex;gap:.5em;margin:.5em 1.1em 1.3em;flex:none}
+.btns span{flex:1;display:flex;align-items:center;justify-content:center;gap:.35em;border:1px solid #d2d2d7;border-radius:.9em;padding:.65em .3em;font-size:.7em;font-weight:600}
+/* tablet */
+.tab-dev{width:100%;aspect-ratio:4/3;border-radius:26px;border:9px solid #1d1d1f;box-shadow:0 34px 70px -28px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.05)}
+.tab-dev .scr{font-size:1.75cqw}
+.tb-top{display:flex;align-items:center;gap:1.2em;padding:.9em 1.3em;border-bottom:1px solid #ececf0;flex:none}
+.tb-top .srch{flex:1;margin:0}
+.lstb{display:flex;align-items:center;gap:.45em;background:#1d1d1f;color:#fff;border-radius:999px;padding:.55em 1em;font-size:.84em;font-weight:600}
+.lstb em{font-style:normal;background:#eb6fba;border-radius:999px;padding:0 .5em}
+.tb-body{flex:1;display:grid;grid-template-columns:23% 1fr;min-height:0}
+.flt{border-right:1px solid #ececf0;padding:1.1em;font-size:.84em;background:#fbfbfd}
+.flt h6{font-size:.7em;text-transform:uppercase;letter-spacing:.12em;color:#86868b;margin:1.3em 0 .5em;font-weight:600}
+.flt h6:first-child{margin-top:0}
+.flt .sel{display:block;background:#1d1d1f;color:#fff;border-radius:.6em;padding:.45em .7em;font-weight:600;margin-bottom:.3em}
+.flt .opt{display:block;padding:.35em .7em;color:#424245}
+.ck{display:flex;align-items:center;gap:.55em;padding:.3em 0;color:#424245}
+.ck::before{content:"";width:1.05em;height:1.05em;border-radius:.3em;border:1.5px solid #c7c7cc;flex:none}
+.ck.on{color:#1d1d1f;font-weight:500}
+.ck.on::before{border-color:#1d1d1f;background:#1d1d1f url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/80% no-repeat}
+.tb-main{padding:1.1em 1.3em;overflow:hidden}
+.bn{border-radius:1em;background:linear-gradient(120deg,#fdeef6,#f3f0fb);padding:1em 1.3em;display:flex;justify-content:space-between;align-items:center;gap:1em}
+.bn small{font-size:.66em;text-transform:uppercase;letter-spacing:.14em;color:#c2277e;font-weight:600}
+.bn b{display:block;font-family:var(--display);font-weight:600;font-size:1.45em;letter-spacing:-.04em;line-height:1.1;margin:.1em 0 .15em}
+.bn span{font-size:.78em;color:#6e6e73}
+.bn i{font-style:normal;background:#1d1d1f;color:#fff;border-radius:999px;padding:.55em 1em;font-size:.78em;font-weight:600;white-space:nowrap}
+.g3u{display:grid;grid-template-columns:repeat(3,1fr);gap:.9em;margin-top:1em}
+/* painel */
+.win{width:100%;aspect-ratio:16/7.4;border-radius:14px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.1)}
+.win .scr{font-size:1.1cqw}
+.wbar{display:flex;align-items:center;gap:.45em;padding:.7em 1em;background:#f5f5f7;border-bottom:1px solid #e5e5ea;flex:none}
+.wbar i{width:.85em;height:.85em;border-radius:50%;background:#ff5f57}
+.wbar i:nth-child(2){background:#febc2e}.wbar i:nth-child(3){background:#28c840}
+.wbar span{margin:0 auto;font-size:.78em;color:#86868b;background:#fff;border-radius:.5em;padding:.25em 3em;border:1px solid #e5e5ea}
+.pn-body{flex:1;display:grid;grid-template-columns:17% 1fr;min-height:0}
+.nav{background:#f5f5f7;padding:1.2em .9em;font-size:.9em;border-right:1px solid #e5e5ea}
+.nav .logo{margin:0 0 1.1em .6em}
+.nav span:not(.logo){display:flex;align-items:center;gap:.6em;padding:.5em .7em;border-radius:.6em;color:#424245;margin-bottom:.15em}
+.nav .on{background:#fff;color:#1d1d1f !important;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.pn-main{padding:1.4em 1.8em;overflow:hidden}
+.pn-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:1em}
+.pn-hd small{font-size:.8em;color:#86868b}
+.pn-hd h5{font-family:var(--display);font-size:1.9em;letter-spacing:-.04em;font-weight:600;line-height:1.1}
+.acts{display:flex;gap:.5em}
+.acts span{font-size:.84em;font-weight:600;padding:.55em 1.1em;border-radius:999px;border:1px solid #d2d2d7}
+.acts .pri{background:#1d1d1f;color:#fff;border-color:#1d1d1f}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.8em;margin:1.1em 0 1em}
+.kpis div{background:#f5f5f7;border-radius:.9em;padding:.8em 1em;min-width:0}
+.kpis small{display:block;font-size:.74em;color:#86868b}
+.kpis b{display:block;font-family:var(--display);font-weight:600;font-size:1.5em;letter-spacing:-.03em;margin-top:.15em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpis b.s{font-size:1em;margin-top:.45em;font-family:var(--body);letter-spacing:-.01em}
+.utbl{width:100%;border-collapse:collapse;font-size:.84em}
+.utbl th{font-size:.82em;color:#86868b;font-weight:500;text-align:left;padding:.35em .6em;border-bottom:1px solid #e5e5ea}
+.utbl td{padding:.45em .6em;border-bottom:1px solid #f0f0f3;vertical-align:middle;color:#424245}
+.utbl .pp{display:flex;align-items:center;gap:.7em;font-weight:600;color:#1d1d1f}
+.utbl .th{width:2.3em;border-radius:.5em;flex:none}
+.mk{font-size:.8em;padding:.2em .65em;border-radius:999px;background:#f2f2f4;font-weight:600}
+.mk.ol{background:#fdeef6;color:#c2277e}
+.tg{display:inline-block;width:2.3em;height:1.35em;border-radius:999px;background:#e5e5ea;position:relative;vertical-align:middle}
+.tg::after{content:"";position:absolute;top:.17em;left:.17em;width:1em;height:1em;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.tg.on{background:#eb6fba}.tg.on::after{left:1.13em}
+@media (max-width:900px){.win{aspect-ratio:auto;height:auto}.win .scr{font-size:max(1.1cqw,6px)}.pn-body{grid-template-columns:1fr}.nav{display:none}.kpis{grid-template-columns:1fr 1fr}.tab-dev .scr{font-size:max(1.75cqw,6.5px)}}
+.two.wide-r{grid-template-columns:.75fr 1.25fr}
+@media (max-width:900px){.two.wide-r{grid-template-columns:1fr}}
+
+/* v2: copy da proposta em duas soluções */
+.cover h1{max-width:14ch}
+.body-p{font-size:17px;color:var(--muted);max-width:56ch}
+.dark .body-p,.ink .body-p{color:rgba(255,255,255,.7)}
+.small-note{font-size:14px;color:var(--muted-2)}
+.stats{display:grid;gap:18px}
+.stats .base{text-align:left;padding:34px}
+.solnum{font-family:var(--display);font-weight:600;font-size:clamp(120px,22vw,280px);line-height:.8;letter-spacing:-.07em;color:var(--pink);text-align:right}
+.statement{margin-top:48px;padding-top:32px;border-top:1px solid var(--line-dark)}
+.statement p{font-size:18px;color:rgba(255,255,255,.65)}
+.statement h3{font-size:clamp(28px,3.4vw,44px);letter-spacing:-.035em;line-height:1.1;margin-top:8px;max-width:24ch}
+.feat{display:grid;gap:24px}
+.feat div{padding-left:18px;border-left:3px solid var(--pink)}
+.feat b{display:block;font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.025em}
+.feat span{display:block;font-size:15px;color:var(--muted);margin-top:4px}
+.pages{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.pages .cap{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:12px;text-align:center}
+.pages .cap.pk{color:var(--pink-deep)}
+.pdfph{aspect-ratio:1/1.414;min-height:0;border-radius:6px}
+.pdfp{container-type:inline-size;aspect-ratio:1/1.414;background:#fff;border-radius:6px;box-shadow:0 24px 50px -20px rgba(0,0,0,.3),0 0 0 1px rgba(0,0,0,.06);overflow:hidden;color:#1d1d1f;font-family:var(--body);line-height:1.3}
+.pdfp .in{font-size:3.4cqw;height:100%;display:flex;flex-direction:column;padding:1.6em 1.5em 1.2em}
+.pdh{display:flex;justify-content:space-between;align-items:center;font-size:.8em;color:#86868b;padding-bottom:.8em;border-bottom:1px solid #e5e5ea}
+.pdh .logo{font-size:1.3em;color:#1d1d1f}
+.pdt{margin:1em 0 .9em}
+.pdt small{font-size:.72em;text-transform:uppercase;letter-spacing:.14em;color:#c2277e;font-weight:600}
+.pdt b{display:block;font-family:var(--display);font-weight:600;font-size:2em;letter-spacing:-.04em;line-height:1.05;margin-top:.1em}
+.pdg{display:grid;grid-template-columns:1fr 1fr;gap:1em;align-content:start}
+.pdi .th{border-radius:.6em}
+.pdi b{display:block;font-size:.9em;font-weight:600;margin:.5em 0 .3em;line-height:1.2}
+.pdi dl{display:grid;grid-template-columns:auto 1fr;gap:.15em .6em;font-size:.72em}
+.pdi dt{color:#86868b}
+.pdi dd{font-weight:500}
+.pdf-ft{display:flex;justify-content:space-between;font-size:.7em;color:#86868b;border-top:1px solid #e5e5ea;padding-top:.7em;margin-top:auto}
+.how .dev{margin-bottom:22px}
+.how h3{font-size:24px;margin-bottom:6px;display:flex;align-items:baseline;gap:10px}
+.how h3 small{font-family:var(--body);font-size:13px;color:var(--pink-deep);font-weight:600;letter-spacing:.04em}
+.how p{font-size:15px;color:var(--muted)}
+.punch{margin-top:44px;font-family:var(--display);font-weight:600;font-size:clamp(24px,2.8vw,36px);letter-spacing:-.03em;line-height:1.15;text-align:center;text-wrap:balance}
+.seg{display:flex;margin:.1em 1.1em .7em;background:#f2f2f4;border-radius:.7em;padding:.2em;flex:none}
+.seg span{flex:1;text-align:center;font-size:.72em;padding:.45em 0;border-radius:.55em;color:#6e6e73;font-weight:500}
+.seg .on{background:#fff;color:#1d1d1f;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.hero.sm strong{font-size:1.5em;margin:.2em 0 .3em}
+/* árvore de vitrines */
+.tree .base{max-width:360px;margin:0 auto}
+.tree .trunk{width:2px;height:32px;background:#d2d2d7;margin:0 auto}
+.brow{--n:6;--g:14px;--cw:calc((100% - (var(--n) - 1) * var(--g)) / var(--n));display:flex;justify-content:center;gap:var(--g);position:relative;padding-top:32px}
+.brow::before{content:"";position:absolute;top:0;left:calc(var(--cw) / 2);right:calc(var(--cw) / 2);height:2px;background:#d2d2d7}
+.brow .chip{position:relative;flex:0 0 var(--cw);justify-content:center;text-align:center;min-height:48px}
+.brow .chip i{display:none}
+.brow .chip::before{content:"";position:absolute;top:-33px;left:50%;width:2px;height:32px;margin-left:-1px;background:#d2d2d7}
+/* mix */
+.vflow{list-style:none;margin-top:24px;max-width:340px}
+.vflow li{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 16px;font-size:15px;font-weight:500}
+.vflow li+li{margin-top:26px}
+.vflow li+li::before{content:"";position:absolute;left:24px;top:-27px;width:2px;height:20px;background:#b0b0b5}
+.vflow li+li::after{content:"";position:absolute;left:20px;top:-9px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #b0b0b5}
+.vflow li:first-child{border-color:var(--pink-deep)}
+.vflow li:last-child{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600}
+.mx-crumb{flex:1;font-size:.84em;color:#86868b}
+.mx-crumb b{color:#1d1d1f;font-weight:600}
+.flt .srch{margin:0;font-size:.95em;padding:.5em .6em}
+.mix .tb-main{display:flex;flex-direction:column}
+.mx-hd{margin-bottom:.4em}
+.mx-hd small{font-size:.72em;color:#86868b}
+.mx-hd b{display:block;font-family:var(--display);font-weight:600;font-size:1.5em;letter-spacing:-.035em}
+.mix .rw{padding:.5em 0}
+.mix .cart{margin:auto 0 0}
+.tag{font-size:.64em;font-weight:600;padding:.25em .65em;border-radius:999px;background:#f2f2f4;color:#6e6e73;flex:none}
+.tag.add{background:#fdeef6;color:#c2277e}
+.rw.rm{opacity:.45}
+.rw.rm b{text-decoration:line-through}
+/* ganhos, comparativo, investimento, encerramento */
+.area .unit{display:flex;align-items:center;gap:10px;color:var(--pink-deep);margin-bottom:18px}
+.area .unit .ic{width:22px;height:22px;margin:0}
+.cmp th,.cmp td{width:50%}
+.tbl.cmp td:first-child{font-weight:400;width:50%;color:var(--muted)}
+.tbl.cmp td:last-child{color:var(--ink);font-weight:500}
+.tbl.cmp th:last-child{color:var(--pink-deep)}
+.inv .card h3{margin:12px 0 6px}
+.inv .card p{font-size:15px;color:var(--muted)}
+.inv .val{font-size:clamp(36px,4.4vw,56px);margin:22px 0 14px}
+.fee{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.fee b{font-weight:600;color:var(--ink);white-space:nowrap}
+.stack{margin-top:28px;border-top:1px solid var(--line-dark)}
+.stack div{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.6vw,34px);letter-spacing:-.03em;padding:12px 0;border-bottom:1px solid var(--line-dark);color:rgba(255,255,255,.55)}
+.stack div:first-child{color:#fff}
+.closing{margin-top:32px;font-family:var(--display);font-weight:600;font-size:clamp(28px,3.6vw,48px);letter-spacing:-.04em;line-height:1.05}
+@media (max-width:900px){
+  .solnum{text-align:left;font-size:110px}
+  .tree .trunk{display:none}
+  .brow{flex-direction:column;gap:10px;padding:0 0 0 26px}
+  .brow::before{left:0;right:auto;top:0;bottom:24px;width:2px;height:auto}
+  .brow .chip{flex:none;justify-content:flex-start;text-align:left;min-height:0}
+  .brow .chip::before{top:50%;left:-27px;width:26px;height:2px;margin:-1px 0 0}
+  .fee{flex-direction:column;gap:2px}
+}
+
+/* capa com foto */
+.cover-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
+.cover-grid h1{font-size:clamp(40px,5.4vw,76px);max-width:none}
+.cover-photo{width:100%;height:auto;max-width:560px;justify-self:end}
+/* slide 5: PDF no tablet */
+.pages .tab-dev{border-width:8px}
+.tab-dev .pdfph{aspect-ratio:auto;height:100%;border-radius:0;border-width:0;background:#f5f5f7;border:2px dashed #d2d2d7;color:var(--muted)}
+.pdl{padding:1.6em 1.8em 1.4em}
+.pdl .pdh{font-size:.8em}
+.pdl .pdt{margin:.9em 0 .8em}
+.pdl .pdt b{font-size:1.9em}
+.pdg3{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1em .8em}
+.pdg3 .pdi{min-width:0}
+.pdg3 .pdi .th{aspect-ratio:4/3;border-radius:.6em}
+.pdg3 .pdi .th>svg{width:auto;height:78%}
+.pdg3 .pdi b{display:block;font-size:.74em;font-weight:600;margin:.5em 0 .25em;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdg3 .pdi span{display:block;font-size:.58em;color:#1d1d1f;line-height:1.45;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdg3 .pdi i{font-style:normal;color:#86868b}
+.feat.row4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){
+  .cover-grid{grid-template-columns:1fr}
+  .cover-photo{justify-self:center;max-width:420px}
+  .pages{grid-template-columns:1fr}
+  .feat.row4{grid-template-columns:1fr}
+}
+
+/* slide 5: tablets na vertical */
+.tab-dev.vert{aspect-ratio:3/4;width:min(380px,100%);margin:0 auto}
+.tab-dev.vert .scr{font-size:2.5cqw}
+.tab-dev.vert .pdl{padding:1.4em 1.3em 1.2em}
+.tab-dev.vert .pdh span:nth-child(2){display:none}
+.tab-dev.vert .pdg3{gap:1em .6em}
+.tab-dev.vert .pdg3 .pdi b{font-size:.62em;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:2.4em}
+.tab-dev.vert .pdg3 .pdi span{font-size:.5em;line-height:1.4}
+
+.qa h3{font-size:19px}
+.qa p{font-size:14.5px}
+
+.tab-dev.vert .pdg3{grid-template-columns:repeat(4,1fr);gap:1em .7em}
+.tab-dev.vert .pdg3 .pdi .th{aspect-ratio:3/2}
+.tab-dev.vert .pdg3 .pdi b{font-size:.66em}
+.tab-dev.vert .pdg3 .pdi span{font-size:.54em}
+
+.faq-t{margin-top:40px;font-size:clamp(22px,2.2vw,28px)}
+.faq{display:grid;grid-template-columns:1fr 1fr;column-gap:40px;margin-top:18px;border-top:1px solid var(--line-dark)}
+.faq div{padding:18px 0;border-bottom:1px solid var(--line-dark)}
+.faq dt{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.faq dt::before{content:"?";flex:none;width:24px;height:24px;border-radius:50%;background:var(--pink);color:var(--ink);font-size:14px;display:grid;place-items:center}
+.faq dd{margin:6px 0 0 34px;font-size:15px;color:rgba(255,255,255,.7)}
+@media (max-width:900px){.faq{grid-template-columns:1fr}}
+
+/* investimento: cards de preço comparativos */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px}
+.plan.hl{border:2px solid var(--pink-deep);box-shadow:0 30px 60px -30px rgba(194,39,126,.35)}
+.plan .badge{position:absolute;top:-14px;left:32px;background:var(--pink-deep);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.plan h3{margin:10px 0 6px}
+.plan>p{font-size:15px;color:var(--muted);min-height:3.1em}
+.pr-box{margin:20px 0 22px;min-height:190px}
+.pr-box .val{font-family:var(--display);font-weight:600;font-size:clamp(38px,4.4vw,56px);letter-spacing:-.04em;line-height:1}
+.pr-box small{display:block;font-size:13px;color:var(--muted);margin:6px 0 14px}
+.plan-cta{display:block;text-align:center;text-decoration:none;font-family:var(--display);font-weight:600;font-size:17px;padding:14px 18px;border-radius:999px;border:1.5px solid var(--ink);color:var(--ink)}
+.plan-cta.pri{background:var(--ink);color:#fff}
+.plan-cta:hover{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+.feat-t{margin:28px 0 12px;padding-top:22px;border-top:1px solid var(--line)}
+.flist{list-style:none;display:grid;gap:12px}
+.flist li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.flist .ic{width:20px;height:20px;margin-top:2px}
+.flist li.y .ic{color:var(--pink-deep)}
+.flist li.n{color:var(--muted-2)}
+.flist li.n .ic{color:#c7c7cc}
+.flist li.n{color:var(--muted-2)}
+.flist .dash{width:20px;flex:none;text-align:center;color:#c7c7cc;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:900px){.plans{grid-template-columns:1fr;gap:34px}.pr-box,.plan>p{min-height:0}}
+
+/* v3 */
+.chgs{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.chg{display:flex;flex-direction:column;gap:12px;background:var(--bg-soft);border-radius:var(--r-md);padding:20px;font-size:15px;font-weight:500}
+.chg .ic{width:24px;height:24px;color:var(--pink-deep)}
+.ink-b{color:var(--ink);font-weight:600}
+.punch.left{text-align:left}
+.plan .ideal{font-size:14.5px;color:var(--ink-2);background:var(--bg-soft);border-radius:12px;padding:10px 14px;margin-top:14px;min-height:0}
+.plan .ideal b{font-weight:600;color:var(--pink-deep)}
+.plan>p{min-height:0}
+.dpp .card{padding:30px}
+.dpp .card.hl{border:2px solid var(--pink-deep)}
+.dpp .unit{color:var(--muted)}
+.dpp .card.hl .unit{color:var(--pink-deep)}
+.dpp-big{font-family:var(--display);font-weight:600;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.04em;line-height:1.05;margin-top:8px}
+.dpp .vflow{max-width:none}
+.dpp .vflow li{background:var(--bg-soft);border-color:transparent}
+.dpp .vflow li:first-child{background:#fff;border-color:var(--pink-deep)}
+.dpp .vflow.pdfv li:last-child{background:var(--bg-soft);color:var(--ink);border-color:transparent;font-weight:500}
+.dpp .vflow.navv li:last-child{background:var(--pink-deep);border-color:var(--pink-deep);color:#fff}
+@media (max-width:900px){.chgs{grid-template-columns:1fr}}
+
+/* como funcionaria: componentes de UI soltos (apenas visuais) */
+.ui-stage{height:210px;margin-bottom:22px;border-radius:var(--r-md);background:#fff;display:grid;place-items:center;padding:22px;user-select:none;pointer-events:none;font-size:15px;background-image:radial-gradient(circle at 50% 40%,#fff 0,#fff 45%,#f7f7f9 100%)}
+.ui-stage svg.u{width:18px;height:18px}
+.ui-search{display:flex;align-items:center;gap:10px;width:100%;background:#fff;border:1px solid #e5e5ea;border-radius:14px;padding:14px 16px;box-shadow:0 14px 30px -14px rgba(0,0,0,.22)}
+.ui-search svg.u{color:#86868b}
+.ui-search .cur{width:1.5px;height:18px;background:#eb6fba;margin-left:-8px}
+.ui-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.ui-chips span{padding:9px 16px;border-radius:999px;background:#fff;border:1px solid #e5e5ea;font-weight:500;font-size:14px;box-shadow:0 8px 20px -12px rgba(0,0,0,.2)}
+.ui-chips .on{background:#1d1d1f;color:#fff;border-color:#1d1d1f}
+.ui-prod{display:flex;align-items:center;gap:12px;width:100%;background:#fff;border:1px solid #ececf0;border-radius:16px;padding:10px 12px 10px 10px;box-shadow:0 14px 30px -14px rgba(0,0,0,.22)}
+.ui-prod .th{width:58px;flex:none;border-radius:11px}
+.ui-prod .rt{flex:1;min-width:0}
+.ui-prod b{display:block;font-size:14px;font-weight:600;line-height:1.25}
+.ui-prod small{font-size:12px;color:#86868b}
+.ui-add{width:34px;height:34px;flex:none;border-radius:50%;background:#1d1d1f;color:#fff;display:grid;place-items:center}
+.ui-share{display:grid;gap:8px;width:100%}
+.ui-share span{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;border:1px solid #d2d2d7;background:#fff;font-weight:600;font-size:14px}
+.ui-share .pri{background:#1d1d1f;color:#fff;border-color:#1d1d1f;box-shadow:0 14px 30px -14px rgba(0,0,0,.35)}
+.ui-share .pri svg.u{color:#eb6fba}
+.ui-share div{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* mix personalizado em 3 etapas */
+.mixsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.mixsteps .card{border:0;padding:28px}
+.mixsteps .unit{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:13px;margin-bottom:14px}
+.mixsteps .unit em{font-style:normal;font-family:var(--display);color:var(--pink-deep);letter-spacing:.02em}
+.mixsteps p{font-size:15px;color:var(--muted)}
+.mixlist{display:grid;gap:8px;margin-top:16px}
+.mixlist span{padding:11px 14px;border-radius:12px;background:var(--bg-soft);font-weight:500;font-size:15px}
+.mixlist .on{background:#fff;border:1.5px solid var(--pink-deep)}
+.mixsteps .vflow{margin-top:16px;max-width:none}
+.mixsteps .vflow li{background:var(--bg-soft);border-color:transparent}
+.mixsteps .vflow li:first-child{background:var(--bg-soft);border-color:transparent}
+.mixsteps .vflow li:last-child{background:var(--bg-soft);color:var(--ink);border-color:transparent;font-weight:500}
+.mixres{background:var(--ink);color:rgba(255,255,255,.7);border-radius:16px;padding:22px;font-size:14px;margin-bottom:16px}
+.mixres b{display:block;font-family:var(--display);font-weight:600;font-size:30px;letter-spacing:-.035em;color:#fff;margin-top:4px}
+@media (max-width:900px){.mixsteps{grid-template-columns:1fr}}
+
+.proc{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:pr}
+.proc li{position:relative;background:#fff;border-radius:14px;padding:18px 16px;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em;margin-right:28px}
+.proc li::before{counter-increment:pr;content:counter(pr,decimal-leading-zero);display:block;font-family:var(--body);font-size:12px;color:var(--pink-deep);letter-spacing:.06em;margin-bottom:6px}
+.proc li:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:50%;transform:translateY(-50%);color:var(--muted-2);font-family:var(--body);font-weight:400}
+.proc li:last-child{margin-right:0}
+.proc2{grid-template-columns:1fr 1fr;gap:56px}
+.proc.vert{grid-template-columns:1fr;max-width:380px;width:100%;justify-self:end}
+.proc.vert li{margin:0;display:flex;align-items:baseline;gap:14px;padding:14px 20px}
+.proc.vert li::before{margin:0}
+.proc.vert li+li{margin-top:22px}
+.proc.vert li:not(:last-child)::after{content:"↓";right:auto;left:32px;top:auto;bottom:-21px;transform:none;line-height:20px}
+.proc.vert li:last-child{background:var(--ink);color:#fff}
+@media (max-width:900px){.proc2{grid-template-columns:1fr;gap:28px}.proc.vert{justify-self:start}.proc.vert li+li{margin-top:10px}}
+@media (max-width:900px){.proc{grid-template-columns:1fr;gap:10px}.proc li{margin-right:0}.proc li::after{display:none}}
+.dpp-n{max-width:820px;margin-left:auto;margin-right:auto}
+.pr-box .val .per{font-size:.4em;letter-spacing:-.01em;color:var(--muted);margin-left:4px}
+.pr-box small.from{margin:0 0 4px}
+.tab-dev .scr.cur{background:#fff;display:flex;align-items:center;justify-content:center}
+.tab-dev .scr.cur img{width:100%;height:100%;object-fit:contain;display:block}
+/* etapas, prazo, condições */
+.etps{gap:18px}
+.etp{padding:30px}
+.etp .etn{display:block;font-family:var(--display);font-weight:600;font-size:44px;letter-spacing:-.05em;line-height:1;color:var(--pink-deep);margin-bottom:18px}
+.etp h3{font-size:24px;margin-bottom:12px}
+.etp p+p{margin-top:10px}
+.etp p i{display:block;font-style:normal;font-size:13.5px;color:var(--ink-2);background:var(--bg-rose);border-radius:10px;padding:10px 12px}
+.prazo{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.prz-big{font-family:var(--display);font-weight:600;font-size:clamp(64px,9vw,128px);letter-spacing:-.06em;line-height:.9}
+.prz-big .w{display:block;font-size:.5em;letter-spacing:-.04em;margin-top:.12em}
+.prz-big .dsh{margin:0 .12em}
+.prz-big small{display:block;font-size:.26em;letter-spacing:-.01em;color:rgba(255,255,255,.6);margin-top:14px}
+.conds .card{padding:30px}
+.conds .unit{color:var(--pink-deep);margin-bottom:16px}
+.clist{list-style:none;margin-top:14px}
+.clist li{position:relative;padding:0 0 10px 18px;font-size:15px;color:var(--muted)}
+.clist li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--pink)}
+.clist b{color:var(--ink);font-weight:600}
+.validade{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:14px;margin-top:8px;font-size:15px;color:var(--muted)}
+.validade b{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:-.02em}
+.split{display:flex;gap:6px;margin-bottom:16px}
+.split div{border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.split b{font-family:var(--display);font-weight:600;font-size:34px;letter-spacing:-.04em;line-height:1}
+.split span{font-size:13.5px}
+.sp60{flex:60;background:var(--pink-deep);color:#fff}
+.sp40{flex:40;background:var(--bg-soft);color:var(--ink)}
+@media (max-width:900px){.prazo{grid-template-columns:1fr;gap:24px}}
+/* qualidade, implantação, entregáveis */
+.qv .card{padding:30px}
+.qv .card.hl{border:2px solid var(--pink-deep)}
+.qv .unit{margin-bottom:10px}
+.qv .card.hl .unit{color:var(--pink-deep)}
+.qv .card p{font-size:clamp(17px,1.5vw,20px);color:var(--ink-2)}
+.impl{grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.impl-big{margin-top:32px;font-family:var(--display);font-weight:600;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.03em;color:var(--muted)}
+.impl-big b{display:block;font-size:clamp(72px,9vw,120px);letter-spacing:-.06em;line-height:.9;color:var(--pink-deep)}
+.impl-big small{display:block;font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.dlv{grid-template-columns:repeat(3,1fr);gap:14px 28px}
+.dlv li{padding:14px 0;border-top:1px solid var(--line-dark);font-size:17px}
+@media (max-width:900px){.impl{grid-template-columns:1fr;gap:24px}.dlv{grid-template-columns:1fr;gap:0}}
+/* animações dos componentes de UI (só CSS, ciclo de 6s) */
+.ui-stage{position:relative}
+.ui-cur{position:absolute;width:20px;height:20px;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.ui-search .typed{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;animation:uiType 6s steps(18,end) infinite both}
+.ui-search .cur{animation:uiBlink 1s steps(2,start) infinite}
+@keyframes uiType{0%,8%{max-width:0}50%,86%{max-width:9.6em}96%,100%{max-width:0}}
+@keyframes uiBlink{to{visibility:hidden}}
+.ui-chips span{position:relative;animation:uiChip 6s infinite both}
+.ui-chips span:nth-child(2),.ui-chips span:nth-child(2) .ui-cur{animation-delay:2s}
+.ui-chips span:nth-child(3),.ui-chips span:nth-child(3) .ui-cur{animation-delay:4s}
+.ui-chips .ui-cur{right:8px;bottom:-12px;animation:uiHover 6s infinite both}
+@keyframes uiChip{0%,5%{background:#fff;color:#1d1d1f;border-color:#e5e5ea}9%,30%{background:#1d1d1f;color:#fff;border-color:#1d1d1f}34%,100%{background:#fff;color:#1d1d1f;border-color:#e5e5ea}}
+@keyframes uiHover{0%{opacity:0;transform:translate(14px,10px)}5%{opacity:1;transform:none}7%{transform:scale(.82)}9%{transform:none}30%{opacity:1}34%,100%{opacity:0;transform:translate(10px,6px)}}
+.ui-add{position:relative;animation:uiAdd 6s infinite both}
+.ui-add svg.u{grid-area:1/1}
+.ui-add .pl{animation:uiOut 6s infinite both}
+.ui-add .ck{opacity:0;animation:uiIn 6s infinite both}
+.ui-add .ui-cur{right:-12px;bottom:-16px;animation:uiTap 6s infinite both}
+@keyframes uiAdd{0%,38%{background:#1d1d1f;transform:none}42%{transform:scale(.86)}46%,86%{background:var(--pink-deep);transform:none}92%,100%{background:#1d1d1f}}
+@keyframes uiOut{0%,40%{opacity:1}44%,88%{opacity:0}92%,100%{opacity:1}}
+@keyframes uiIn{0%,40%{opacity:0}44%,88%{opacity:1}92%,100%{opacity:0}}
+@keyframes uiTap{0%,14%{opacity:0;transform:translate(34px,30px)}22%{opacity:1}36%{transform:none}40%{transform:scale(.82)}44%{transform:none;opacity:1}58%,100%{opacity:0;transform:translate(16px,18px)}}
+.ui-share .cp{position:relative;animation:uiCp 6s infinite both}
+.ui-share .cp .ui-cur{right:14px;bottom:-10px;animation:uiTap 6s infinite both}
+@keyframes uiCp{0%,38%{border-color:#d2d2d7;background:#fff;transform:none}41%{transform:scale(.95);background:#f5f5f7}45%,86%{border-color:var(--pink-deep);background:#fff;transform:none}92%,100%{border-color:#d2d2d7}}
+.ui-toast{position:absolute;top:14px;left:50%;display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;background:#1d1d1f;color:#fff;font-size:13px;font-weight:600;white-space:nowrap;box-shadow:0 12px 24px -10px rgba(0,0,0,.4);opacity:0;transform:translate(-50%,-6px);animation:uiToast 6s infinite both}
+.ui-toast svg.u{width:15px;height:15px;color:#eb6fba;stroke-width:2.6}
+@keyframes uiToast{0%,43%{opacity:0;transform:translate(-50%,-6px)}48%,84%{opacity:1;transform:translate(-50%,0)}90%,100%{opacity:0;transform:translate(-50%,-6px)}}
+@media (prefers-reduced-motion:reduce){
+  .ui-stage *{animation:none!important}
+  .ui-search .typed{max-width:none}
+}
+
+.pages.one{grid-template-columns:1fr}
+.evo{grid-template-columns:1fr 1fr;gap:56px}
+.evo .feat{gap:28px}
+.dark .pages .cap{color:rgba(255,255,255,.6)}
+.dark .pages .cap.pk{color:var(--pink)}
+.dark .tab-dev{border-color:#2c2c2e;box-shadow:0 34px 70px -28px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.12)}
+@media (max-width:900px){.evo{grid-template-columns:1fr;gap:36px}}
+.fim .wrap{text-align:center}
+.fim h2{max-width:22ch;margin-inline:auto}
+.fim .lead{max-width:60ch;margin-inline:auto}
+.fim .foot{justify-content:center}
+.bulw{margin:36px auto 0;max-width:1000px;padding:20px 0;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}
+.bul0{font-family:var(--display);font-weight:600;font-size:clamp(20px,2vw,26px);letter-spacing:-.025em;color:#fff;margin-bottom:12px}
+.bul{list-style:none;display:flex;flex-wrap:nowrap;justify-content:center}
+.bul li{display:flex;align-items:center;white-space:nowrap;font-family:var(--display);font-weight:600;font-size:clamp(13px,1.55vw,20px);letter-spacing:-.02em;color:rgba(255,255,255,.7)}
+.bul li+li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pink);margin:0 16px;flex:none}
+@media (max-width:640px){.bul{flex-direction:column;align-items:center;gap:10px}.bul li::before,.bul li+li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pink);margin:0 10px 0 0;flex:none}}
+/* tablet (641–900px): duas colunas quando couber */
+@media (min-width:641px) and (max-width:900px){
+  .slide{padding:104px 28px 72px}
+  .g2,.g3,.g4,.dlv,.chgs,.faq{grid-template-columns:1fr 1fr}
+  .g3>:last-child:nth-child(odd),.chgs>:last-child:nth-child(odd){grid-column:1/-1}
+  .two,.two.wide-r,.cover-grid,.proc2,.impl,.prazo,.evo{grid-template-columns:1fr 1fr;gap:28px}
+  .dlv{gap:0 24px}
+  .faq{column-gap:28px}
+  .plans{grid-template-columns:1fr 1fr;gap:16px}
+  .plan{padding:24px 20px}
+  .plan .badge{left:20px}
+  .solnum{text-align:right;font-size:clamp(110px,18vw,160px)}
+  .proc.vert{justify-self:end}
+  .cover-photo{justify-self:end}
+  .etp,.conds .card,.qv .card,.dpp .card{padding:24px}
+  .etp .etn{font-size:36px;margin-bottom:12px}
+  .etp h3{font-size:20px}
+  .prz-big{font-size:clamp(64px,12vw,100px)}
+  .impl-big b{font-size:clamp(64px,11vw,96px)}
+  .tab-dev.vert{width:100%}
+}
+/* tela de acesso */
+.gate{display:none}
+html.gated{overflow:hidden}
+html.gated .gate{display:grid}
+.gate{position:fixed;inset:0;z-index:100;place-items:center;padding:88px 24px 48px;background:var(--ink);color:#fff;overflow:auto;transition:opacity .7s ease,transform .9s cubic-bezier(.7,0,.2,1)}
+.gate::before{content:"";position:fixed;top:50%;left:50%;width:min(80vw,760px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(235,111,186,.32),rgba(235,111,186,0) 66%);transform:translate(-50%,-50%);pointer-events:none;animation:gGlow 9s ease-in-out infinite alternate}
+@keyframes gGlow{to{transform:translate(-50%,-50%) scale(1.14)}}
+.g-brand{position:fixed;top:22px;left:24px;display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.02em}
+.g-step{position:relative;width:min(440px,100%);text-align:center;transition:opacity .5s ease,transform .6s cubic-bezier(.22,1,.36,1)}
+.g-login h1{font-size:clamp(34px,5vw,50px);letter-spacing:-.04em;line-height:1.05;margin-bottom:16px}
+.g-login p{font-size:17px;color:rgba(255,255,255,.7);text-wrap:pretty}
+.g-login.out{opacity:0;transform:translateY(-14px)}
+.g-form{margin-top:34px;display:grid;gap:10px;text-align:left}
+.g-form label{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.g-form input{width:100%;font:inherit;font-size:18px;letter-spacing:.08em;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px 18px;outline:none;transition:border-color .2s,box-shadow .2s}
+.g-form input::placeholder{color:rgba(255,255,255,.35);letter-spacing:0}
+.g-form input:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(235,111,186,.22)}
+.g-form.bad input{border-color:#ff6fa8;animation:gShake .4s}
+@keyframes gShake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.g-err{min-height:1.5em;font-size:14px;color:#ff9fcf;text-align:center}
+.g-btn{margin-top:6px;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding:18px 24px;border:0;border-radius:999px;background:var(--pink);color:var(--ink);cursor:pointer;transition:transform .2s,background .2s}
+.g-btn:hover{background:#f28bc8}
+.g-btn:active{transform:scale(.98)}
+.g-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.g-hi{width:min(780px,100%)}
+.g-hi h1{font-size:clamp(52px,9vw,112px);letter-spacing:-.05em;line-height:.95}
+.g-hi .g-l1{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.6vw,32px);letter-spacing:-.03em;line-height:1.2;margin-top:28px;text-wrap:balance}
+.g-hi .g-l2{font-size:clamp(17px,1.5vw,20px);color:rgba(255,255,255,.7);margin-top:16px;text-wrap:balance}
+.g-hi .g-btn{margin-top:40px;padding:18px 30px}
+.g-hi>*{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.g-hi.on>*{opacity:1;transform:none}
+.g-hi.on>:nth-child(2){transition-delay:.4s}
+.g-hi.on>:nth-child(3){transition-delay:.8s}
+.g-hi.on>:nth-child(4){transition-delay:1.2s}
+.gate.out{opacity:0;transform:translateY(-3%);pointer-events:none}
+@media (prefers-reduced-motion:reduce){
+  .gate,.gate *,.gate::before{transition:none!important;animation:none!important}
+  .g-hi>*{opacity:1;transform:none}
+}
+@media print{.gate{display:none!important}html.gated{overflow:visible}}
+/* movimento: revelação única ao entrar na tela, sem loop */
+.prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:40;background:linear-gradient(90deg,var(--pink),var(--pink-deep));transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1) var(--d,0ms),transform .8s cubic-bezier(.22,1,.36,1) var(--d,0ms)}
+.js .rv.on{opacity:1;transform:none}
+.js .rv.card,.js .rv.plan,.js .rv.etp{transform:translateY(22px) scale(.985)}
+.js .rv.on.card,.js .rv.on.plan,.js .rv.on.etp{transform:none}
+.js .solnum.rv{transform:translateX(-24px);transition-duration:1s,1.1s}
+.js .solnum.rv.on{transform:none}
+.countup{font-variant-numeric:tabular-nums}
+.punch .pk{color:inherit;background-image:linear-gradient(transparent 58%,rgba(235,111,186,.38) 58%);background-repeat:no-repeat;background-size:100% 100%;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.js .punch .pk{background-size:0% 100%;transition:background-size 1.1s cubic-bezier(.22,1,.36,1) calc(var(--d,0ms) + .45s)}
+.js .punch.on .pk{background-size:100% 100%}
+.js .plan.hl .badge{transform:scale(.6);opacity:0;transition:transform .5s cubic-bezier(.34,1.56,.64,1) calc(var(--d,0ms) + .5s),opacity .3s calc(var(--d,0ms) + .5s)}
+.js .plan.hl.on .badge{transform:none;opacity:1}
+.js .slide:not(.in) .ui-stage *{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){
+  .js .rv,.js .punch .pk,.js .plan.hl .badge{opacity:1;transform:none;transition:none;background-size:100% 100%}
+  .prog{display:none}
+}
+@media print{
+  .js .rv,.js .plan.hl .badge{opacity:1!important;transform:none!important}
+  .js .punch .pk{background-size:100% 100%}
+  .prog{display:none}
+}
+
+/* página de vendas */
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:34px}
+.ghost{font-family:var(--display);font-weight:600;font-size:18px;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--pink);padding-bottom:2px}
+.sign{margin-top:40px;padding-left:16px;border-left:3px solid var(--pink);font-family:var(--display);font-weight:600;font-size:clamp(19px,1.8vw,24px);letter-spacing:-.02em;line-height:1.25}
+.sign span{display:block;font-family:var(--body);font-weight:500;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.fit .card h3{margin-top:4px}
+.fit .unit,.area .unit{display:flex;align-items:center;gap:10px;color:var(--pink-deep);margin-bottom:16px}
+.fit .unit .ic{width:22px;height:22px;margin:0}
+.pdfalt{display:grid;grid-template-columns:1fr 1.3fr;gap:32px;align-items:center;padding:36px}
+.pdfalt h3{margin-top:10px}
+.pdfalt p{font-size:16px}
+
+/* solução 02: Utilidades -> Brinquedos -> Cama, mesa e banho, com rolagem (ciclo 20s) */
+.s2chips{display:flex;gap:.4em;margin:.9em 0 0;flex:none;white-space:nowrap}
+.s2chips span{position:relative;font-size:.66em;font-weight:600;padding:.45em .85em;border-radius:999px;background:#f2f2f4;color:#424245}
+.s2chips .c1{animation:s2On1 20s infinite both paused}
+.s2chips .c3{animation:s2On3 20s infinite both paused}
+.s2chips .c4{animation:s2On4 20s infinite both paused}
+.s2cur{position:absolute;right:-.2em;bottom:-1.4em;width:2.2em;height:2.2em;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.s2cur.k3{animation:s2Cur3 20s infinite both paused}
+.s2cur.k4{right:1.5em;animation:s2Cur4 20s infinite both paused}
+.s2t{display:grid}
+.s2t>div,.s2vp>div{grid-area:1/1;min-height:0}
+.s2t .la,.s2vp>.la{animation:s2LA 20s infinite both paused}
+.s2t .lb,.s2vp>.lb{animation:s2LB 20s infinite both paused}
+.s2t .lc,.s2vp>.lc{animation:s2LC 20s infinite both paused}
+.s2vp{flex:1 1 auto;min-height:0;overflow:hidden;display:grid;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 2.4em),transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 2.4em),transparent 100%)}
+.s2roll{will-change:transform;animation:20s cubic-bezier(.6,0,.25,1) infinite both paused}
+.s2roll.rb{animation-name:s2RollB}.s2roll.rc{animation-name:s2RollC}
+.slide.in .s2chips span,.slide.in .s2cur,.slide.in .s2t>div,.slide.in .s2vp>div,.slide.in .s2roll{animation-play-state:running}
+@keyframes s2On1{0%,16%{background:#1d1d1f;color:#fff}17.5%,94%{background:#f2f2f4;color:#424245}97%,100%{background:#1d1d1f;color:#fff}}
+@keyframes s2On3{0%,16%{background:#f2f2f4;color:#424245;transform:none}16.6%{transform:scale(.92)}17.5%,51.5%{background:#1d1d1f;color:#fff;transform:none}52.5%,100%{background:#f2f2f4;color:#424245}}
+@keyframes s2On4{0%,51.5%{background:#f2f2f4;color:#424245;transform:none}52%{transform:scale(.94)}52.8%,94%{background:#1d1d1f;color:#fff;transform:none}97%,100%{background:#f2f2f4;color:#424245}}
+@keyframes s2Cur3{0%,9%{opacity:0;transform:translate(-9em,6em)}11%{opacity:1}16%{opacity:1;transform:none}16.8%{transform:scale(.8)}17.6%{transform:none;opacity:1}21%,100%{opacity:0;transform:translate(.6em,.8em)}}
+@keyframes s2Cur4{0%,44%{opacity:0;transform:translate(-7em,5em)}46%{opacity:1}51.4%{opacity:1;transform:none}52.2%{transform:scale(.8)}53%{transform:none;opacity:1}56%,100%{opacity:0;transform:translate(.6em,.8em)}}
+@keyframes s2LA{0%,17%{opacity:1;transform:none}19.5%,94%{opacity:0;transform:translateY(-.6em)}97%,100%{opacity:1;transform:none}}
+@keyframes s2LB{0%,17.5%{opacity:0;transform:translateY(.8em)}20%,52.5%{opacity:1;transform:none}55%,100%{opacity:0;transform:translateY(-.6em)}}
+@keyframes s2LC{0%,53%{opacity:0;transform:translateY(.8em)}55.5%,93%{opacity:1;transform:none}96%,100%{opacity:0;transform:none}}
+@keyframes s2RollB{0%,25%{transform:translateY(0)}31%,36%{transform:translateY(-16.667%)}42%,97%{transform:translateY(-33.333%)}98%,100%{transform:translateY(0)}}
+@keyframes s2RollC{0%,59%{transform:translateY(0)}65%,70%{transform:translateY(-16.667%)}76%,97%{transform:translateY(-33.333%)}98%,100%{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.s2chips span,.s2cur,.s2t>div,.s2vp>div,.s2roll{animation:none!important}.s2t .lb,.s2t .lc,.s2vp>.lb,.s2vp>.lc{opacity:0}.s2chips .c1{background:#1d1d1f;color:#fff}}
+/* responsivo: computador -> tablet -> celular (ciclo 12s) */
+.rsp{max-width:760px;margin-inline:auto}
+.rsp-stage{container-type:inline-size;position:relative;aspect-ratio:16/11}
+.rsp-frame{position:absolute;left:50%;top:50%;width:100%;height:81.8%;transform:translate(-50%,-50%);border:8px solid #1d1d1f;border-radius:14px;box-shadow:0 34px 70px -28px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.05);animation:rspF 12s cubic-bezier(.7,0,.25,1) infinite both paused;container-type:normal}
+.rsp-l{position:absolute;inset:0;display:flex;flex-direction:column;font-size:1.45cqw;opacity:0;animation:12s infinite both paused}
+.rsp-l.d{animation-name:rspD}.rsp-l.t{animation-name:rspT}.rsp-l.m{animation-name:rspM}
+.rsp-top{display:flex;align-items:center;gap:1.4em;padding:.9em 1.3em;border-bottom:1px solid #ececf0;flex:none}
+.rsp-top .logo{font-size:1.25em}
+.rsp-srch{flex:1;display:flex;align-items:center;gap:.5em;background:#f2f2f4;border-radius:.8em;padding:.55em .8em;font-size:.8em;color:#86868b;min-width:0;white-space:nowrap;overflow:hidden}
+.rsp-body{flex:1;min-height:0;overflow:hidden;padding:.9em 1.3em}
+.rsp-body>.rsp-srch{margin-bottom:.8em;flex:none}
+.rsp-chips{display:flex;gap:.45em}
+.rsp-chips span{font-size:.72em;font-weight:600;padding:.45em .95em;border-radius:999px;background:#f2f2f4;color:#424245;white-space:nowrap}
+.rsp-chips .on{background:#1d1d1f;color:#fff}
+.rsp .pdt{margin:.8em 0 .7em}
+.rsp .pdt b{font-size:1.6em}
+.rsp .pdg3{gap:1em .8em}
+.rsp-l.d .pdg3{grid-template-columns:repeat(5,1fr)}
+.rsp-l.t .pdg3{grid-template-columns:repeat(3,1fr)}
+.rsp-l.m .pdg3{grid-template-columns:repeat(2,1fr)}
+.rsp-l.t,.rsp-l.m{font-size:1.45cqw}
+.rsp-l.m .rsp-body,.rsp-l.m .rsp-top{padding-inline:1em}
+.rsp-lbl{display:flex;justify-content:center;gap:10px;margin-top:22px}
+.rsp-lbl span{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;color:var(--muted);background:var(--bg-soft);animation:12s infinite both paused}
+.rsp-lbl .d{animation-name:rspLD}.rsp-lbl .t{animation-name:rspLT}.rsp-lbl .m{animation-name:rspLM}
+.slide.in .rsp-frame,.slide.in .rsp-l,.slide.in .rsp-lbl span{animation-play-state:running}
+@keyframes rspF{0%,24%{width:100%;height:81.8%;border-radius:14px}33%,58%{width:44.3%;height:86%;border-radius:24px}67%,88%{width:37.1%;height:96%;border-radius:32px}97%,100%{width:100%;height:81.8%;border-radius:14px}}
+@keyframes rspD{0%,25%{opacity:1}29%,91%{opacity:0}97%,100%{opacity:1}}
+@keyframes rspT{0%,28%{opacity:0}32%,59%{opacity:1}63%,100%{opacity:0}}
+@keyframes rspM{0%,62%{opacity:0}66%,88%{opacity:1}92%,100%{opacity:0}}
+@keyframes rspLD{0%,26%{background:var(--ink);color:#fff}30%,93%{background:var(--bg-soft);color:var(--muted)}97%,100%{background:var(--ink);color:#fff}}
+@keyframes rspLT{0%,28%{background:var(--bg-soft);color:var(--muted)}32%,60%{background:var(--ink);color:#fff}64%,100%{background:var(--bg-soft);color:var(--muted)}}
+@keyframes rspLM{0%,62%{background:var(--bg-soft);color:var(--muted)}66%,89%{background:var(--ink);color:#fff}93%,100%{background:var(--bg-soft);color:var(--muted)}}
+@media (max-width:640px){.rsp-stage{aspect-ratio:4/5}@keyframes rspF{0%,24%{width:100%;height:45%;border-radius:12px}33%,58%{width:70%;height:74.7%;border-radius:20px}67%,88%{width:56.25%;height:80%;border-radius:26px}97%,100%{width:100%;height:45%;border-radius:12px}}.rsp-l{font-size:2.2cqw!important}.rsp-lbl span{font-size:11px;padding:7px 10px;letter-spacing:.08em}}
+@media (prefers-reduced-motion:reduce){.rsp-frame,.rsp-l,.rsp-lbl span{animation:none!important}.rsp-l.d{opacity:1}.rsp-lbl .d{background:var(--ink);color:#fff}}
+/* o que é / o que não é */
+.isnot .unit{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.isnot .unit .ic{width:22px;height:22px;margin:0}
+.isnot .hl .unit{color:var(--pink-deep)}
+.isnot .card:not(.hl){background:transparent}
+.isnot .list.no li b{font-weight:600;color:var(--ink)}
+.isnot .list.no li span{color:var(--muted)}
+
+/* vitrines temáticas clicáveis (só CSS, com radio) */
+.vt{position:relative}
+.vt input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.vt-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.vt-card{position:relative;display:flex;flex-direction:column;min-height:250px;padding:22px;border-radius:var(--r-md);cursor:pointer;border:2px solid transparent;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.vt-card:hover{transform:translateY(-4px);box-shadow:0 22px 40px -24px rgba(0,0,0,.35)}
+.vt-card small{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
+.vt-card b{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.1vw,28px);letter-spacing:-.03em;line-height:1.05;margin:6px 0 4px}
+.vt-n{font-size:13px;opacity:.7}
+.vt-th{display:flex;margin:auto 0 16px;padding-top:18px}
+.vt-th .th{width:56px;border-radius:14px;border:3px solid currentColor;box-shadow:0 6px 14px -8px rgba(0,0,0,.35)}
+.vt-th .th+.th{margin-left:-14px}
+.vt-go{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:600;font-size:15px}
+.vt-go .ic{width:18px;height:18px;transition:transform .25s ease}
+.vt-card:hover .vt-go .ic{transform:translateX(4px)}
+.c-mv{background:#101012;color:#fff}.c-mv small,.c-mv .vt-go{color:var(--pink)}.c-mv .vt-th .th{border-color:#101012}
+.c-dm{background:#fbe0ee;color:#101012}.c-dm small,.c-dm .vt-go{color:#c2277e}.c-dm .vt-th .th{border-color:#fbe0ee}
+.c-va{background:#e3edfb;color:#101012}.c-va small,.c-va .vt-go{color:#2f62c4}.c-va .vt-th .th{border-color:#e3edfb}
+.c-dc{background:#fff0c9;color:#101012}.c-dc small,.c-dc .vt-go{color:#b5780a}.c-dc .vt-th .th{border-color:#fff0c9}
+.vt-th .th{background:#f3f3f5}
+#vt-mv:checked~.vt-cards .c-mv,#vt-dm:checked~.vt-cards .c-dm,#vt-va:checked~.vt-cards .c-va,#vt-dc:checked~.vt-cards .c-dc{border-color:var(--pink-deep);transform:translateY(-4px);box-shadow:0 22px 40px -24px rgba(194,39,126,.5)}
+#vt-mv:checked~.vt-cards .c-mv .vt-go .ic,#vt-dm:checked~.vt-cards .c-dm .vt-go .ic,#vt-va:checked~.vt-cards .c-va .vt-go .ic,#vt-dc:checked~.vt-cards .c-dc .vt-go .ic{transform:rotate(90deg)}
+#vt-mv:focus-visible~.vt-cards .c-mv,#vt-dm:focus-visible~.vt-cards .c-dm,#vt-va:focus-visible~.vt-cards .c-va,#vt-dc:focus-visible~.vt-cards .c-dc{outline:3px solid var(--pink);outline-offset:3px}
+.vt-hint{display:flex;align-items:center;gap:8px;margin-top:18px;font-size:14px;color:var(--muted)}
+.vt-hint .ic{width:18px;height:18px;color:var(--pink-deep);transform:rotate(-90deg)}
+.vt-r:checked~.vt-hint{display:none}
+.vt-panel{display:none;margin-top:18px;background:var(--bg-soft);border-radius:var(--r-lg);padding:26px}
+#vt-mv:checked~.vt-panels .p-mv,#vt-dm:checked~.vt-panels .p-dm,#vt-va:checked~.vt-panels .p-va,#vt-dc:checked~.vt-panels .p-dc{display:block;animation:vtIn .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes vtIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.vt-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.vt-hd small{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--pink-deep)}
+.vt-hd b{display:block;font-family:var(--display);font-weight:600;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.035em;line-height:1.1;margin:4px 0}
+.vt-hd span{font-size:15px;color:var(--muted)}
+.vt-act{display:flex;gap:10px;flex-wrap:wrap}
+.vt-wa,.vt-x{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;font-size:14px;font-weight:600}
+.vt-wa{background:var(--ink);color:#fff}.vt-wa .ic{width:18px;height:18px;color:var(--pink)}
+.vt-x{background:#fff;border:1px solid var(--line);cursor:pointer}.vt-x .ic{width:16px;height:16px}
+.vt-x:hover{border-color:var(--ink)}
+.vt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.vt-grid .pc{background:#fff;border-radius:16px;padding:10px 10px 14px;font-size:16px}
+.vt-grid .th{border-radius:11px;aspect-ratio:4/3}
+.vt-grid .th>svg{width:auto;height:70%}
+.vt-grid .pc b{font-size:15px;margin-top:10px;white-space:normal}
+.vt-grid .pc small{font-size:12.5px}
+@media (max-width:900px){
+  .vt-cards{grid-template-columns:1fr 1fr;gap:12px}
+  .vt-card{min-height:210px;padding:18px}
+  .vt-th .th{width:46px}
+  .vt-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .vt-panel{padding:18px}
+}
+@media (prefers-reduced-motion:reduce){.vt-card,.vt-go .ic{transition:none}.vt-panel{animation:none!important}}
+.rose .chip{background:#fff}
+/* sob medida: módulos, integrações, entregáveis */
+.opts .card{display:flex;flex-direction:column}
+.opts .unit{display:flex;align-items:center;gap:10px;color:var(--pink);margin-bottom:6px}
+.opts .unit .ic{width:22px;height:22px;margin:0;color:var(--pink)}
+.opts .sub{font-size:14px;margin-bottom:20px}
+.opts .list li{font-size:15px;color:rgba(255,255,255,.7)}
+.opts .list li b{color:#fff;font-weight:600}
+.opts .list li .ic{width:20px;height:20px}
+.opts .chips{gap:8px}
+.dark .chip{background:rgba(255,255,255,.06);border-color:var(--line-dark);color:#fff;font-size:14px;padding:8px 14px}
+.opts .note{margin-top:auto;padding-top:20px;font-size:13px!important;color:rgba(255,255,255,.5)!important}
+.opts .card.hl{border:2px solid var(--pink)}
+.opts .card.off{background:transparent;border-style:dashed}
+.opts .card.off .unit,.opts .card.off .unit .ic,.opts .card.off .list li .ic{color:rgba(255,255,255,.55)}
+.opts .card{padding:30px}
+.limits{display:grid;grid-template-columns:.8fr 2.2fr;gap:24px;align-items:start;padding:26px 0;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}
+.limits .lh b{display:block;font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.02em}
+.limits .lh span{display:block;font-size:14px;color:rgba(255,255,255,.6);margin-top:4px}
+.limits ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.limits li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:rgba(255,255,255,.7)}
+.limits li b{color:#fff;font-weight:600}
+.limits li .ic{width:20px;height:20px;color:rgba(255,255,255,.45);margin-top:2px}
+.dark .small-note{color:rgba(255,255,255,.5)}
+@media (max-width:900px){.limits,.limits ul{grid-template-columns:1fr}}
+.unit.nao{margin:26px 0 12px;padding-top:20px;border-top:1px solid var(--line)}
+a.inl{color:var(--pink-deep);font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor}
+.foot a{text-decoration:none}
+@media (max-width:900px){
+  .pdfalt{grid-template-columns:1fr;gap:12px;padding:26px}
+  .hero-actions .cta.big{width:100%;justify-content:center}
+}
+/* fundo único para todas as fotos de produto */
+.t1,.t2,.t3,.t4,.t5,.t6{background:#f3f3f5}
+
+/* capa com o tablet animado */
+.hero-dev{justify-self:center;width:100%;max-width:420px;text-align:center}
+.hero-dev .tab-dev.vert{width:100%}
+.hero-dev .cap{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--pink-deep);margin-top:14px}
+/* fotos recortadas encostadas na base da dobra (sem corte seco) */
+.slide.to-b{padding-bottom:0}
+.to-b .wrap.two{align-items:end}
+.photo-b{display:block;width:100%;height:auto;align-self:end;justify-self:center}
+.about{grid-template-columns:1fr 1fr;gap:48px}
+.about .photo-b{max-width:540px}
+.about-tx{align-self:center;padding-bottom:112px}
+.fim .wrap{text-align:left}
+.fim h2,.fim .lead{margin-inline:0}
+.fim .foot{justify-content:center;margin-top:0}
+#contato{padding-bottom:32px}
+#contato .end{align-items:end}
+.end{grid-template-columns:1.1fr .9fr;gap:40px}
+.end-tx{align-self:center;padding-bottom:72px}
+.end .photo-b{max-width:440px}
+@media (max-width:900px){
+  .hero-dev{max-width:340px}
+  .about,.end{grid-template-columns:1fr;gap:28px}
+  .about .photo-b{order:2;max-width:400px}
+  .about-tx{padding-bottom:0}
+  .end-tx{padding-bottom:0}
+  .end .photo-b{max-width:320px}
+}
+
+/* resumo em cards */
+.resumo{background:var(--bg-dark);color:#fff;padding:88px 24px;display:grid;place-items:center}
+.resumo .kicker{color:var(--pink)}
+.rs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.rs-card{display:flex;flex-direction:column;gap:10px;min-height:230px;padding:30px 26px;border-radius:var(--r-md);background:rgba(255,255,255,.05);border:1px solid var(--line-dark)}
+.rs-card .ic{width:30px;height:30px;color:var(--pink);margin-bottom:auto}
+.rs-card small{display:block;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin-top:28px}
+.rs-card b{font-family:var(--display);font-weight:600;font-size:clamp(19px,1.7vw,23px);letter-spacing:-.025em;line-height:1.2}
+.rs-card.hl{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+.rs-card.hl .ic,.rs-card.hl small{color:var(--ink)}
+.rs-card.hl a{margin-top:6px;font-family:var(--display);font-weight:600;font-size:15px;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--ink);align-self:flex-start}
+@media (max-width:900px){
+  .resumo{padding:64px 16px}
+  .rs-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .rs-card{min-height:200px;padding:24px 20px}
+}
+@media (max-width:520px){.rs-grid{grid-template-columns:1fr}.rs-card{min-height:0}.rs-card small{margin-top:18px}}
+
+/* solução + responsivo em uma dobra */
+.sol{grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.sol .rsp{max-width:none;width:100%}
+.wh{color:#fff;font-weight:600}
+.dark .rsp-frame{border-color:#2c2c2e;box-shadow:0 34px 70px -28px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.12)}
+.dark .rsp-frame .rsp-l{background:#fff}
+.dark .rsp-lbl span{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)}
+.dark .rsp-lbl .d{animation-name:rspLDk}.dark .rsp-lbl .t{animation-name:rspLTk}.dark .rsp-lbl .m{animation-name:rspLMk}
+@keyframes rspLDk{0%,26%{background:var(--pink);color:var(--ink)}30%,93%{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)}97%,100%{background:var(--pink);color:var(--ink)}}
+@keyframes rspLTk{0%,28%{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)}32%,60%{background:var(--pink);color:var(--ink)}64%,100%{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)}}
+@keyframes rspLMk{0%,62%{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)}66%,89%{background:var(--pink);color:var(--ink)}93%,100%{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6)}}
+@media (prefers-reduced-motion:reduce){.dark .rsp-lbl .d{background:var(--pink);color:var(--ink)}}
+@media (max-width:900px){.sol{grid-template-columns:1fr;gap:32px}}
+
+/* frase da solução centralizada no desktop */
+@media (min-width:901px){
+  #solucao .statement{text-align:center}
+  #solucao .statement h3{margin-inline:auto}
+}
+
+/* sobre mim: tópicos voando ao redor da foto */
+.photo-wrap{position:relative;width:100%;max-width:540px;justify-self:center;align-self:end}
+.photo-wrap .photo-b{max-width:none}
+.fchip{position:absolute;display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:-.01em;color:var(--ink);white-space:nowrap;box-shadow:0 16px 32px -16px rgba(194,39,126,.5);animation:fly 6s ease-in-out infinite}
+.fchip i{width:8px;height:8px;border-radius:50%;background:var(--pink);flex:none}
+.f1{top:6%;left:-2%}
+.f2{top:20%;right:-4%;animation-delay:-1.5s}
+.f3{top:48%;left:-6%;animation-delay:-3s}
+.f4{top:62%;right:-2%;animation-delay:-4.5s}
+@keyframes fly{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-12px) rotate(1.5deg)}}
+@media (max-width:900px){
+  .photo-wrap{order:2;max-width:420px}
+  .fchip{font-size:13px;padding:8px 13px}
+  .f1{left:0}.f2{right:0}.f3{left:0}.f4{right:0}
+}
+@media (prefers-reduced-motion:reduce){.fchip{animation:none}}
+
+/* última dobra em fundo branco */
+#contato{background:var(--bg)}
+#contato .foot{border-top-color:var(--line);color:var(--muted)}
+#contato .foot b{color:var(--ink)}
+
+/* avatar no cabeçalho com bolinha de online */
+.avatar{position:relative;width:40px;height:40px;flex:none}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--pink)}
+.online{position:absolute;right:-1px;bottom:-1px;width:13px;height:13px;border-radius:50%;background:#22c55e;border:2px solid #fff;animation:online 2s ease-out infinite}
+@keyframes online{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}75%,100%{box-shadow:0 0 0 9px rgba(34,197,94,0)}}
+@media (prefers-reduced-motion:reduce){.online{animation:none}}
+.hl-ink{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/><path d="m3 17.5 9 5 9-5"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12.5V4h8.5L21 13.5 12.5 22z"/><circle cx="8" cy="9" r="1.5"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M21.5 20a6.5 6.5 0 0 0-4.5-6.2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5 4 6v6c0 5 3.5 8.5 8 9.5 4.5-1 8-4.5 8-9.5V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M3 9.5 5 4h14l2 5.5"/><path d="M3 9.5c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3"/><path d="M5 12.5V20h14v-7.5"/><path d="M10 20v-5h4v5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16"/><path d="m14 6 6 6-6 6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-whats" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M9.2 8.6c.2-.5.5-.5.8-.5h.6c.2 0 .4.1.5.4l.8 1.8c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.4-.2.6-.1l1.8.8c.3.1.4.3.4.5v.6c0 .3 0 .6-.5.8-.6.4-1.5.6-2.6.1a9.4 9.4 0 0 1-4.9-4.9c-.5-1.1-.3-2 .1-2.6z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></symbol>
+  <symbol id="p-pote" viewBox="0 0 40 40"><rect x="9" y="15" width="22" height="17" rx="3.5" fill="#d6e4f5"/><rect x="7.5" y="10.5" width="25" height="5.5" rx="2.2" fill="#6f9fd6"/><rect x="12" y="19" width="16" height="2" rx="1" fill="#fff" opacity=".7"/></symbol>
+  <symbol id="p-balde" viewBox="0 0 40 40"><path d="M11 14a9 7.5 0 0 1 18 0" fill="none" stroke="#c9679c" stroke-width="1.7"/><path d="M9.5 14h21l-2.8 18.5H12.3z" fill="#f4a8cc"/><rect x="9" y="13" width="22" height="3" rx="1.5" fill="#e27fb0"/></symbol>
+  <symbol id="p-garrafa" viewBox="0 0 40 40"><rect x="15.5" y="5.5" width="9" height="4.5" rx="1.2" fill="#4fae83"/><path d="M14 13.5c0-2.2 1.8-3.5 3.5-3.5h5c1.7 0 3.5 1.3 3.5 3.5v18.5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 14 32z" fill="#c6ebd8"/><rect x="14" y="19" width="12" height="6" fill="#8fd1b1"/></symbol>
+  <symbol id="p-cesto" viewBox="0 0 40 40"><path d="M8.5 16h23l-3 16H11.5z" fill="#f1dcbc"/><path d="M11 20.5h18M11.8 24.5h16.4M12.6 28.5h14.8" stroke="#c9a06a" stroke-width="1.3"/><rect x="7" y="13.5" width="26" height="3.5" rx="1.7" fill="#d4ab74"/></symbol>
+  <symbol id="p-escorredor" viewBox="0 0 40 40"><path d="M11 22V12.5M15.5 22V10.5M20 22V10M24.5 22V10.5M29 22V12.5" stroke="#a1a1a8" stroke-width="1.8" stroke-linecap="round"/><rect x="7.5" y="21.5" width="25" height="10" rx="2.5" fill="#dcdce1"/><rect x="11" y="25" width="18" height="2" rx="1" fill="#fff" opacity=".8"/></symbol>
+  <symbol id="p-copos" viewBox="0 0 40 40"><path d="M9.5 12h10l-1.6 20h-6.8z" fill="#f8dc98"/><path d="M19.5 14h10.5l-1.7 18h-7.1z" fill="#f1b644"/></symbol>
+  <symbol id="p-termica" viewBox="0 0 40 40"><rect x="13" y="6" width="14" height="5" rx="1.5" fill="#3a3a40"/><rect x="12" y="10.5" width="16" height="23" rx="3.5" fill="#c9ccd3"/><rect x="12" y="16" width="16" height="2" fill="#a6aab3"/><path d="M28 15h2.5a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H28" fill="none" stroke="#3a3a40" stroke-width="1.8"/></symbol>
+  <symbol id="p-jarra" viewBox="0 0 40 40"><path d="M12 9h14l-1 23a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z" fill="#dcecf7"/><path d="M26 13h2.5a2.5 2.5 0 0 1 2.5 2.5v6a2.5 2.5 0 0 1-2.5 2.5H25.5" fill="none" stroke="#8fb9dc" stroke-width="1.8"/><path d="M12.6 20h12.8l-.5 12H13z" fill="#a9cfee"/></symbol>
+  <symbol id="p-tabua" viewBox="0 0 40 40"><rect x="8" y="12" width="24" height="18" rx="4" fill="#e3c08e"/><circle cx="28" cy="16" r="1.6" fill="#fff"/><path d="M12 25h13" stroke="#c9a06a" stroke-width="1.3" stroke-linecap="round"/></symbol>
+
+  <symbol id="p-caderno" viewBox="0 0 40 40"><rect x="11" y="7" width="20" height="26" rx="2.5" fill="#8fb3ea"/><rect x="11" y="7" width="5" height="26" rx="2" fill="#5f8fd8"/><path d="M9 11h4M9 16h4M9 21h4M9 26h4" stroke="#3a3a40" stroke-width="1.5" stroke-linecap="round"/><rect x="19" y="13" width="8" height="4" rx="1" fill="#fff" opacity=".8"/></symbol>
+  <symbol id="p-lapis" viewBox="0 0 40 40"><g transform="rotate(40 20 20)"><rect x="17" y="5" width="6" height="22" fill="#f6c343"/><rect x="17" y="5" width="6" height="4" fill="#e88aa9"/><path d="M17 27h6l-3 7z" fill="#f1dcbc"/><path d="M19.1 32h1.8L20 34z" fill="#3a3a40"/></g></symbol>
+  <symbol id="p-mochila" viewBox="0 0 40 40"><path d="M15 13a5 5 0 0 1 10 0" fill="none" stroke="#c0472f" stroke-width="2"/><rect x="10" y="12" width="20" height="22" rx="5" fill="#ef7a5f"/><rect x="14" y="22" width="12" height="8" rx="2" fill="#d65c42"/><rect x="18" y="21" width="4" height="2" rx="1" fill="#fff"/></symbol>
+  <symbol id="p-estojo" viewBox="0 0 40 40"><rect x="7" y="15" width="26" height="12" rx="6" fill="#b79ae6"/><path d="M10 21h20" stroke="#8a6ad1" stroke-width="1.4"/><rect x="18" y="19.5" width="4" height="3" rx="1" fill="#fff"/></symbol>
+  <symbol id="p-bola" viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" fill="#f7d154"/><path d="M8.6 16.5h22.8M8.6 23.5h22.8" stroke="#e05a5a" stroke-width="3"/><circle cx="20" cy="20" r="12" fill="none" stroke="#e0a21b" stroke-width="1"/></symbol>
+  <symbol id="p-blocos" viewBox="0 0 40 40"><rect x="8" y="22" width="11" height="11" rx="1.5" fill="#6fc3a0"/><rect x="21" y="22" width="11" height="11" rx="1.5" fill="#6f9fd6"/><rect x="14.5" y="10" width="11" height="11" rx="1.5" fill="#ef7a5f"/><circle cx="18" cy="9.5" r="1.3" fill="#ef7a5f"/><circle cx="22" cy="9.5" r="1.3" fill="#ef7a5f"/></symbol>
+  <symbol id="p-caneca" viewBox="0 0 40 40"><rect x="10" y="12" width="16" height="20" rx="3" fill="#f6d3e4"/><path d="M26 16h2.5a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H26" fill="none" stroke="#e27fb0" stroke-width="2"/><path d="M18 26.5s-4-2.4-4-5a2 2 0 0 1 4-.6 2 2 0 0 1 4 .6c0 2.6-4 5-4 5z" fill="#e27fb0"/></symbol>
+  <symbol id="p-flor" viewBox="0 0 40 40"><path d="M14 24h12l-2 10h-8z" fill="#d4ab74"/><path d="M20 24v-8" stroke="#4fae83" stroke-width="1.8"/><circle cx="16.5" cy="12" r="2.6" fill="#f4a8cc"/><circle cx="23.5" cy="12" r="2.6" fill="#f4a8cc"/><circle cx="20" cy="8.5" r="2.6" fill="#f4a8cc"/><circle cx="20" cy="15.5" r="2.6" fill="#f4a8cc"/><circle cx="20" cy="12" r="2" fill="#f6c343"/></symbol>
+
+  <symbol id="m-lencol" viewBox="0 0 40 40"><rect x="8" y="23" width="24" height="7" rx="2" fill="#f2a7c4"/><rect x="9" y="16.5" width="22" height="7" rx="2" fill="#f7c9da"/><rect x="10" y="10" width="20" height="7" rx="2" fill="#fbe3ec"/></symbol>
+  <symbol id="m-tapete" viewBox="0 0 40 40"><rect x="7" y="13" width="26" height="15" rx="4" fill="#9ccfae"/><rect x="10.5" y="16.5" width="19" height="8" rx="2" fill="none" stroke="#fff" stroke-width="1.6"/></symbol>
+  <symbol id="m-toalha" viewBox="0 0 40 40"><rect x="8" y="12" width="24" height="18" rx="3" fill="#7fb8e6"/><rect x="8" y="12" width="24" height="6" rx="3" fill="#a9d0f0"/><path d="M8 25h24" stroke="#fff" stroke-width="1.6"/></symbol>
+  <symbol id="m-travesseiro" viewBox="0 0 40 40"><path d="M7 14c4-3 22-3 26 0 2 4 2 10 0 14-4 3-22 3-26 0-2-4-2-10 0-14z" fill="#e8e3f7"/><path d="M11 17c5-1.5 13-1.5 18 0" fill="none" stroke="#c8bfe8" stroke-width="1.4"/></symbol>
+  <symbol id="t-blocos" viewBox="0 0 40 40"><rect x="8" y="21" width="11" height="11" rx="1.5" fill="#f5b73b"/><rect x="21" y="21" width="11" height="11" rx="1.5" fill="#4cb782"/><rect x="14.5" y="9" width="11" height="11" rx="1.5" fill="#eb6fba"/></symbol>
+  <symbol id="t-bola" viewBox="0 0 40 40"><circle cx="20" cy="21" r="12" fill="#f28aa0"/><path d="M8.5 18c6 3 17 3 23 0M20 9c-4 7-4 17 0 24" fill="none" stroke="#fff" stroke-width="2"/></symbol>
+  <symbol id="t-carro" viewBox="0 0 40 40"><path d="M7 25v-5l4-6h14l5 6h3v5z" fill="#5b8def"/><path d="M13 15.5h5v4.5h-7.5zM20 15.5h4.5l3.5 4.5h-8z" fill="#dfe9fb"/><circle cx="13" cy="26" r="3.4" fill="#2c2c30"/><circle cx="27" cy="26" r="3.4" fill="#2c2c30"/></symbol>
+  <symbol id="t-urso" viewBox="0 0 40 40"><circle cx="12.5" cy="11" r="4" fill="#b07a4f"/><circle cx="27.5" cy="11" r="4" fill="#b07a4f"/><circle cx="20" cy="18" r="9" fill="#c48b5c"/><ellipse cx="20" cy="31" rx="8" ry="5.5" fill="#c48b5c"/><ellipse cx="20" cy="21" rx="3.6" ry="2.8" fill="#ecd3b8"/><circle cx="16.6" cy="16.5" r="1.2" fill="#2c2c30"/><circle cx="23.4" cy="16.5" r="1.2" fill="#2c2c30"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="brand">
+    <div class="avatar"><img src="/catalogo-digital/img/avatar-julia.png" width="128" height="128" alt="Foto de Julia Nunes"><i class="online" title="Online" aria-label="Online"></i></div>
+    <b>Julia Nunes</b>
+    <span>Webdesigner Comercial</span>
+  </div>
+  <a class="cta" href="https://wa.me/5519989080803?text=Oi%2C%20Julia%21%20Vi%20a%20p%C3%A1gina%20do%20cat%C3%A1logo%20naveg%C3%A1vel%20e%20quero%20entender%20se%20faz%20sentido%20para%20a%20minha%20empresa." target="_blank" rel="noopener"><svg class="ic"><use href="#i-whats"/></svg><span class="l">Falar com a&nbsp;Julia</span><span class="s">Conversar</span></a>
+</header>
+
+<!-- 01 CAPA -->
+<section class="slide cover" id="inicio">
+  <div class="wrap cover-grid">
+    <div>
+      <div class="kicker">Catálogo comercial navegável</div>
+      <h1>Seu catálogo, pronto para&nbsp;vender.</h1>
+      <p class="lead">Para distribuidoras, atacadistas, fabricantes e representantes que têm muito produto para mostrar e pouco tempo para procurar página. <strong class="hl-ink">Aqui, meu trabalho é facilitar a sua&nbsp;venda.</strong></p>
+      <div class="hero-actions">
+        <a class="cta big" href="https://wa.me/5519989080803?text=Oi%2C%20Julia%21%20Vi%20a%20p%C3%A1gina%20do%20cat%C3%A1logo%20naveg%C3%A1vel%20e%20quero%20entender%20se%20faz%20sentido%20para%20a%20minha%20empresa." target="_blank" rel="noopener"><svg class="ic"><use href="#i-whats"/></svg><span class="l">Quero ver um&nbsp;exemplo</span><span class="s">Ver um&nbsp;exemplo</span></a>
+        <a class="ghost" href="#como-funciona">Como funciona&nbsp;↓</a>
+      </div>
+    </div>
+    <div class="hero-dev">
+      <div class="dev tab-dev vert" role="img" aria-label="Exemplo de tela do catálogo navegável no tablet: começa em Utilidades com garrafas, a pessoa toca no filtro Brinquedos e desliza o catálogo, depois toca em Cama, mesa e banho e os produtos mudam de novo"><div class="scr pdl">
+            <div class="pdh"><span class="logo">Sua marca</span><span>Utilidades domésticas · Cozinha</span><span>42</span></div>
+            <div class="s2chips"><span class="c1">Utilidades</span><span>Hotelaria</span><span class="c3">Brinquedos<svg class="s2cur k3" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span class="c4">Cama, mesa e banho<svg class="s2cur k4" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span></div><div class="pdt s2t"><div class="la"><small>Utilidades</small><b>Garrafas, jarras e copos</b></div><div class="lb" aria-hidden="true"><small>Brinquedos</small><b>Bolas, carrinhos e pelúcias</b></div><div class="lc" aria-hidden="true"><small>Cama, mesa e banho</small><b>Toalhas, lençóis e tapetes</b></div></div><div class="s2vp"><div class="la"><div class="pdg3"><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> SM-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> SM-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> LN-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> SM-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> SM-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> LN-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> SM-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> SM-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> LN-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> LN-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,8 L</b><span><i>Cód.</i> LN-7140</span><span><i>Ref.</i> JT-18</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-jarra"/></svg></div><b>Jarra com tampa 2 L</b><span><i>Cód.</i> SM-5542</span><span><i>Ref.</i> JC-20</span><span>2 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-garrafa"/></svg></div><b>Squeeze 750 ml</b><span><i>Cód.</i> SM-3307</span><span><i>Ref.</i> SQ-750</span><span>750 ml · cx 36</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-garrafa"/></svg></div><b>Squeeze 500 ml</b><span><i>Cód.</i> SM-3302</span><span><i>Ref.</i> SQ-500</span><span>500 ml · cx 36</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-garrafa"/></svg></div><b>Garrafa de vidro 1 L</b><span><i>Cód.</i> LN-3350</span><span><i>Ref.</i> GV-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-garrafa"/></svg></div><b>Garrafa infantil 400 ml</b><span><i>Cód.</i> SM-3290</span><span><i>Ref.</i> GI-400</span><span>400 ml · cx 24</span></div></div></div><div class="lb" aria-hidden="true"><div class="s2roll rb"><div class="pdg3"><div class="pdi"><div class="th t2"><svg><use href="#t-bola"/></svg></div><b>Bola de vinil 23 cm</b><span><i>Cód.</i> BR-1102</span><span><i>Ref.</i> BV-23</span><span>un · cx 24</span></div><div class="pdi"><div class="th t6"><svg><use href="#t-carro"/></svg></div><b>Carrinho fricção</b><span><i>Cód.</i> BR-2210</span><span><i>Ref.</i> CF-01</span><span>un · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#t-blocos"/></svg></div><b>Blocos de montar 50 pç</b><span><i>Cód.</i> BR-3305</span><span><i>Ref.</i> BM-50</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#t-urso"/></svg></div><b>Urso de pelúcia 30 cm</b><span><i>Cód.</i> BR-4120</span><span><i>Ref.</i> UP-30</span><span>un · cx 6</span></div><div class="pdi"><div class="th t3"><svg><use href="#t-carro"/></svg></div><b>Caminhão caçamba</b><span><i>Cód.</i> BR-2215</span><span><i>Ref.</i> CC-02</span><span>un · cx 6</span></div><div class="pdi"><div class="th t5"><svg><use href="#t-bola"/></svg></div><b>Bola de futebol nº 5</b><span><i>Cód.</i> BR-1110</span><span><i>Ref.</i> BF-05</span><span>un · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#t-blocos"/></svg></div><b>Blocos gigantes 30 pç</b><span><i>Cód.</i> BR-3310</span><span><i>Ref.</i> BG-30</span><span>un · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#t-urso"/></svg></div><b>Coelho de pelúcia</b><span><i>Cód.</i> BR-4125</span><span><i>Ref.</i> CP-25</span><span>un · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#t-bola"/></svg></div><b>Bola pula-pula</b><span><i>Cód.</i> BR-1115</span><span><i>Ref.</i> PP-45</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#t-carro"/></svg></div><b>Carrinho de corrida</b><span><i>Cód.</i> BR-2220</span><span><i>Ref.</i> CR-03</span><span>un · cx 24</span></div><div class="pdi"><div class="th t3"><svg><use href="#t-blocos"/></svg></div><b>Kit construção 120 pç</b><span><i>Cód.</i> BR-3320</span><span><i>Ref.</i> KC-120</span><span>un · cx 6</span></div><div class="pdi"><div class="th t5"><svg><use href="#t-urso"/></svg></div><b>Urso bebê 20 cm</b><span><i>Cód.</i> BR-4130</span><span><i>Ref.</i> UB-20</span><span>un · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#t-carro"/></svg></div><b>Trator de brinquedo</b><span><i>Cód.</i> BR-2225</span><span><i>Ref.</i> TB-04</span><span>un · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#t-bola"/></svg></div><b>Bola de praia</b><span><i>Cód.</i> BR-1120</span><span><i>Ref.</i> BP-40</span><span>un · cx 24</span></div><div class="pdi"><div class="th t1"><svg><use href="#t-urso"/></svg></div><b>Cachorro de pelúcia</b><span><i>Cód.</i> BR-4135</span><span><i>Ref.</i> CP-28</span><span>un · cx 6</span></div><div class="pdi"><div class="th t4"><svg><use href="#t-blocos"/></svg></div><b>Blocos encaixe 80 pç</b><span><i>Cód.</i> BR-3325</span><span><i>Ref.</i> BE-80</span><span>un · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#t-bola"/></svg></div><b>Bola de vôlei</b><span><i>Cód.</i> BR-1125</span><span><i>Ref.</i> BO-65</span><span>un · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#t-carro"/></svg></div><b>Ônibus escolar</b><span><i>Cód.</i> BR-2230</span><span><i>Ref.</i> OE-05</span><span>un · cx 6</span></div><div class="pdi"><div class="th t2"><svg><use href="#t-blocos"/></svg></div><b>Torre de encaixe</b><span><i>Cód.</i> BR-3330</span><span><i>Ref.</i> TE-10</span><span>un · cx 12</span></div><div class="pdi"><div class="th t6"><svg><use href="#t-urso"/></svg></div><b>Unicórnio de pelúcia</b><span><i>Cód.</i> BR-4140</span><span><i>Ref.</i> UN-35</span><span>un · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#t-carro"/></svg></div><b>Carrinho de bombeiro</b><span><i>Cód.</i> BR-2235</span><span><i>Ref.</i> CB-06</span><span>un · cx 6</span></div><div class="pdi"><div class="th t4"><svg><use href="#t-bola"/></svg></div><b>Bola de basquete</b><span><i>Cód.</i> BR-1130</span><span><i>Ref.</i> BB-07</span><span>un · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#t-urso"/></svg></div><b>Gatinho de pelúcia</b><span><i>Cód.</i> BR-4145</span><span><i>Ref.</i> GP-22</span><span>un · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#t-blocos"/></svg></div><b>Blocos letras 26 pç</b><span><i>Cód.</i> BR-3335</span><span><i>Ref.</i> BL-26</span><span>un · cx 12</span></div></div></div></div><div class="lc" aria-hidden="true"><div class="s2roll rc"><div class="pdg3"><div class="pdi"><div class="th t1"><svg><use href="#m-toalha"/></svg></div><b>Toalha de banho 70×140</b><span><i>Cód.</i> CM-5101</span><span><i>Ref.</i> TB-70</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#m-travesseiro"/></svg></div><b>Travesseiro fibra 50×70</b><span><i>Cód.</i> CM-6201</span><span><i>Ref.</i> TF-50</span><span>un · cx 6</span></div><div class="pdi"><div class="th t2"><svg><use href="#m-lencol"/></svg></div><b>Jogo de lençol casal</b><span><i>Cód.</i> CM-7301</span><span><i>Ref.</i> JL-CS</span><span>jg · cx 6</span></div><div class="pdi"><div class="th t3"><svg><use href="#m-tapete"/></svg></div><b>Tapete de banheiro</b><span><i>Cód.</i> CM-8401</span><span><i>Ref.</i> TP-40</span><span>un · cx 12</span></div><div class="pdi"><div class="th t6"><svg><use href="#m-toalha"/></svg></div><b>Toalha de rosto 50×80</b><span><i>Cód.</i> CM-5105</span><span><i>Ref.</i> TR-50</span><span>un · cx 24</span></div><div class="pdi"><div class="th t5"><svg><use href="#m-lencol"/></svg></div><b>Jogo de lençol solteiro</b><span><i>Cód.</i> CM-7305</span><span><i>Ref.</i> JL-SL</span><span>jg · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#m-travesseiro"/></svg></div><b>Travesseiro viscoelástico</b><span><i>Cód.</i> CM-6205</span><span><i>Ref.</i> TV-50</span><span>un · cx 6</span></div><div class="pdi"><div class="th t4"><svg><use href="#m-tapete"/></svg></div><b>Tapete antiderrapante</b><span><i>Cód.</i> CM-8405</span><span><i>Ref.</i> TA-60</span><span>un · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#m-toalha"/></svg></div><b>Jogo de toalhas 5 pç</b><span><i>Cód.</i> CM-5110</span><span><i>Ref.</i> JT-05</span><span>jg · cx 6</span></div><div class="pdi"><div class="th t3"><svg><use href="#m-lencol"/></svg></div><b>Edredom casal</b><span><i>Cód.</i> CM-7310</span><span><i>Ref.</i> ED-CS</span><span>un · cx 4</span></div><div class="pdi"><div class="th t6"><svg><use href="#m-travesseiro"/></svg></div><b>Almofada decorativa</b><span><i>Cód.</i> CM-6210</span><span><i>Ref.</i> AD-45</span><span>un · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#m-tapete"/></svg></div><b>Passadeira de cozinha</b><span><i>Cód.</i> CM-8410</span><span><i>Ref.</i> PC-120</span><span>un · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#m-toalha"/></svg></div><b>Toalha de mesa 1,40 m</b><span><i>Cód.</i> CM-5120</span><span><i>Ref.</i> TM-140</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#m-lencol"/></svg></div><b>Colcha queen</b><span><i>Cód.</i> CM-7315</span><span><i>Ref.</i> CQ-QN</span><span>un · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#m-travesseiro"/></svg></div><b>Protetor de travesseiro</b><span><i>Cód.</i> CM-6215</span><span><i>Ref.</i> PT-50</span><span>un · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#m-tapete"/></svg></div><b>Tapete sala 1,00×1,50</b><span><i>Cód.</i> CM-8415</span><span><i>Ref.</i> TS-150</span><span>un · cx 4</span></div><div class="pdi"><div class="th t6"><svg><use href="#m-toalha"/></svg></div><b>Guardanapo de tecido</b><span><i>Cód.</i> CM-5125</span><span><i>Ref.</i> GT-40</span><span>un · cx 48</span></div><div class="pdi"><div class="th t5"><svg><use href="#m-lencol"/></svg></div><b>Fronha avulsa</b><span><i>Cód.</i> CM-7320</span><span><i>Ref.</i> FA-50</span><span>un · cx 24</span></div><div class="pdi"><div class="th t1"><svg><use href="#m-travesseiro"/></svg></div><b>Travesseiro infantil</b><span><i>Cód.</i> CM-6220</span><span><i>Ref.</i> TI-30</span><span>un · cx 12</span></div><div class="pdi"><div class="th t4"><svg><use href="#m-tapete"/></svg></div><b>Capacho de entrada</b><span><i>Cód.</i> CM-8420</span><span><i>Ref.</i> CE-60</span><span>un · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#m-toalha"/></svg></div><b>Toalha de piso</b><span><i>Cód.</i> CM-5130</span><span><i>Ref.</i> TP-48</span><span>un · cx 24</span></div><div class="pdi"><div class="th t3"><svg><use href="#m-lencol"/></svg></div><b>Manta de sofá</b><span><i>Cód.</i> CM-7325</span><span><i>Ref.</i> MS-150</span><span>un · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#m-travesseiro"/></svg></div><b>Almofada de assento</b><span><i>Cód.</i> CM-6225</span><span><i>Ref.</i> AA-40</span><span>un · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#m-tapete"/></svg></div><b>Jogo de tapetes 3 pç</b><span><i>Cód.</i> CM-8425</span><span><i>Ref.</i> JT-03</span><span>jg · cx 6</span></div></div></div></div></div>
+          </div></div>
+      <div class="cap">Exemplo ilustrativo</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMO -->
+<section class="resumo" aria-label="Resumo">
+  <div class="wrap">
+    <div class="kicker">Em resumo</div>
+    <div class="rs-grid">
+      <div class="rs-card"><svg class="ic"><use href="#i-users"/></svg><small>Para quem</small><b>Distribuidoras, atacadistas, fabricantes e&nbsp;representantes</b></div>
+      <div class="rs-card"><svg class="ic"><use href="#i-search"/></svg><small>O que é</small><b>Catálogo online com busca, vitrines e seleção por&nbsp;cliente</b></div>
+      <div class="rs-card"><svg class="ic"><use href="#i-layers"/></svg><small>Quem atualiza</small><b>A sua equipe, por um painel&nbsp;simples</b></div>
+      <div class="rs-card hl"><svg class="ic"><use href="#i-tag"/></svg><small>Investimento</small><b>Sob medida, depois de uma conversa sobre o seu&nbsp;portfólio</b><a href="#contato">Vamos conversar&nbsp;→</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 DORES -->
+<section class="slide soft" id="dores">
+  <div class="wrap">
+    <div class="kicker">Reconhece alguma dessas?</div>
+    <h2>O produto existe. O difícil é chegar até&nbsp;ele.</h2>
+    <p class="lead">Situações que aparecem o tempo todo em distribuidoras e representações do interior de São Paulo, de utilidades a limpeza, papelaria e&nbsp;embalagens.</p>
+    <div class="grid g3 mt">
+      <div class="card"><svg class="ic"><use href="#i-file"/></svg><h3>PDF pesado no&nbsp;WhatsApp</h3><p>Um catálogo de 80 páginas e 16 MB é pesado para baixar e abrir no celular do&nbsp;lojista.</p></div>
+      <div class="card"><svg class="ic"><use href="#i-layers"/></svg><h3>Um PDF por&nbsp;fábrica</h3><p>Quem representa várias marcas manda vários arquivos, e o cliente precisa juntar tudo&nbsp;sozinho.</p></div>
+      <div class="card"><svg class="ic"><use href="#i-calendar"/></svg><h3>Catálogo que&nbsp;envelhece</h3><p>O “Catálogo 2021” ainda está no site. Ou cada trimestre pede uma versão nova, refeita página por&nbsp;página.</p></div>
+      <div class="card"><svg class="ic"><use href="#i-search"/></svg><h3>Pasta solta no&nbsp;Drive</h3><p>Arquivos espalhados, sem busca por nome, código ou referência. Achar um item vira&nbsp;garimpo.</p></div>
+      <div class="card"><svg class="ic"><use href="#i-image"/></svg><h3>Site sem&nbsp;produtos</h3><p>Quem chega pelo Google não vê o mix. Às vezes o catálogo é a galeria de fotos do celular do&nbsp;representante.</p></div>
+      <div class="card"><svg class="ic"><use href="#i-shield"/></svg><h3>Loja B2B só com&nbsp;login</h3><p>Resolve o pedido de quem já é cliente. Mas o lojista novo não vê o mix sem criar&nbsp;conta.</p></div>
+    </div>
+    <p class="punch">Não falta produto. <span class="pk">Falta um jeito fácil de&nbsp;mostrar.</span></p>
+  </div>
+</section>
+
+<!-- 03 A SOLUÇÃO -->
+<section class="slide dark" id="solucao">
+  <div class="wrap">
+    <div class="two sol">
+      <div>
+        <div class="kicker">A solução</div>
+        <h2>Catálogo Comercial&nbsp;Navegável</h2>
+        <p class="lead">O catálogo deixa de ser um arquivo e vira uma ferramenta de&nbsp;venda.</p>
+        <p class="body-p mt">Uma plataforma com a cara da sua marca. O representante apresenta no atendimento, o lojista navega sem criar conta e a sua equipe atualiza tudo por um&nbsp;painel.</p>
+        <p class="body-p" style="margin-top:12px"><b class="wh">Um catálogo, qualquer tela.</b> No computador, no tablet ou no celular, ele se reorganiza sozinho para cada&nbsp;tamanho.</p>
+        <p class="body-p" style="margin-top:12px">Já tem loja virtual ou B2B? Ela continua como está. O catálogo&nbsp;soma.</p>
+      </div>
+    <div class="rsp" role="img" aria-label="Animação: a mesma tela do catálogo passa do computador para o tablet e para o celular, reorganizando as colunas de produtos">
+      <div class="rsp-stage">
+        <div class="rsp-frame dev">
+          <div class="rsp-l d"><div class="rsp-top"><span class="logo">Sua marca</span><div class="rsp-srch"><svg class="u"><use href="#i-search"/></svg><span>Buscar produto, código ou referência</span></div></div><div class="rsp-body"><div class="rsp-chips"><span class="on">Utilidades</span><span>Hotelaria</span><span>Brinquedos</span></div><div class="pdt"><small>Utilidades</small><b>Garrafas, jarras e copos</b></div><div class="pdg3"><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> SM-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> SM-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> LN-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> SM-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> SM-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> LN-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> SM-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> SM-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> LN-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> LN-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div></div></div></div>
+          <div class="rsp-l t"><div class="rsp-top"><span class="logo">Sua marca</span></div><div class="rsp-body"><div class="rsp-srch"><svg class="u"><use href="#i-search"/></svg><span>Buscar produto, código ou referência</span></div><div class="rsp-chips"><span class="on">Utilidades</span><span>Hotelaria</span><span>Brinquedos</span></div><div class="pdt"><small>Utilidades</small><b>Garrafas, jarras e copos</b></div><div class="pdg3"><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> SM-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> SM-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> LN-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> SM-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> SM-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> LN-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> SM-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> SM-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> LN-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> LN-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> SM-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> SM-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> LN-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> SM-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> SM-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> LN-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> SM-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> SM-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> LN-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> LN-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div></div></div></div>
+          <div class="rsp-l m"><div class="rsp-top"><span class="logo">Sua marca</span></div><div class="rsp-body"><div class="rsp-srch"><svg class="u"><use href="#i-search"/></svg><span>Buscar produto, código ou referência</span></div><div class="rsp-chips"><span class="on">Utilidades</span><span>Hotelaria</span><span>Brinquedos</span></div><div class="pdt"><small>Utilidades</small><b>Garrafas, jarras e copos</b></div><div class="pdg3"><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> SM-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> SM-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> LN-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> SM-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> SM-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> LN-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> SM-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> SM-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> LN-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> LN-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div><div class="pdi"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L inox</b><span><i>Cód.</i> SM-3310</span><span><i>Ref.</i> GT-1000</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica com alça</b><span><i>Cód.</i> SM-3312</span><span><i>Ref.</i> GT-1001</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica pressão</b><span><i>Cód.</i> LN-7120</span><span><i>Ref.</i> TP-10</span><span>1 L · cx 6</span></div><div class="pdi"><div class="th t6"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1,8 L</b><span><i>Cód.</i> SM-3318</span><span><i>Ref.</i> GT-1800</span><span>1,8 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 500 ml</b><span><i>Cód.</i> SM-3305</span><span><i>Ref.</i> GT-500</span><span>500 ml · cx 24</span></div><div class="pdi"><div class="th t4"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><span><i>Cód.</i> LN-7108</span><span><i>Ref.</i> TC-750</span><span>750 ml · cx 12</span></div><div class="pdi"><div class="th t3"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 2 L</b><span><i>Cód.</i> SM-3320</span><span><i>Ref.</i> GT-2000</span><span>2 L · cx 6</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 3 L</b><span><i>Cód.</i> SM-3330</span><span><i>Ref.</i> GT-3000</span><span>3 L · cx 4</span></div><div class="pdi"><div class="th t2"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1 L</b><span><i>Cód.</i> LN-7130</span><span><i>Ref.</i> JT-10</span><span>1 L · cx 12</span></div><div class="pdi"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra térmica 1,5 L</b><span><i>Cód.</i> LN-7135</span><span><i>Ref.</i> JT-15</span><span>1,5 L · cx 12</span></div></div></div></div>
+        </div>
+      </div>
+      <div class="rsp-lbl" aria-hidden="true"><span class="d">Computador</span><span class="t">Tablet</span><span class="m">Celular</span></div>
+    </div>
+    </div>
+    <div class="statement">
+      <p>Aqui, o objetivo não é realizar a&nbsp;compra.</p>
+      <h3>É <span class="pk">encontrar, apresentar, selecionar e&nbsp;compartilhar</span> produtos.</h3>
+    </div>
+  </div>
+</section>
+
+
+<!-- 04 COMO FUNCIONA -->
+<section class="slide soft" id="como-funciona">
+  <div class="wrap">
+    <div class="kicker">Como funciona</div>
+    <h2>Menos tempo procurando produto. <span class="pk">Mais tempo&nbsp;vendendo.</span></h2>
+    <div class="grid g4 mt">
+      <div class="how"><div class="ui-stage dev" role="img" aria-label="Barra de busca com o texto Garrafa térmica 1L"><div class="ui-search"><svg class="u"><use href="#i-search"/></svg><span class="typed">Garrafa térmica 1L</span><span class="cur"></span></div></div><h3><small>01</small>Busque</h3><p>Encontre na hora por nome, código ou&nbsp;referência.</p></div>
+      <div class="how"><div class="ui-stage dev" role="img" aria-label="Três filtros: Cozinha, Mercados e Dia das Mães"><div class="ui-chips"><span class="on">Cozinha<svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span>Mercados<svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span>Dia das Mães<svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span></div></div><h3><small>02</small>Explore</h3><p>Navegue por categorias, perfis de loja e&nbsp;vitrines.</p></div>
+      <div class="how"><div class="ui-stage dev" role="img" aria-label="Card de produto com imagem, nome, código e botão de adicionar"><div class="ui-prod"><div class="th t5"><svg><use href="#p-termica"/></svg></div><div class="rt"><b>Garrafa térmica 1 L inox</b><small>GT-3310 · ref. GT-1000</small></div><span class="ui-add"><svg class="u pl"><use href="#i-plus"/></svg><svg class="u ck"><use href="#i-check"/></svg><svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span></div></div><h3><small>03</small>Selecione</h3><p>Adicione os produtos de interesse e ajuste&nbsp;quantidades.</p></div>
+      <div class="how"><div class="ui-stage dev" role="img" aria-label="Botões de compartilhar: WhatsApp, copiar link e PDF; ao copiar o link aparece a mensagem Link copiado"><div class="ui-share"><span class="pri"><svg class="u"><use href="#i-whats"/></svg>Enviar pelo WhatsApp</span><div><span class="cp"><svg class="u"><use href="#i-link"/></svg>Copiar link<svg class="ui-cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8.2-6.2 1.6L9.6 19z" fill="#1d1d1f" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span><svg class="u"><use href="#i-file"/></svg>PDF</span></div></div><span class="ui-toast"><svg class="u"><use href="#i-check"/></svg>Link copiado</span></div><h3><small>04</small>Compartilhe</h3><p>Mande ao cliente uma seleção feita para aquela loja. Sem anexar PDF&nbsp;pesado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 VITRINES -->
+<section class="slide" id="vitrines">
+  <div class="wrap">
+    <div class="kicker">Vitrines, não novos catálogos</div>
+    <h2>Uma única base de produtos. Diferentes oportunidades de&nbsp;venda.</h2>
+    <p class="lead">Um produto não fica preso a uma página. Ele pode estar em uma categoria, em um perfil de loja e em várias campanhas ao longo do&nbsp;ano.</p>
+    <div class="vt mt">
+      <input type="radio" name="vt" id="vt-0" class="vt-off" checked><input type="radio" name="vt" id="vt-mv" class="vt-r" aria-label="Abrir a vitrine Mais vendidos"><input type="radio" name="vt" id="vt-dm" class="vt-r" aria-label="Abrir a vitrine Dia das Mães"><input type="radio" name="vt" id="vt-va" class="vt-r" aria-label="Abrir a vitrine Volta às aulas"><input type="radio" name="vt" id="vt-dc" class="vt-r" aria-label="Abrir a vitrine Dia das Crianças">
+      <div class="vt-cards"><label for="vt-mv" class="vt-card c-mv"><small>Vitrine</small><b>Mais vendidos</b><span class="vt-n">8 produtos</span><span class="vt-th"><span class="th t5"><svg><use href="#p-termica"/></svg></span><span class="th t1"><svg><use href="#p-pote"/></svg></span><span class="th t2"><svg><use href="#p-balde"/></svg></span></span><span class="vt-go">Abrir <svg class="ic"><use href="#i-arrow"/></svg></span></label><label for="vt-dm" class="vt-card c-dm"><small>Vitrine</small><b>Dia das Mães</b><span class="vt-n">8 produtos</span><span class="vt-th"><span class="th t2"><svg><use href="#p-caneca"/></svg></span><span class="th t3"><svg><use href="#p-flor"/></svg></span><span class="th t2"><svg><use href="#p-termica"/></svg></span></span><span class="vt-go">Abrir <svg class="ic"><use href="#i-arrow"/></svg></span></label><label for="vt-va" class="vt-card c-va"><small>Vitrine</small><b>Volta às aulas</b><span class="vt-n">8 produtos</span><span class="vt-th"><span class="th t1"><svg><use href="#p-caderno"/></svg></span><span class="th t6"><svg><use href="#p-lapis"/></svg></span><span class="th t2"><svg><use href="#p-mochila"/></svg></span></span><span class="vt-go">Abrir <svg class="ic"><use href="#i-arrow"/></svg></span></label><label for="vt-dc" class="vt-card c-dc"><small>Vitrine</small><b>Dia das Crianças</b><span class="vt-n">8 produtos</span><span class="vt-th"><span class="th t6"><svg><use href="#p-bola"/></svg></span><span class="th t3"><svg><use href="#p-blocos"/></svg></span><span class="th t2"><svg><use href="#p-garrafa"/></svg></span></span><span class="vt-go">Abrir <svg class="ic"><use href="#i-arrow"/></svg></span></label></div>
+      <p class="vt-hint"><svg class="ic"><use href="#i-arrow"/></svg>Toque em uma vitrine para ver os produtos dela. Exemplo&nbsp;ilustrativo.</p>
+      <div class="vt-panels"><div class="vt-panel p-mv" role="region" aria-label="Produtos da vitrine Mais vendidos">
+        <div class="vt-hd"><div><small>Vitrine</small><b>Mais vendidos</b><span>Os campeões do mês, para abrir qualquer&nbsp;visita.</span></div><div class="vt-act"><span class="vt-wa"><svg class="ic"><use href="#i-whats"/></svg>Enviar vitrine</span><label for="vt-0" class="vt-x">Fechar <svg class="ic"><use href="#i-x"/></svg></label></div></div>
+        <div class="vt-grid"><div class="pc"><div class="th t5"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica 1 L</b><small>MV-3310 · cx 12</small></div><div class="pc"><div class="th t1"><svg><use href="#p-pote"/></svg></div><b>Pote hermético 1,2 L</b><small>MV-2104 · cx 24</small></div><div class="pc"><div class="th t2"><svg><use href="#p-balde"/></svg></div><b>Balde 10 L</b><small>MV-1810 · cx 12</small></div><div class="pc"><div class="th t5"><svg><use href="#p-escorredor"/></svg></div><b>Escorredor de louça</b><small>MV-4402 · cx 6</small></div><div class="pc"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra 2 L</b><small>MV-5542 · cx 12</small></div><div class="pc"><div class="th t6"><svg><use href="#p-copos"/></svg></div><b>Kit copos 6 un.</b><small>MV-3021 · cx 8</small></div><div class="pc"><div class="th t4"><svg><use href="#p-tabua"/></svg></div><b>Tábua de corte</b><small>MV-6120 · cx 12</small></div><div class="pc"><div class="th t4"><svg><use href="#p-cesto"/></svg></div><b>Cesto organizador</b><small>MV-7031 · cx 10</small></div></div>
+      </div><div class="vt-panel p-dm" role="region" aria-label="Produtos da vitrine Dia das Mães">
+        <div class="vt-hd"><div><small>Vitrine</small><b>Dia das Mães</b><span>Presentes prontos para a loja montar a&nbsp;vitrine dela.</span></div><div class="vt-act"><span class="vt-wa"><svg class="ic"><use href="#i-whats"/></svg>Enviar vitrine</span><label for="vt-0" class="vt-x">Fechar <svg class="ic"><use href="#i-x"/></svg></label></div></div>
+        <div class="vt-grid"><div class="pc"><div class="th t2"><svg><use href="#p-caneca"/></svg></div><b>Caneca de porcelana</b><small>DM-1102 · cx 12</small></div><div class="pc"><div class="th t3"><svg><use href="#p-flor"/></svg></div><b>Vaso decorativo</b><small>DM-1240 · cx 6</small></div><div class="pc"><div class="th t2"><svg><use href="#p-termica"/></svg></div><b>Garrafa térmica café</b><small>DM-3108 · cx 12</small></div><div class="pc"><div class="th t6"><svg><use href="#p-copos"/></svg></div><b>Jogo de copos</b><small>DM-3025 · cx 8</small></div><div class="pc"><div class="th t4"><svg><use href="#p-tabua"/></svg></div><b>Tábua de servir</b><small>DM-6130 · cx 10</small></div><div class="pc"><div class="th t1"><svg><use href="#p-jarra"/></svg></div><b>Jarra de vidro 1,5 L</b><small>DM-5535 · cx 12</small></div><div class="pc"><div class="th t4"><svg><use href="#p-cesto"/></svg></div><b>Cesta de presente</b><small>DM-7040 · cx 6</small></div><div class="pc"><div class="th t2"><svg><use href="#p-pote"/></svg></div><b>Pote de vidro 900 ml</b><small>DM-2109 · cx 24</small></div></div>
+      </div><div class="vt-panel p-va" role="region" aria-label="Produtos da vitrine Volta às aulas">
+        <div class="vt-hd"><div><small>Vitrine</small><b>Volta às aulas</b><span>Material e lancheira em uma seleção só, para papelarias e&nbsp;mercados.</span></div><div class="vt-act"><span class="vt-wa"><svg class="ic"><use href="#i-whats"/></svg>Enviar vitrine</span><label for="vt-0" class="vt-x">Fechar <svg class="ic"><use href="#i-x"/></svg></label></div></div>
+        <div class="vt-grid"><div class="pc"><div class="th t1"><svg><use href="#p-caderno"/></svg></div><b>Caderno 10 matérias</b><small>VA-0110 · cx 20</small></div><div class="pc"><div class="th t6"><svg><use href="#p-lapis"/></svg></div><b>Lápis grafite cx 12</b><small>VA-0212 · cx 48</small></div><div class="pc"><div class="th t2"><svg><use href="#p-mochila"/></svg></div><b>Mochila escolar</b><small>VA-0320 · cx 6</small></div><div class="pc"><div class="th t5"><svg><use href="#p-estojo"/></svg></div><b>Estojo duplo</b><small>VA-0415 · cx 24</small></div><div class="pc"><div class="th t3"><svg><use href="#p-garrafa"/></svg></div><b>Squeeze 500 ml</b><small>VA-3302 · cx 36</small></div><div class="pc"><div class="th t1"><svg><use href="#p-pote"/></svg></div><b>Pote para lanche</b><small>VA-2101 · cx 24</small></div><div class="pc"><div class="th t4"><svg><use href="#p-caderno"/></svg></div><b>Caderno brochura</b><small>VA-0105 · cx 40</small></div><div class="pc"><div class="th t2"><svg><use href="#p-lapis"/></svg></div><b>Lápis de cor 12 cores</b><small>VA-0224 · cx 24</small></div></div>
+      </div><div class="vt-panel p-dc" role="region" aria-label="Produtos da vitrine Dia das Crianças">
+        <div class="vt-hd"><div><small>Vitrine</small><b>Dia das Crianças</b><span>Brinquedos e itens infantis para a data mais disputada do&nbsp;ano.</span></div><div class="vt-act"><span class="vt-wa"><svg class="ic"><use href="#i-whats"/></svg>Enviar vitrine</span><label for="vt-0" class="vt-x">Fechar <svg class="ic"><use href="#i-x"/></svg></label></div></div>
+        <div class="vt-grid"><div class="pc"><div class="th t6"><svg><use href="#p-bola"/></svg></div><b>Bola de vinil</b><small>DC-0801 · cx 24</small></div><div class="pc"><div class="th t3"><svg><use href="#p-blocos"/></svg></div><b>Blocos de montar</b><small>DC-0915 · cx 12</small></div><div class="pc"><div class="th t2"><svg><use href="#p-garrafa"/></svg></div><b>Garrafa infantil 400 ml</b><small>DC-3290 · cx 24</small></div><div class="pc"><div class="th t1"><svg><use href="#p-mochila"/></svg></div><b>Mochila infantil</b><small>DC-0330 · cx 6</small></div><div class="pc"><div class="th t6"><svg><use href="#p-copos"/></svg></div><b>Copo com canudo</b><small>DC-3040 · cx 24</small></div><div class="pc"><div class="th t3"><svg><use href="#p-pote"/></svg></div><b>Pote para lanche infantil</b><small>DC-2112 · cx 24</small></div><div class="pc"><div class="th t1"><svg><use href="#p-bola"/></svg></div><b>Bola de praia</b><small>DC-0805 · cx 24</small></div><div class="pc"><div class="th t2"><svg><use href="#p-estojo"/></svg></div><b>Estojo infantil</b><small>DC-0418 · cx 24</small></div></div>
+      </div></div>
+    </div>
+    <div class="two mt" style="align-items:start">
+      <p class="body-p">Todas as vitrines puxam da mesma base: o produto é cadastrado uma vez e aparece em quantas vitrines precisar. Antes, cada data comercial pedia um PDF&nbsp;novo.</p>
+      <h3>Agora, em vez de um novo catálogo, você cria uma <span class="pk">nova&nbsp;vitrine</span>.</h3>
+    </div>
+  </div>
+</section>
+
+<!-- 06 PARA CADA REALIDADE -->
+<section class="slide rose" id="para-quem">
+  <div class="wrap">
+    <div class="kicker">Para cada realidade</div>
+    <h2>Seja qual for o seu ponto de partida, o catálogo se&nbsp;encaixa.</h2>
+    <div class="grid g2 mt fit">
+      <div class="card"><div class="unit"><svg class="ic"><use href="#i-users"/></svg>Representa várias marcas</div><h3>Todas as fábricas num lugar&nbsp;só.</h3><p>Um catálogo com busca para o portfólio inteiro. Você monta uma seleção para cada loja e manda o&nbsp;link.</p></div>
+      <div class="card"><div class="unit"><svg class="ic"><use href="#i-store"/></svg>Já tem loja online ou B2B</div><h3>Não substitui. Soma.</h3><p>A loja resolve o pedido de quem já compra. O catálogo é a vitrine para o representante apresentar e para o lojista sem cadastro conhecer o&nbsp;mix.</p></div>
+      <div class="card"><div class="unit"><svg class="ic"><use href="#i-file"/></svg>Vive de PDF</div><h3>Do arquivo para a&nbsp;base.</h3><p>Seus PDFs viram uma base de produtos organizada, com imagens em boa qualidade e atualização pelo&nbsp;painel.</p></div>
+      <div class="card"><div class="unit"><svg class="ic"><use href="#i-spark"/></svg>Ainda não tem catálogo</div><h3>Seu mix, finalmente à&nbsp;vista.</h3><p>Quem chega pelo site, pelo Instagram ou pelo representante passa a ver o que você vende, organizado por categoria e perfil de&nbsp;loja.</p></div>
+    </div>
+    <p class="small-note mt">Já usa um catálogo online de terceiros? Dá para ter um com a cara da sua marca, organizado do jeito que a sua equipe&nbsp;vende.</p>
+  </div>
+</section>
+
+<!-- 07 GERENCIAMENTO -->
+<section class="slide soft" id="gerenciamento">
+  <div class="wrap">
+    <div class="kicker">Gerenciamento do catálogo</div>
+    <h2>Quando um produto fica&nbsp;indisponível</h2>
+    <div class="grid g2 mt dpp dpp-n">
+      <div class="card"><div class="unit">Catálogo em PDF</div><div class="dpp-big">Dezenas de páginas</div>
+        <ol class="vflow pdfv"><li>Produto indisponível</li><li>Localizar no material</li><li>Alterar</li><li>Revisar</li><li>Exportar novamente</li><li>Reenviar o arquivo</li></ol>
+      </div>
+      <div class="card hl"><div class="unit">Catálogo navegável</div><div class="dpp-big">Uma base de produtos</div>
+        <ol class="vflow navv"><li>Produto indisponível</li><li>Alterar status no painel</li><li>Atualizado</li></ol>
+      </div>
+    </div>
+    <p class="punch">A diferença não está só em como o catálogo aparece. <span class="pk">Está em como ele é&nbsp;gerenciado.</span></p>
+  </div>
+</section>
+
+<section class="slide dark" id="painel">
+  <div class="wrap">
+    <div class="kicker">No dia a dia</div>
+    <h2>Um catálogo que acompanha o seu&nbsp;portfólio.</h2>
+    <p class="lead">O PDF registra o portfólio em um momento. <span class="pk">O catálogo navegável acompanha cada&nbsp;mudança.</span></p>
+    <dl class="faq">
+      <div><dt>Produto ficou indisponível?</dt><dd>Sua equipe altera o status no painel e o produto é sinalizado ou sai do&nbsp;catálogo.</dd></div>
+      <div><dt>Voltou a ficar disponível?</dt><dd>Basta&nbsp;reativá-lo.</dd></div>
+      <div><dt>Nova imagem ou informação?</dt><dd>Edite o cadastro do produto. O catálogo atualiza&nbsp;junto.</dd></div>
+      <div><dt>Chegou produto novo?</dt><dd>Publique e ele já aparece nas categorias, perfis de loja e vitrines&nbsp;certos.</dd></div>
+    </dl>
+    <p class="body-p mt" style="max-width:72ch">Seu material comercial fica sempre atualizado e fiel ao que está disponível de verdade, sem uma nova versão do catálogo a cada&nbsp;alteração.</p>
+  </div>
+</section>
+
+<!-- 08 GANHOS -->
+<section class="slide" id="ganhos">
+  <div class="wrap">
+    <div class="kicker">Benefícios</div>
+    <h2>O ganho para cada&nbsp;área</h2>
+    <div class="grid g2 mt area">
+      <div class="card"><div class="unit"><svg class="ic"><use href="#i-users"/></svg>Representante</div><ul class="list"><li><svg class="ic"><use href="#i-check"/></svg>Encontra produtos mais rápido.</li><li><svg class="ic"><use href="#i-check"/></svg>Apresenta o portfólio de forma organizada, com imagens em boa qualidade.</li><li><svg class="ic"><use href="#i-check"/></svg>Começa a visita com um mix padrão e ajusta para cada loja.</li><li><svg class="ic"><use href="#i-check"/></svg>Monta uma seleção para cada cliente e manda o link, até durante uma ligação.</li><li><svg class="ic"><use href="#i-check"/></svg>Nunca oferece produto que acabou: a disponibilidade vem do painel.</li><li><svg class="ic"><use href="#i-check"/></svg>Gasta menos tempo preparando a visita.</li></ul></div>
+      <div class="card"><div class="unit"><svg class="ic"><use href="#i-store"/></svg>Lojista</div><ul class="list"><li><svg class="ic"><use href="#i-check"/></svg>Navega sem precisar criar conta.</li><li><svg class="ic"><use href="#i-check"/></svg>Abre no celular, sem baixar arquivo pesado.</li><li><svg class="ic"><use href="#i-check"/></svg>Vê só o que está disponível de verdade.</li><li><svg class="ic"><use href="#i-check"/></svg>Encontra o que faz sentido para a loja dele.</li><li><svg class="ic"><use href="#i-check"/></svg>Confere código e referência na hora de pedir.</li><li><svg class="ic"><use href="#i-check"/></svg>Repassa a seleção para o sócio ou o comprador pelo mesmo link.</li><li><svg class="ic"><use href="#i-check"/></svg>Descobre lançamentos e vitrines de datas comerciais sem esperar o próximo catálogo.</li></ul></div>
+      <div class="card"><div class="unit"><svg class="ic"><use href="#i-chart"/></svg>Marketing</div><ul class="list"><li><svg class="ic"><use href="#i-check"/></svg>Cria vitrines e campanhas em pouco tempo.</li><li><svg class="ic"><use href="#i-check"/></svg>Coloca um lançamento no ar no mesmo dia.</li><li><svg class="ic"><use href="#i-check"/></svg>Reaproveita a mesma base de produtos.</li><li><svg class="ic"><use href="#i-check"/></svg>Para de refazer material a cada data.</li><li><svg class="ic"><use href="#i-check"/></svg>Usa imagens em alta qualidade, sem se preocupar com o peso do arquivo.</li><li><svg class="ic"><use href="#i-check"/></svg>Mantém o padrão visual da marca no portfólio inteiro.</li></ul></div>
+      <div class="card"><div class="unit"><svg class="ic"><use href="#i-layers"/></svg>Gestão comercial</div><ul class="list"><li><svg class="ic"><use href="#i-check"/></svg>Todo o time usa a mesma versão do catálogo.</li><li><svg class="ic"><use href="#i-check"/></svg>Os representantes apresentam do mesmo jeito.</li><li><svg class="ic"><use href="#i-check"/></svg>Um representante novo aprende o portfólio mais rápido.</li><li><svg class="ic"><use href="#i-check"/></svg>A empresa passa uma imagem mais profissional para o lojista.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ENTREGA -->
+<section class="slide soft" id="entrega">
+  <div class="wrap">
+    <div class="kicker">O que você recebe</div>
+    <h2>Não só a plataforma. Um catálogo pronto para&nbsp;usar.</h2>
+    <p class="lead">Na implantação, cadastro o seu portfólio inicial com as informações e imagens que a sua empresa enviar. Cada produto já entra ligado à categoria&nbsp;certa.</p>
+    <div class="grid g2 mt isnot">
+      <div class="card hl">
+        <div class="unit"><svg class="ic"><use href="#i-check"/></svg>O que é</div>
+        <ul class="list">
+          <li><svg class="ic"><use href="#i-check"/></svg>Catálogo responsivo para computador, tablet e celular</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Busca por produto, código ou referência</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Categorias e organização do portfólio</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Segmentação por perfil de loja</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Vitrines comerciais e listas oficiais</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Seleção de produtos e quantidades</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Compartilhamento por WhatsApp, link ou PDF</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Painel exclusivo do catálogo, com controle de disponibilidade</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="unit"><svg class="ic"><use href="#i-x"/></svg>O que não é</div>
+        <ul class="list no">
+          <li><svg class="ic"><use href="#i-x"/></svg><span><b>Não é loja virtual.</b> Não tem carrinho de compra nem&nbsp;pagamento.</span></li>
+          <li><svg class="ic"><use href="#i-x"/></svg><span><b>Não substitui a sua loja B2B ou o seu site.</b> Eles continuam funcionando, e o catálogo&nbsp;soma.</span></li>
+          <li><svg class="ic"><use href="#i-x"/></svg><span><b>Não é o sistema de gestão da empresa.</b> O painel cuida só do&nbsp;catálogo.</span></li>
+          <li><svg class="ic"><use href="#i-x"/></svg><span><b>Não pede cadastro do lojista.</b> Ele abre o link e&nbsp;navega.</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="body-p mt">Depois da implantação, a sua equipe faz atualizações e novos cadastros direto pelo painel, com o apoio do manual e da&nbsp;videoaula.</p>
+  </div>
+</section>
+
+<!-- 09B SOB MEDIDA -->
+<section class="slide dark" id="sob-medida">
+  <div class="wrap">
+    <div class="kicker">Sob medida</div>
+    <h2>Comece pelo essencial. Acrescente o que a sua operação&nbsp;pedir.</h2>
+    <p class="lead">O catálogo nasce com o escopo acima. Módulos e integrações entram só quando fazem sentido, e a gente define isso junto no&nbsp;briefing.</p>
+    <div class="grid g2 mt opts">
+      <div class="card hl">
+        <div class="unit"><svg class="ic"><use href="#i-box"/></svg>Entregáveis</div>
+        <p class="sub">O que você recebe ao final do&nbsp;projeto.</p>
+        <ul class="list">
+          <li><svg class="ic"><use href="#i-check"/></svg>Catálogo publicado e configurado</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Painel do catálogo</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Portfólio inicial cadastrado</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Manual do sistema em e-book</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Videoaula de treinamento da equipe</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="unit"><svg class="ic"><use href="#i-plus"/></svg>Módulos opcionais</div>
+        <p class="sub">Recursos adicionados só quando fazem&nbsp;sentido.</p>
+        <ul class="list">
+          <li><svg class="ic"><use href="#i-plus"/></svg><span><b>Pedido de orçamento.</b> O lojista envia a seleção direto para o&nbsp;comercial.</span></li>
+          <li><svg class="ic"><use href="#i-plus"/></svg><span><b>Área do representante.</b> Mixes salvos por&nbsp;cliente.</span></li>
+          <li><svg class="ic"><use href="#i-plus"/></svg><span><b>Tabela de preço por&nbsp;cliente.</b></span></li>
+          <li><svg class="ic"><use href="#i-plus"/></svg><span><b>Estoque indicativo.</b></span></li>
+          <li><svg class="ic"><use href="#i-plus"/></svg><span><b>Catálogo em PDF</b> gerado a partir da&nbsp;base.</span></li>
+          <li><svg class="ic"><use href="#i-plus"/></svg><span><b>Relatórios</b> de produtos mais vistos e&nbsp;compartilhados.</span></li>
+          <li><svg class="ic"><use href="#i-plus"/></svg><span><b>Produção e edição de fotos.</b> Imagens padronizadas para o catálogo inteiro.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="unit"><svg class="ic"><use href="#i-link"/></svg>Integrações possíveis</div>
+        <p class="sub">Sistemas que podem entrar no&nbsp;fluxo.</p>
+        <div class="chips"><span class="chip"><i></i>WhatsApp</span><span class="chip"><i></i>Planilha (Excel/CSV)</span><span class="chip"><i></i>ERP</span><span class="chip"><i></i>CRM</span><span class="chip"><i></i>E-mail</span><span class="chip"><i></i>Google Analytics</span></div>
+        <p class="note">Cada integração depende de API, documentação e autorização do fornecedor do&nbsp;sistema.</p>
+      </div>
+      <div class="card off">
+        <div class="unit"><svg class="ic"><use href="#i-x"/></svg>Não incluído automaticamente</div>
+        <p class="sub">Limites claros para não ter surpresa&nbsp;depois.</p>
+        <ul class="list">
+          <li><svg class="ic"><use href="#i-x"/></svg><span><b>Cadastro ilimitado.</b> A quantidade da implantação inicial fica definida na&nbsp;proposta.</span></li>
+          <li><svg class="ic"><use href="#i-x"/></svg><span><b>Integração com sistema sem API ou&nbsp;documentação.</b></span></li>
+          <li><svg class="ic"><use href="#i-x"/></svg><span><b>Fotos e textos de produto.</b> O cadastro usa os materiais que a sua empresa enviar. As fotos podem entrar como módulo&nbsp;opcional.</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="small-note mt">A proposta pode remover, adaptar ou detalhar itens conforme o&nbsp;briefing.</p>
+  </div>
+</section>
+
+<!-- 10 ETAPAS -->
+<section class="slide" id="etapas">
+  <div class="wrap">
+    <div class="kicker">Etapas do projeto</div>
+    <h2>Do briefing à&nbsp;entrega.</h2>
+    <div class="grid g3 mt">
+      <div class="card"><div class="unit">01</div><h3>Briefing e alinhamento</h3><p>Entendo como você vende hoje, como estão os catálogos e como o portfólio é&nbsp;organizado.</p></div>
+      <div class="card"><div class="unit">02</div><h3>Estrutura e experiência</h3><p>Definimos juntos categorias, perfis de loja, vitrines e os caminhos de&nbsp;navegação.</p></div>
+      <div class="card"><div class="unit">03</div><h3>Criação visual</h3><p>O catálogo ganha a cara da sua marca, pensado para o tablet do representante e o celular do&nbsp;lojista.</p></div>
+      <div class="card"><div class="unit">04</div><h3>Desenvolvimento</h3><p>Construção da plataforma, da busca, das vitrines e do&nbsp;painel.</p></div>
+      <div class="card"><div class="unit">05</div><h3>Cadastro e configuração</h3><p>Implantação inicial do portfólio com os materiais que a sua empresa&nbsp;enviar.</p></div>
+      <div class="card"><div class="unit">06</div><h3>Testes e entrega</h3><p>Revisamos juntos, publicamos e a equipe é treinada para usar no dia&nbsp;seguinte.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 SOBRE MIM -->
+<section class="slide rose to-b" id="sobre">
+  <div class="wrap two about">
+    <div class="photo-wrap">
+      <img class="photo-b" src="/catalogo-digital/img/hero-julia.webp" width="1288" height="1235" alt="Julia Nunes segurando um notebook, com exemplos de páginas que ela criou ao fundo" loading="lazy">
+      <span class="fchip f1"><i></i>UI/UX</span>
+      <span class="fchip f2"><i></i>Sistemas web</span>
+      <span class="fchip f3"><i></i>Identidade visual</span>
+      <span class="fchip f4"><i></i>Estratégia</span>
+    </div>
+    <div class="about-tx">
+      <div class="kicker">Sobre mim</div>
+      <h2>Meu trabalho é facilitar a sua&nbsp;venda.</h2>
+      <p class="lead">Oi, eu sou a Julia Nunes, designer com experiência em UI e UX. Meu objetivo é criar sistemas que funcionam e facilitam a vida de quem usa todos os&nbsp;dias.</p>
+      <p class="body-p mt">Antes de pensar no visual, eu olho para a rotina de quem vende: o representante com o tablet na mão, o lojista no celular entre um cliente e outro, o marketing correndo para atualizar produto. Bonito, sim. Mas com função. O objetivo é a sua equipe encontrar, apresentar e vender com menos&nbsp;esforço.</p>
+      <p class="body-p" style="margin-top:12px">Também crio identidade visual, landing pages e materiais de campanha. <a class="inl" href="https://julianunesdesign.com.br/" target="_blank" rel="noopener">Veja o meu portfólio&nbsp;→</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 PDF -->
+<section class="slide" id="pdf">
+  <div class="wrap">
+    <div class="card pdfalt">
+      <div>
+        <div class="unit">Prefere continuar no PDF?</div>
+        <h3>Também evoluo o seu catálogo em&nbsp;PDF.</h3>
+      </div>
+      <p>Se o PDF faz sentido para a sua operação, ele pode ficar mais organizado, consistente e fácil de consultar, com índice claro e uma hierarquia melhor entre imagem, código e especificação. Na conversa, te ajudo a escolher o caminho&nbsp;certo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 FAQ -->
+<section class="slide dark" id="duvidas">
+  <div class="wrap">
+    <div class="kicker">Dúvidas frequentes</div>
+    <h2>Antes de&nbsp;conversar</h2>
+    <dl class="faq">
+      <div><dt>Substitui a minha loja virtual ou B2B?</dt><dd>Não. A loja continua cuidando do pedido. O catálogo serve para encontrar, apresentar, selecionar e compartilhar&nbsp;produtos.</dd></div>
+      <div><dt>O lojista precisa criar conta?</dt><dd>Não. Ele abre o link e navega pelo mix&nbsp;direto.</dd></div>
+      <div><dt>Funciona no tablet e no celular?</dt><dd>Sim. A experiência se ajusta ao computador, ao tablet e ao&nbsp;celular.</dd></div>
+      <div><dt>Quem atualiza depois?</dt><dd>A sua equipe, pelo painel. Ela recebe manual em e-book e videoaula de&nbsp;treinamento.</dd></div>
+      <div><dt>Trabalho com várias marcas. Dá para juntar?</dt><dd>Sim. Todas as fábricas ficam numa única base, com&nbsp;busca.</dd></div>
+      <div><dt>Quanto custa?</dt><dd>Depende do tamanho do portfólio e do que a sua operação precisa. Depois de uma conversa rápida, mando uma proposta com valor e&nbsp;etapas.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 14 CTA -->
+<section class="slide fim to-b" id="contato">
+  <div class="wrap two end">
+    <div class="end-tx">
+      <div class="kicker">Vamos conversar?</div>
+      <h2>Me conta como você apresenta seus produtos&nbsp;hoje.</h2>
+      <p class="lead">Numa conversa rápida eu entendo o seu catálogo e te digo, com sinceridade, qual caminho faz mais sentido para a sua&nbsp;venda.</p>
+      <div class="mt"><a class="cta big" href="https://wa.me/5519989080803?text=Oi%2C%20Julia%21%20Vi%20a%20p%C3%A1gina%20do%20cat%C3%A1logo%20naveg%C3%A1vel%20e%20quero%20entender%20se%20faz%20sentido%20para%20a%20minha%20empresa." target="_blank" rel="noopener"><svg class="ic"><use href="#i-whats"/></svg><span class="l">Chamar no&nbsp;WhatsApp</span><span class="s">WhatsApp</span></a></div>
+    </div>
+    <img class="photo-b" src="/catalogo-digital/img/sobre-julia.webp" width="960" height="1004" alt="Julia Nunes sentada em uma cadeira rosa, com um notebook no colo" loading="lazy">
+  </div>
+  <div class="wrap">
+    <div class="foot">
+      <b>Julia Nunes</b>
+      <a href="https://julianunesdesign.com.br/" target="_blank" rel="noopener">julianunesdesign.com.br</a>
+    </div>
+  </div>
+</section>
+
+<div class="prog" aria-hidden="true"></div>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  var d=document,root=d.documentElement;
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('js');
+
+  // barra de progresso
+  var bar=d.querySelector('.prog'),tick=false;
+  function prog(){var m=root.scrollHeight-innerHeight;bar.style.transform='scaleX('+(m>0?Math.min(1,scrollY/m):0)+')';tick=false}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(prog)}},{passive:true});
+  addEventListener('resize',prog);prog();
+
+  // elementos revelados (o primeiro ancestral marcado vence)
+  var SEL='.kicker,h1,h2,.lead,.body-p,.solnum,.bul0,.bul li,.closing,.stats .base,.card,.plan,.etp,.list li,.clist li,.proc li,.vflow li,.tab-dev,.ph-dev,.ui-stage,.punch,.small-note,.validade,.split,.impl-big,.prz-big,.cta';
+  var els=[].slice.call(d.querySelectorAll('.slide '+SEL.split(',').join(',.slide ')));
+  els=els.filter(function(e){var a=e.parentElement.closest(SEL);return !a||a.matches('.card,.plan,.etp')&&e.matches('.vflow li')});
+  els.forEach(function(e){e.classList.add('rv')});
+
+  // números que contam até o valor
+  function count(el){
+    var w=d.createTreeWalker(el,NodeFilter.SHOW_TEXT),n,re=/\d{1,3}(?:\.\d{3})+|\d+/;
+    while((n=w.nextNode())&&!re.test(n.data));
+    if(!n)return;
+    var m=n.data.match(re),end=parseInt(m[0].replace(/\./g,''),10);
+    if(end<10||still)return;
+    var pre=n.data.slice(0,m.index),post=n.data.slice(m.index+m[0].length),t0=null,dur=end>999?1500:1100;
+    el.classList.add('countup');
+    function f(t){t0=t0||t;var k=Math.min(1,(t-t0)/dur),v=Math.round(end*(1-Math.pow(2,-10*k)));
+      n.data=pre+(k<1?v:end).toLocaleString('pt-BR')+post;if(k<1)requestAnimationFrame(f)}
+    n.data=pre+'0'+post;requestAnimationFrame(f);
+  }
+  var NUM='.stats .big,.impl-big b,.prz-big .pk,.dpp-big';
+
+  var io=new IntersectionObserver(function(ents){
+    var i=0;
+    ents.forEach(function(en){
+      if(!en.isIntersecting)return;
+      var e=en.target,step=e.closest('.pdfv')?240:e.closest('.navv')?140:80;
+      var base=e.matches('.vflow li')?[].indexOf.call(e.parentNode.children,e)*step+200:Math.min(i++*80,560);
+      e.style.setProperty('--d',base+'ms');
+      e.classList.add('on');io.unobserve(e);
+      var nums=e.matches(NUM)?[e]:[].slice.call(e.querySelectorAll(NUM));
+      nums.forEach(function(x){setTimeout(function(){count(x)},base+150)});
+    });
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  function start(){els.forEach(function(e){io.observe(e)})}
+  if(root.classList.contains('gated'))d.addEventListener('gate:open',start,{once:true});else start();
+
+  // mockups animados só rodam com o slide na tela
+  var so=new IntersectionObserver(function(ents){ents.forEach(function(en){en.target.classList.toggle('in',en.isIntersecting)})},{threshold:.3});
+  [].forEach.call(d.querySelectorAll('.slide'),function(s){so.observe(s)});
+})();
+</script>
+</body>
+</html>
