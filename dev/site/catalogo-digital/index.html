@@ -999,12 +999,12 @@ a.inl{color:var(--pink-deep);font-weight:600;text-decoration:none;border-bottom:
 @media print{.slide::before{display:none}}
 /* como funciona centralizado no mobile */
 @media (max-width:900px){#como-funciona .wrap{text-align:center}#como-funciona .how h3{justify-content:center}#como-funciona .how p{max-width:34ch;margin-inline:auto}}
-/* dores: cards empilhando com sticky no mobile */
+/* dores e para cada realidade: cards empilhando com sticky no mobile */
 @media (max-width:640px){
-  #dores{overflow:visible}
-  #dores .grid{gap:22px}
-  #dores .card{position:sticky;top:calc(84px + var(--k,0) * 14px);box-shadow:0 -14px 34px -22px rgba(16,16,18,.35)}
-  #dores .card:nth-child(2){--k:1}#dores .card:nth-child(3){--k:2}#dores .card:nth-child(4){--k:3}#dores .card:nth-child(5){--k:4}#dores .card:nth-child(6){--k:5}
+  #dores,#para-quem{overflow:visible}
+  #dores .grid,#para-quem .grid{gap:22px}
+  #dores .card,#para-quem .card{position:sticky;top:calc(84px + var(--k,0) * 14px);box-shadow:0 -14px 34px -22px rgba(16,16,18,.35)}
+  .card:nth-child(2){--k:1}.card:nth-child(3){--k:2}.card:nth-child(4){--k:3}.card:nth-child(5){--k:4}.card:nth-child(6){--k:5}
 }
 .hero-note{margin-top:18px;font-size:15px;font-weight:500;color:var(--muted);max-width:52ch}
 </style>
