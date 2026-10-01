@@ -984,6 +984,31 @@ a.inl{color:var(--pink-deep);font-weight:600;text-decoration:none;border-bottom:
 .online{position:absolute;right:-1px;bottom:-1px;width:13px;height:13px;border-radius:50%;background:#22c55e;border:2px solid #fff;animation:online 2s ease-out infinite}
 @keyframes online{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}75%,100%{box-shadow:0 0 0 9px rgba(34,197,94,0)}}
 .hl-ink{color:var(--ink);font-weight:600}
+/* luzes desfocadas no fundo (radial em fade, sem filter) */
+.slide,.resumo{overflow:hidden;--as:0px;--bs:0px;--ac:rgba(235,111,186,.2);--bc:rgba(235,111,186,.16)}
+.slide>.wrap,.resumo>.wrap{z-index:1}
+.slide::before,.slide::after,.resumo::before,.resumo::after{content:"";position:absolute;z-index:0;pointer-events:none;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);animation:glowDrift 18s ease-in-out infinite alternate}
+.slide::before,.resumo::before{left:var(--ax);top:var(--ay);width:min(var(--as),130vw);background:radial-gradient(closest-side,var(--ac),transparent)}
+.slide::after,.resumo::after{left:var(--bx);top:var(--by);width:min(var(--bs),110vw);background:radial-gradient(closest-side,var(--bc),transparent);animation-delay:-9s}
+@keyframes glowDrift{to{transform:translate(-44%,-56%) scale(1.12)}}
+.cover{--ax:76%;--ay:50%;--as:820px;--ac:rgba(235,111,186,.22);--bx:4%;--by:96%;--bs:520px}
+.resumo{--ax:90%;--ay:50%;--as:700px;--ac:rgba(235,111,186,.26);--bx:0%;--by:0%;--bs:480px;--bc:rgba(194,39,126,.22)}
+#dores{--ax:88%;--ay:8%;--as:760px;--bx:6%;--by:92%;--bs:600px}
+#solucao{--ax:72%;--ay:42%;--as:860px;--ac:rgba(235,111,186,.24);--bx:4%;--by:96%;--bs:560px;--bc:rgba(194,39,126,.26)}
+#como-funciona{--ax:4%;--ay:12%;--as:640px;--bx:96%;--by:88%;--bs:640px}
+#vitrines{--ax:6%;--ay:10%;--as:680px;--bx:96%;--by:86%;--bs:640px}
+#para-quem{--ax:92%;--ay:14%;--as:640px;--ac:rgba(255,255,255,.75);--bx:8%;--by:86%;--bs:620px;--bc:rgba(235,111,186,.2)}
+#gerenciamento{--ax:68%;--ay:58%;--as:820px;--ac:rgba(235,111,186,.24);--bx:12%;--by:18%;--bs:520px}
+#painel{--ax:92%;--ay:4%;--as:760px;--ac:rgba(235,111,186,.24);--bx:2%;--by:100%;--bs:620px;--bc:rgba(194,39,126,.24)}
+#ganhos{--ax:94%;--ay:10%;--as:700px;--bx:4%;--by:72%;--bs:700px}
+#entrega{--ax:26%;--ay:62%;--as:820px;--ac:rgba(235,111,186,.22);--bx:96%;--by:12%;--bs:540px}
+#sob-medida{--ax:96%;--ay:8%;--as:800px;--ac:rgba(235,111,186,.24);--bx:4%;--by:68%;--bs:600px;--bc:rgba(194,39,126,.24)}
+#etapas{--ax:50%;--ay:104%;--as:1000px;--bx:94%;--by:6%;--bs:520px}
+#sobre{--ax:26%;--ay:62%;--as:760px;--ac:rgba(235,111,186,.26);--bx:96%;--by:10%;--bs:520px;--bc:rgba(255,255,255,.7)}
+#pdf{--ax:18%;--ay:50%;--as:620px;--bx:86%;--by:50%;--bs:560px}
+#duvidas{--ax:50%;--ay:0%;--as:1000px;--ac:rgba(235,111,186,.2);--bx:100%;--by:100%;--bs:560px;--bc:rgba(194,39,126,.24)}
+#contato{--ax:80%;--ay:70%;--as:760px;--ac:rgba(235,111,186,.24);--bx:4%;--by:10%;--bs:520px}
+@media print{.slide::before,.slide::after,.resumo::before,.resumo::after{display:none}}
 </style>
 </head>
 <body>
