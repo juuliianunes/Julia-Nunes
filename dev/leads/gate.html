@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Leads Distribuidoras</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Tela de acesso: o painel vem cifrado abaixo e só é aberto no navegador com a senha certa. */
+:root{--pink:#EB6FBA;--bg:#F2F2F7;--card:#FFFFFF;--fg:#1C1C1E;--fg2:#6E6E73;--fill:rgba(118,118,128,.12);--sep:rgba(60,60,67,.13);--accent:#007AFF;--accent-soft:rgba(0,122,255,.18);--red:#D70015;--shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#000000;--card:#1C1C1E;--fg:#F5F5F7;--fg2:#98989F;--fill:rgba(118,118,128,.24);--sep:rgba(84,84,88,.55);--accent:#0A84FF;--accent-soft:rgba(10,132,255,.3);--red:#FF453A;--shadow:none;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000000;--card:#1C1C1E;--fg:#F5F5F7;--fg2:#98989F;--fill:rgba(118,118,128,.24);--sep:rgba(84,84,88,.55);--accent:#0A84FF;--accent-soft:rgba(10,132,255,.3);--red:#FF453A;--shadow:none;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--fg);font:15px/1.4 "Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;display:grid;place-items:center;min-height:100vh;padding:24px 16px}
+.card{width:min(380px,100%);background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:28px 24px 24px}
+.brand{font-weight:600;font-size:14px;color:var(--fg2);margin:0 0 18px}
+.brand span{color:var(--pink)}
+h1{font-family:"Inter Tight","Inter",-apple-system,sans-serif;font-size:26px;line-height:1.15;letter-spacing:-.025em;margin:0}
+.lede{color:var(--fg2);margin:6px 0 22px}
+label{display:block;font-size:13px;font-weight:500;color:var(--fg2);margin-bottom:6px}
+.pw{position:relative}
+.pw input{width:100%;font:inherit;font-size:16px;color:var(--fg);background:var(--fill);border:0;border-radius:12px;padding:13px 56px 13px 14px;outline:none;transition:box-shadow .15s}
+.pw input:focus{box-shadow:0 0 0 3px var(--accent-soft)}
+.eye{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;color:var(--fg2);cursor:pointer}
+.eye:hover{color:var(--fg)}
+.eye:focus-visible{outline:3px solid var(--accent-soft);outline-offset:0}
+.eye svg{grid-area:1/1;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.eye .off,.eye[aria-pressed=true] .on{display:none}
+.eye[aria-pressed=true] .off{display:block}
+.err{min-height:20px;margin:8px 0 0;font-size:13px;color:var(--red)}
+button.go{width:100%;margin-top:8px;border:0;border-radius:12px;padding:13px;font:inherit;font-weight:600;background:var(--accent);color:#fff;cursor:pointer}
+button.go:hover{filter:brightness(1.08)}
+button.go[disabled]{opacity:.6;cursor:default}
+.hint{margin:14px 0 0;font-size:12.5px;color:var(--fg2);text-align:center}
+</style>
+</head>
+<body>
+<main class="card">
+  <p class="brand"><span>●</span> Julia Nunes · Prospecção</p>
+  <h1>Leads de distribuidoras</h1>
+  <p class="lede">Área restrita. Digite a senha para abrir o painel.</p>
+  <form id="f" autocomplete="off">
+    <label for="pw">Senha</label>
+    <div class="pw">
+      <input id="pw" type="password" autocapitalize="off" spellcheck="false" placeholder="Digite a senha" required autofocus>
+      <button type="button" class="eye" aria-label="Mostrar senha" aria-pressed="false" aria-controls="pw"><svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 5.1A9.8 9.8 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4.1M6.6 6.6C3.8 8.4 2 12 2 12s3.6 7 10 7a9.6 9.6 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2M3 3l18 18"/></svg></button>
+    </div>
+    <p class="err" id="err" role="alert"></p>
+    <button class="go" id="go" type="submit">Entrar</button>
+  </form>
+  <p class="hint">Este navegador lembra o acesso depois da primeira entrada.</p>
+</main>
+<script id="pacote" type="application/json">__PACOTE__</script>
+<script>
+(function(){
+  var P = JSON.parse(document.getElementById('pacote').textContent), K = 'leads-chave';
+  var un = function(s){ return Uint8Array.from(atob(s), function(c){ return c.charCodeAt(0); }); };
+  var f = document.getElementById('f'), inp = document.getElementById('pw'), eye = f.querySelector('.eye'), err = document.getElementById('err'), go = document.getElementById('go');
+
+  eye.onclick = function(){
+    var mostrar = inp.type === 'password';
+    inp.type = mostrar ? 'text' : 'password';
+    eye.setAttribute('aria-pressed', mostrar);
+    eye.setAttribute('aria-label', mostrar ? 'Ocultar senha' : 'Mostrar senha');
+    inp.focus(); var n = inp.value.length; try { inp.setSelectionRange(n, n); } catch(e) {}
+  };
+
+  function abrir(chave){
+    return crypto.subtle.decrypt({name:'AES-GCM', iv:un(P.i)}, chave, un(P.c)).then(function(buf){
+      var html = new TextDecoder().decode(buf);
+      document.open(); document.write(html); document.close();
+    });
+  }
+  function guardar(chave){
+    return crypto.subtle.exportKey('raw', chave).then(function(raw){
+      try { localStorage.setItem(K, btoa(String.fromCharCode.apply(null, new Uint8Array(raw)))); } catch(e) {}
+    });
+  }
+
+  if (!window.crypto || !crypto.subtle){ err.textContent = 'Abra este endereço com https para entrar.'; go.disabled = true; return; }
+
+  var salva = null; try { salva = localStorage.getItem(K); } catch(e) {}
+  if (salva){
+    crypto.subtle.importKey('raw', un(salva), 'AES-GCM', true, ['decrypt']).then(abrir)
+      .catch(function(){ try { localStorage.removeItem(K); } catch(e) {} });
+  }
+
+  f.onsubmit = function(e){
+    e.preventDefault(); err.textContent = ''; go.disabled = true; go.textContent = 'Abrindo…';
+    crypto.subtle.importKey('raw', new TextEncoder().encode(inp.value), 'PBKDF2', false, ['deriveKey'])
+      .then(function(base){ return crypto.subtle.deriveKey({name:'PBKDF2', salt:un(P.s), iterations:P.n, hash:'SHA-256'}, base, {name:'AES-GCM', length:256}, true, ['decrypt']); })
+      .then(function(chave){ return guardar(chave).then(function(){ return abrir(chave); }); })
+      .catch(function(){ try { localStorage.removeItem(K); } catch(e) {} err.textContent = 'Senha incorreta.'; go.disabled = false; go.textContent = 'Entrar'; inp.select(); });
+  };
+})();
+</script>
+</body>
+</html>

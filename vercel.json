@@ -1,4 +1,11 @@
 {
   "buildCommand": "echo static",
-  "outputDirectory": "dev/site"
+  "outputDirectory": "dev/site",
+  "rewrites": [
+    { "source": "/", "has": [{ "type": "host", "value": "leads.julianunesdesign.com.br" }], "destination": "/leads/index.html" }
+  ],
+  "headers": [
+    { "source": "/leads/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
+    { "source": "/", "has": [{ "type": "host", "value": "leads.julianunesdesign.com.br" }], "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ]
 }
