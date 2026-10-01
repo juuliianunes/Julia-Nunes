@@ -718,7 +718,6 @@ html.gated .gate{display:grid}
 .js .punch.on .pk{background-size:100% 100%}
 .js .plan.hl .badge{transform:scale(.6);opacity:0;transition:transform .5s cubic-bezier(.34,1.56,.64,1) calc(var(--d,0ms) + .5s),opacity .3s calc(var(--d,0ms) + .5s)}
 .js .plan.hl.on .badge{transform:none;opacity:1}
-.js .slide:not(.in) .ui-stage *{animation-play-state:paused}
 @media print{
   .js .rv,.js .plan.hl .badge{opacity:1!important;transform:none!important}
   .js .punch .pk{background-size:100% 100%}
@@ -740,19 +739,19 @@ html.gated .gate{display:grid}
 /* solução 02: Utilidades -> Brinquedos -> Cama, mesa e banho, com rolagem (ciclo 20s) */
 .s2chips{display:flex;gap:.4em;margin:.9em 0 0;flex:none;white-space:nowrap}
 .s2chips span{position:relative;font-size:.66em;font-weight:600;padding:.45em .85em;border-radius:999px;background:#f2f2f4;color:#424245}
-.s2chips .c1{animation:s2On1 20s infinite both paused}
-.s2chips .c3{animation:s2On3 20s infinite both paused}
-.s2chips .c4{animation:s2On4 20s infinite both paused}
+.s2chips .c1{animation:s2On1 20s infinite both}
+.s2chips .c3{animation:s2On3 20s infinite both}
+.s2chips .c4{animation:s2On4 20s infinite both}
 .s2cur{position:absolute;right:-.2em;bottom:-1.4em;width:2.2em;height:2.2em;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
-.s2cur.k3{animation:s2Cur3 20s infinite both paused}
-.s2cur.k4{right:1.5em;animation:s2Cur4 20s infinite both paused}
+.s2cur.k3{animation:s2Cur3 20s infinite both}
+.s2cur.k4{right:1.5em;animation:s2Cur4 20s infinite both}
 .s2t{display:grid}
 .s2t>div,.s2vp>div{grid-area:1/1;min-height:0}
-.s2t .la,.s2vp>.la{animation:s2LA 20s infinite both paused}
-.s2t .lb,.s2vp>.lb{animation:s2LB 20s infinite both paused}
-.s2t .lc,.s2vp>.lc{animation:s2LC 20s infinite both paused}
+.s2t .la,.s2vp>.la{animation:s2LA 20s infinite both}
+.s2t .lb,.s2vp>.lb{animation:s2LB 20s infinite both}
+.s2t .lc,.s2vp>.lc{animation:s2LC 20s infinite both}
 .s2vp{flex:1 1 auto;min-height:0;overflow:hidden;display:grid;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 2.4em),transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 2.4em),transparent 100%)}
-.s2roll{will-change:transform;animation:20s cubic-bezier(.6,0,.25,1) infinite both paused}
+.s2roll{will-change:transform;animation:20s cubic-bezier(.6,0,.25,1) infinite both}
 .s2roll.rb{animation-name:s2RollB}.s2roll.rc{animation-name:s2RollC}
 .slide.in .s2chips span,.slide.in .s2cur,.slide.in .s2t>div,.slide.in .s2vp>div,.slide.in .s2roll{animation-play-state:running}
 @keyframes s2On1{0%,16%{background:#1d1d1f;color:#fff}17.5%,94%{background:#f2f2f4;color:#424245}97%,100%{background:#1d1d1f;color:#fff}}
@@ -768,8 +767,8 @@ html.gated .gate{display:grid}
 /* responsivo: computador -> tablet -> celular (ciclo 12s) */
 .rsp{max-width:760px;margin-inline:auto}
 .rsp-stage{container-type:inline-size;position:relative;aspect-ratio:16/11}
-.rsp-frame{position:absolute;left:50%;top:50%;width:100%;height:81.8%;transform:translate(-50%,-50%);border:8px solid #1d1d1f;border-radius:14px;box-shadow:0 34px 70px -28px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.05);animation:rspF 12s cubic-bezier(.7,0,.25,1) infinite both paused;container-type:normal}
-.rsp-l{position:absolute;inset:0;display:flex;flex-direction:column;font-size:1.45cqw;opacity:0;animation:12s infinite both paused}
+.rsp-frame{position:absolute;left:50%;top:50%;width:100%;height:81.8%;transform:translate(-50%,-50%);border:8px solid #1d1d1f;border-radius:14px;box-shadow:0 34px 70px -28px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.05);animation:rspF 12s cubic-bezier(.7,0,.25,1) infinite both;container-type:normal}
+.rsp-l{position:absolute;inset:0;display:flex;flex-direction:column;font-size:1.45cqw;opacity:0;animation:12s infinite both}
 .rsp-l.d{animation-name:rspD}.rsp-l.t{animation-name:rspT}.rsp-l.m{animation-name:rspM}
 .rsp-top{display:flex;align-items:center;gap:1.4em;padding:.9em 1.3em;border-bottom:1px solid #ececf0;flex:none}
 .rsp-top .logo{font-size:1.25em}
@@ -788,7 +787,7 @@ html.gated .gate{display:grid}
 .rsp-l.t,.rsp-l.m{font-size:1.45cqw}
 .rsp-l.m .rsp-body,.rsp-l.m .rsp-top{padding-inline:1em}
 .rsp-lbl{display:flex;justify-content:center;gap:10px;margin-top:22px}
-.rsp-lbl span{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;color:var(--muted);background:var(--bg-soft);animation:12s infinite both paused}
+.rsp-lbl span{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;color:var(--muted);background:var(--bg-soft);animation:12s infinite both}
 .rsp-lbl .d{animation-name:rspLD}.rsp-lbl .t{animation-name:rspLT}.rsp-lbl .m{animation-name:rspLM}
 .slide.in .rsp-frame,.slide.in .rsp-l,.slide.in .rsp-lbl span{animation-play-state:running}
 @keyframes rspF{0%,24%{width:100%;height:81.8%;border-radius:14px}33%,58%{width:44.3%;height:86%;border-radius:24px}67%,88%{width:37.1%;height:96%;border-radius:32px}97%,100%{width:100%;height:81.8%;border-radius:14px}}
