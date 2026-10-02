@@ -5,3 +5,5 @@ dev/site/.vercel
 
 # fonte do painel de leads em texto puro: nunca subir (repo público)
 dev/leads/dash.html
+
+dev/draandressa/proposta.html
