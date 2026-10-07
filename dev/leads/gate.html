@@ -7,6 +7,7 @@
 <title>Leads Distribuidoras</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+<script>/* Com acesso salvo, esconde o login enquanto o painel abre (evita o flash e o teclado no celular). */try{if(localStorage.getItem('leads-chave'))document.documentElement.className='auto'}catch(e){}</script>
 <style>
 /* Tela de acesso: o painel vem cifrado abaixo e só é aberto no navegador com a senha certa. */
 :root{--pink:#EB6FBA;--bg:#F2F2F7;--card:#FFFFFF;--fg:#1C1C1E;--fg2:#6E6E73;--fill:rgba(118,118,128,.12);--sep:rgba(60,60,67,.13);--accent:#007AFF;--accent-soft:rgba(0,122,255,.18);--red:#D70015;--shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06)}
@@ -34,6 +35,7 @@ label{display:block;font-size:13px;font-weight:500;color:var(--fg2);margin-botto
 button.go{width:100%;margin-top:8px;border:0;border-radius:12px;padding:13px;font:inherit;font-weight:600;background:var(--accent);color:#fff;cursor:pointer}
 button.go:hover{filter:brightness(1.08)}
 button.go[disabled]{opacity:.6;cursor:default}
+.auto .card{visibility:hidden}
 .hint{margin:14px 0 0;font-size:12.5px;color:var(--fg2);text-align:center}
 </style>
 </head>
@@ -45,7 +47,7 @@ button.go[disabled]{opacity:.6;cursor:default}
   <form id="f" autocomplete="off">
     <label for="pw">Senha</label>
     <div class="pw">
-      <input id="pw" type="password" autocapitalize="off" spellcheck="false" placeholder="Digite a senha" required autofocus>
+      <input id="pw" type="password" autocapitalize="off" spellcheck="false" placeholder="Digite a senha" required>
       <button type="button" class="eye" aria-label="Mostrar senha" aria-pressed="false" aria-controls="pw"><svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 5.1A9.8 9.8 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4.1M6.6 6.6C3.8 8.4 2 12 2 12s3.6 7 10 7a9.6 9.6 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2M3 3l18 18"/></svg></button>
     </div>
     <p class="err" id="err" role="alert"></p>
@@ -68,12 +70,21 @@ button.go[disabled]{opacity:.6;cursor:default}
     inp.focus(); var n = inp.value.length; try { inp.setSelectionRange(n, n); } catch(e) {}
   };
 
+  // Só troca o documento depois do load: com o parser ainda ativo, document.open() é ignorado
+  // e o write anexa o painel embaixo do login, misturando as duas telas.
+  function pronto(){
+    return new Promise(function(ok){
+      if (document.readyState === 'complete') setTimeout(ok, 0);
+      else addEventListener('load', function(){ setTimeout(ok, 0); });
+    });
+  }
   function abrir(chave){
     return crypto.subtle.decrypt({name:'AES-GCM', iv:un(P.i)}, chave, un(P.c)).then(function(buf){
       var html = new TextDecoder().decode(buf);
-      document.open(); document.write(html); document.close();
+      return pronto().then(function(){ document.open(); document.write(html); document.close(); });
     });
   }
+  function mostrarLogin(){ document.documentElement.className = ''; if (matchMedia('(pointer:fine)').matches) inp.focus(); }
   function guardar(chave){
     return crypto.subtle.exportKey('raw', chave).then(function(raw){
       try { localStorage.setItem(K, btoa(String.fromCharCode.apply(null, new Uint8Array(raw)))); } catch(e) {}
@@ -83,9 +94,10 @@ button.go[disabled]{opacity:.6;cursor:default}
   if (!window.crypto || !crypto.subtle){ err.textContent = 'Abra este endereço com https para entrar.'; go.disabled = true; return; }
 
   var salva = null; try { salva = localStorage.getItem(K); } catch(e) {}
+  if (!salva) mostrarLogin();
   if (salva){
     crypto.subtle.importKey('raw', un(salva), 'AES-GCM', true, ['decrypt']).then(abrir)
-      .catch(function(){ try { localStorage.removeItem(K); } catch(e) {} });
+      .catch(function(){ try { localStorage.removeItem(K); } catch(e) {} mostrarLogin(); });
   }
 
   f.onsubmit = function(e){
