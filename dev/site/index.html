@@ -1206,6 +1206,34 @@ h2.wsplit.win-in .wi{transform:none}
   .nav-avatar{display:block;width:34px;height:34px;border-radius:50%;object-fit:cover;margin-right:10px;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--magenta)}
 }
 
+/* conversa com a IA: altura fixa durante a animação (sem pulo na página) */
+.chat{display:grid;grid-template-columns:minmax(0,1fr);align-content:start}
+.chat>.typing,.chat>.msg.ai{grid-row:3;grid-column:1;align-self:start}
+.chat>.chat-again{grid-row:4;justify-self:start}
+.chat .typing{display:flex;opacity:0;transition:opacity .25s}
+.chat.typing-on .typing{opacity:1}
+.chat .hand{grid-row:5}
+
+/* lista de nichos: primeira letra maiúscula, 3 linhas no celular */
+.rot-all span{display:inline-block}
+.rot-all span::first-letter{text-transform:uppercase}
+@media(max-width:600px){
+  .rot-all{max-width:none;font-size:clamp(.8rem,3.6vw,.95rem);line-height:1.7}
+  .rot-all span:nth-child(3n):not(:last-child)::after{content:"\00a0·\A";white-space:pre}
+}
+
+/* degradê do CTA final: o trecho inteiro é uma peça só (corrige Safari/iPhone) */
+.final h2 .grad.wi{display:inline-block;-webkit-text-fill-color:transparent}
+
+/* pastas no celular: cada uma do tamanho do seu conteúdo, botão logo após o texto */
+@media(max-width:760px){
+  .fpanel,.fpanel.on,.fpanel.k1,.fpanel.k1.on,.fpanel.k4,.fpanel.k4.on{height:auto;min-height:0}
+  .fpanel>div:first-child{flex:none}
+  .fpanel p{display:block;-webkit-line-clamp:unset;overflow:visible;margin-bottom:0}
+  .fpanel .btn{margin-top:22px}
+  .fpanel .sys-list{margin-bottom:0}
+}
+
 
 /* ===== OPÇÃO 2: hero em duas colunas, cards de páginas flutuando atrás da foto ===== */
 .h2c{position:relative;padding-top:90px;background:var(--bg);border-bottom:1px solid var(--line);overflow:hidden}
@@ -1287,8 +1315,8 @@ h2.wsplit.win-in .wi{transform:none}
       </div>
     </div>
     <div class="h2c-stage">
-      <div class="h2c-cards" aria-hidden="true"><div class="fcard f1"><img data-src="img/lp-livro-pobreza.jpg" alt=""></div><div class="fcard f2"><img data-src="img/lp-celip-daily.jpg" alt=""></div><div class="fcard f3"><img data-src="img/lp-sessao-estrategica.jpg" alt=""></div><div class="fcard f4"><img data-src="img/lp-livro-floripa.jpg" alt=""></div></div>
-      <div class="h2c-band" aria-hidden="true"><div class="h2c-track"><div class="bcard"><img data-src="img/lp-livro-pobreza.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-magnesio.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-livro-floripa.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-daily.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-sessao-estrategica.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-omega3.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-preguica-negocios.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-creatina.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-livro-cidades.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-combo.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-livro-pobreza.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-magnesio.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-livro-floripa.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-daily.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-sessao-estrategica.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-omega3.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-preguica-negocios.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-creatina.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-livro-cidades.jpg" alt=""></div><div class="bcard"><img data-src="img/lp-celip-combo.jpg" alt=""></div></div></div>
+      <div class="h2c-cards" aria-hidden="true"><div class="fcard f1"><img data-src="img/thumb/lp-livro-pobreza.webp" alt=""></div><div class="fcard f2"><img data-src="img/thumb/lp-celip-daily.webp" alt=""></div><div class="fcard f3"><img data-src="img/thumb/lp-sessao-estrategica.webp" alt=""></div><div class="fcard f4"><img data-src="img/thumb/lp-livro-floripa.webp" alt=""></div></div>
+      <div class="h2c-band" aria-hidden="true"><div class="h2c-track"><div class="bcard"><img data-src="img/thumb/lp-livro-pobreza.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-magnesio.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-livro-floripa.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-daily.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-sessao-estrategica.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-omega3.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-preguica-negocios.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-creatina.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-livro-cidades.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-combo.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-livro-pobreza.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-magnesio.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-livro-floripa.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-daily.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-sessao-estrategica.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-omega3.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-preguica-negocios.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-creatina.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-livro-cidades.webp" alt=""></div><div class="bcard"><img data-src="img/thumb/lp-celip-combo.webp" alt=""></div></div></div>
       <img class="h2c-photo" data-src="img/julia-hero2.webp" alt="Julia Nunes, web designer, sentada com os braços cruzados sobre os joelhos, de óculos e blusa listrada." width="589" height="800" fetchpriority="high">
     </div>
   </div>
@@ -1551,7 +1579,7 @@ h2.wsplit.win-in .wi{transform:none}
 <section class="contact final sec" id="contato">
   <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="hz-stage">
-    <div class="hz-band" aria-hidden="true"><div class="hz-track"><div class="hz-card"><img data-src="img/lp-celip-magnesio.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-livro-pobreza.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-livro-floripa.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-omega3.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-sessao-estrategica.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-daily.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-preguica-negocios.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-creatina.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-livro-cidades.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-combo.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-creatina-2.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-magnesio.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-livro-pobreza.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-livro-floripa.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-omega3.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-sessao-estrategica.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-daily.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-preguica-negocios.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-creatina.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-livro-cidades.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-combo.jpg" alt=""></div><div class="hz-card"><img data-src="img/lp-celip-creatina-2.jpg" alt=""></div></div></div>
+    <div class="hz-band" aria-hidden="true"><div class="hz-track"><div class="hz-card"><img data-src="img/thumb/lp-celip-magnesio.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-livro-pobreza.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-livro-floripa.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-omega3.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-sessao-estrategica.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-daily.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-preguica-negocios.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-creatina.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-livro-cidades.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-combo.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-creatina-2.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-magnesio.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-livro-pobreza.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-livro-floripa.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-omega3.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-sessao-estrategica.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-daily.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-preguica-negocios.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-creatina.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-livro-cidades.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-combo.webp" alt=""></div><div class="hz-card"><img data-src="img/thumb/lp-celip-creatina-2.webp" alt=""></div></div></div>
     </div>
   <div class="wrap final-in">
     <p class="final-kicker reveal">Próximo passo</p>
@@ -1579,7 +1607,7 @@ h2.wsplit.win-in .wi{transform:none}
 <a href="#" class="wa js-wa" aria-label="Falar no WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.8c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.8 10.8 0 1 1 16 26.8Zm6-8.1c-.3-.2-2-1-2.2-1.1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.9 8.9 0 0 1-4.4-3.9c-.3-.6.3-.5 1-1.8.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1.9 3 1 4 .8.7-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6l-.5-.3Z"/></svg></a>
 
 <!-- Dados estruturados do FAQ (gerado automaticamente a partir das perguntas acima) -->
-<script>window.IMG={};document.querySelectorAll("[data-src]").forEach(e=>{e.src=IMG[e.dataset.src]||e.dataset.src});document.addEventListener("click",e=>{const c=e.target.closest&&e.target.closest(".pcard[data-full]");if(c&&IMG[c.dataset.full])c.dataset.full=IMG[c.dataset.full]},true);</script>
+<script>window.IMG={};document.querySelectorAll("[data-src]").forEach(e=>{if(e.tagName==="IMG"&&!e.closest(".h2c,nav,header"))e.loading="lazy";e.src=IMG[e.dataset.src]||e.dataset.src});document.addEventListener("click",e=>{const c=e.target.closest&&e.target.closest(".pcard[data-full]");if(c&&IMG[c.dataset.full])c.dataset.full=IMG[c.dataset.full]},true);</script>
 <script>
 (function(){
   /* ===== CONFIGURE AQUI ===== */
@@ -1781,6 +1809,9 @@ document.querySelectorAll("h2").forEach(h=>{
       parts.forEach(t=>{if(!t)return;if(/^\s+$/.test(t)){f.append(t);return}
         const o=document.createElement("span");o.className="wm";const w=document.createElement("span");w.className="wi";w.style.transitionDelay=(i++*0.055)+"s";w.textContent=t;o.append(w);f.append(o)});
       c.replaceWith(f)}
+    else if(c.nodeType===1&&c.classList.contains("grad")){
+      /* degradê: anima o trecho inteiro (Safari some com o texto se cada palavra for separada) */
+      const o=document.createElement("span");o.className="wm";c.replaceWith(o);o.append(c);c.classList.add("wi");c.style.transitionDelay=(i++*0.055)+"s"}
     else if(c.nodeType===1&&!c.classList.contains("wm"))walk(c)})};
   walk(h);h.classList.add("wsplit");h.classList.remove("reveal");
 });
@@ -1890,7 +1921,7 @@ const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.tar
 document.querySelectorAll(".post,.chat,.files").forEach(el=>{el.classList.add("unveil");el.classList.remove("reveal");io2.observe(el)});
 
 /* ---------- 4. parallax suave ---------- */
-const par=[...document.querySelectorAll(".h2c-band,.h2c-cards,.post img,.h2c-photo")].map(el=>({el,k:el.matches(".h2c-band,.h2c-cards")?-.12:el.matches(".h2c-photo")?.06:-.07}));
+const par=[...document.querySelectorAll(innerWidth<901?".post img":".h2c-band,.h2c-cards,.post img,.h2c-photo")].map(el=>({el,k:el.matches(".h2c-band,.h2c-cards")?-.12:el.matches(".h2c-photo")?.06:-.07}));
 let ticking=false;
 const para=()=>{ticking=false;const vh=innerHeight;
   par.forEach(({el,k})=>{const r=el.parentElement.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)return;
@@ -1993,13 +2024,19 @@ if(chat){
   const user=chat.querySelector(".msg.user"),ai=chat.querySelector(".msg.ai > span:last-child");
   const btn=document.createElement("button");btn.type="button";btn.className="chat-again";btn.innerHTML='<span aria-hidden="true">↻</span> Perguntar de novo';
   chat.appendChild(btn);
+  /* reserva a altura da maior pergunta/resposta: a caixa nunca muda de tamanho */
+  const fit=()=>{const u0=user.textContent,a0=ai.innerHTML;chat.style.minHeight="";let m=0;
+    qs.forEach(q=>{user.textContent=q[0];ai.innerHTML=q[1];m=Math.max(m,chat.offsetHeight)});
+    user.textContent=u0;ai.innerHTML=a0;chat.style.minHeight=m+"px"};
+  fit();addEventListener("resize",fit);document.fonts&&document.fonts.ready.then(fit);
   btn.addEventListener("click",()=>{k=(k+1)%qs.length;btn.disabled=true;
     chat.classList.remove("done","typing-on");
     user.style.transition="none";user.style.opacity=0;user.style.transform="translateY(14px) scale(.98)";
     setTimeout(()=>{user.textContent="";user.style.transition="";user.style.opacity="";user.style.transform="";
-      const t=qs[k][0];let i=0;user.classList.add("typing-user");
-      const type=()=>{user.textContent=t.slice(0,++i);if(i<t.length)setTimeout(type,reduce?0:18);else{user.classList.remove("typing-user");
-        ai.innerHTML=qs[k][1];chat.classList.add("typing-on");
+      const t=qs[k][0];let i=0;ai.innerHTML=qs[k][1];
+      user.textContent=t;user.style.minHeight=user.offsetHeight+"px";user.textContent="";user.classList.add("typing-user");
+      const type=()=>{user.textContent=t.slice(0,++i);if(i<t.length)setTimeout(type,reduce?0:18);else{user.classList.remove("typing-user");user.style.minHeight="";
+        chat.classList.add("typing-on");
         setTimeout(()=>{chat.classList.remove("typing-on");chat.classList.add("done");btn.disabled=false},reduce?0:1500)}};
       type()},250)});
 }
@@ -2014,6 +2051,21 @@ if(wa){let seen=false;try{seen=sessionStorage.getItem("waTip")==="1"}catch(e){}
     tip.querySelector("button").onclick=hide;tip.querySelector("a").onclick=hide;
     setTimeout(()=>{tip.classList.add("on");setTimeout(hide,9000)},6000);
   }}
+/* 6. pastas no celular: a pasta de trás não aparece por baixo de uma pasta mais curta */
+const fps=[...document.querySelectorAll(".files .fpanel")];
+if(fps.length){let tk=false;
+  const clip=()=>{tk=false;
+    if(innerWidth>760){fps.forEach(f=>f.style.clipPath="");return}
+    let nextVis=Infinity,nextTop=Infinity;
+    for(let i=fps.length-1;i>=0;i--){const r=fps[i].getBoundingClientRect();
+      let vis=r.bottom;
+      if(nextTop<r.bottom)vis=Math.max(nextTop,Math.min(r.bottom,nextVis));
+      const cut=Math.max(0,r.bottom-vis);
+      fps[i].style.clipPath=cut>0.5?`inset(-60px -40px ${cut.toFixed(1)}px -40px)`:"";
+      nextVis=vis;nextTop=r.top}};
+  addEventListener("scroll",()=>{if(!tk){tk=true;requestAnimationFrame(clip)}},{passive:true});
+  addEventListener("resize",clip);clip();
+}
 })();
 </script>
 
