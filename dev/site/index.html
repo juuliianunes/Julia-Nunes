@@ -1199,6 +1199,13 @@ h2.wsplit.win-in .wi{transform:none}
 #processo .wrap>h2{max-width:20ch}
 @media(max-width:760px){.sys-more{display:none}.fpanel.k4 p{-webkit-line-clamp:unset;display:block}.fpanel.k4 .sys-list{margin-top:18px}}
 
+/* avatar no cabeçalho (celular) */
+.nav-avatar{display:none}
+@media(max-width:820px){
+  .logo{align-items:center}
+  .nav-avatar{display:block;width:34px;height:34px;border-radius:50%;object-fit:cover;margin-right:10px;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--magenta)}
+}
+
 
 /* ===== OPÇÃO 2: hero em duas colunas, cards de páginas flutuando atrás da foto ===== */
 .h2c{position:relative;padding-top:90px;background:var(--bg);border-bottom:1px solid var(--line);overflow:hidden}
@@ -1253,7 +1260,7 @@ h2.wsplit.win-in .wi{transform:none}
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="#topo" class="logo" aria-label="julia nunes, início">julia nunes<span class="ld"></span></a>
+    <a href="#topo" class="logo" aria-label="julia nunes, início"><img class="nav-avatar" data-src="img/avatar-julia.webp" alt="" width="64" height="64">julia nunes<span class="ld"></span></a>
     <nav class="nav-links" aria-label="Menu principal">
       <a href="#projetos">Projetos</a>
       <a href="#servicos">Serviços</a>
@@ -1363,6 +1370,16 @@ h2.wsplit.win-in .wi{transform:none}
         <span class="win"><span class="wbar"><i></i><i></i><i></i><span class="url">black friday infinita · Dra. Andressa Bacellar</span></span>
           <span class="screen"><img data-src="img/bf-thumb.webp" alt="Página de captação criada por Julia Nunes: Black Friday Infinita Direito Bancário." loading="lazy"><span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Ver ao vivo</span></span></span>
         <span class="pmeta"><span><span class="pt">Black Friday Infinita</span><span class="pd">Página de captação para advogados</span></span><span class="plus" aria-hidden="true">+</span></span>
+      </button>
+      <button type="button" class="pcard reveal" data-full="img/lp-atacadao-full.webp" data-title="Atacadão Maromba" aria-label="Ver página inteira: Atacadão Maromba">
+        <span class="win"><span class="wbar"><i></i><i></i><i></i><span class="url">franquia.atacadaomaromba.com.br</span></span>
+          <span class="screen"><img data-src="img/lp-atacadao.jpg" alt="Landing page de franquia criada por Julia Nunes: Atacadão Maromba." loading="lazy"><span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Ver inteira</span></span></span>
+        <span class="pmeta"><span><span class="pt">Atacadão Maromba</span><span class="pd">Landing page de franquia</span></span><span class="plus" aria-hidden="true">+</span></span>
+      </button>
+      <button type="button" class="pcard reveal" data-full="img/lp-clarustrack-full.webp" data-title="ClarusTrack" aria-label="Ver página inteira: ClarusTrack">
+        <span class="win"><span class="wbar"><i></i><i></i><i></i><span class="url">clarustrack.com.br</span></span>
+          <span class="screen"><img data-src="img/lp-clarustrack.jpg" alt="Landing page de SaaS de dados criada por Julia Nunes: ClarusTrack." loading="lazy"><span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>Ver inteira</span></span></span>
+        <span class="pmeta"><span><span class="pt">ClarusTrack</span><span class="pd">Landing page de SaaS de dados</span></span><span class="plus" aria-hidden="true">+</span></span>
       </button>
       <button type="button" class="pcard reveal" data-full="img/lp-celip-magnesio-full.webp" data-title="Celip · Magnésio" aria-label="Ver página inteira: Celip · Magnésio">
         <span class="win"><span class="wbar"><i></i><i></i><i></i><span class="url">celip.com.br/magnesio</span></span>
