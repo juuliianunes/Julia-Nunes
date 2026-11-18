@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /leads/
+Disallow: /briefing/
+Disallow: /draandressa/
+Disallow: /parolar/
+
+Sitemap: https://julianunesdesign.com.br/sitemap.xml

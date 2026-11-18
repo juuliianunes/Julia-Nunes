@@ -1,9 +1,11 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-
-
-
-<title>Julia Nunes Web Design</title>
-<meta name="description" content="Web designer que cria sites para empresas, como clínicas, consultórios e escritórios, prontos para aparecer no Google e serem indicados por IAs.">
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Criação de Sites em Piracicaba | Julia Nunes Web Design</title>
+<meta name="description" content="Criação de sites em Piracicaba e para todo o Brasil. Sites para clínicas, consultórios, escritórios e empresas, prontos para o Google e para as IAs.">
 <meta name="keywords" content="criação de sites, site para empresas, site para médicos, site para dentistas, site para advogados, site para psicólogos, site para clínicas, web designer, site otimizado para IA, GEO">
 <link rel="canonical" href="https://julianunesdesign.com.br/">
 <meta name="theme-color" content="#ffffff">
@@ -1288,9 +1290,15 @@ h2.wsplit.win-in .wi{transform:none}
 @media(min-width:901px){.h2c-band{display:none}}
 @media(max-width:900px){.h2c-cards{display:none}}
 </style>
-
-
-
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:site_name" content="Julia Nunes Web Design">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Julia Nunes, web designer em Piracicaba">
+</head>
+<body>
 <header class="nav" id="nav">
   <div class="wrap">
     <a href="#topo" class="logo" aria-label="julia nunes, início"><img class="nav-avatar" data-src="img/avatar-julia.webp" alt="" width="64" height="64">julia nunes<span class="ld"></span></a>
@@ -1604,7 +1612,7 @@ h2.wsplit.win-in .wi{transform:none}
     </div>
     <div style="text-align:right">
       <div class="links"><a href="#" class="js-wa">WhatsApp</a><a href="https://www.instagram.com/julianunes.br/">@julianunes.br</a></div>
-      <p style="margin-top:8px">© <span id="year"></span> Julia Nunes. Todos os direitos reservados.</p>
+      <p style="margin-top:8px">© <span id="year"></span> Julia Nunes. Todos os direitos reservados. · <a href="/politica-de-privacidade.html" style="color:inherit">Privacidade</a></p>
     </div>
   </div>
 </footer>
@@ -2074,4 +2082,118 @@ if(fps.length){let tk=false;
 })();
 </script>
 
+<!-- Aviso de cookies + Google Analytics 4 (só mede depois do aceite). Para ativar: troque G-XXXXXXXXXX pelo ID de medição. -->
+<div id="aviso-cookies" class="aviso-cookies" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+  <p>
+    Usamos cookies para medir as visitas e melhorar o site. Você pode aceitar ou recusar.
+    Saiba mais na <a href="/politica-de-privacidade.html">Política de Privacidade</a>.
+  </p>
+  <div class="aviso-cookies__botoes">
+    <button type="button" class="aviso-cookies__recusar" data-cookies="recusar">Recusar</button>
+    <button type="button" class="aviso-cookies__aceitar" data-cookies="aceitar">Aceitar</button>
+  </div>
+</div>
+
+<style>
+  .aviso-cookies {
+    --ac-fundo: #ffffff;
+    --ac-texto: #1d1d1f;
+    --ac-marca: #111111;
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    max-width: 760px;
+    margin-inline: auto;
+    padding: 16px 20px;
+    border-radius: 14px;
+    background: var(--ac-fundo);
+    color: var(--ac-texto);
+    box-shadow: 0 10px 40px rgb(0 0 0 / 0.18);
+    font: 15px/1.5 'Schibsted Grotesk', system-ui, sans-serif;
+  }
+  .aviso-cookies[hidden] { display: none; }
+  .aviso-cookies p { flex: 1 1 280px; margin: 0; }
+  .aviso-cookies a { color: inherit; text-decoration: underline; }
+  .aviso-cookies__botoes { display: flex; gap: 8px; }
+  .aviso-cookies button {
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 10px;
+    border: 1px solid var(--ac-marca);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .aviso-cookies__recusar { background: transparent; color: var(--ac-marca); }
+  .aviso-cookies__aceitar { background: var(--ac-marca); color: #fff; }
+</style>
+
+<script>
+  (function () {
+    var ID_ANALYTICS = 'G-XXXXXXXXXX'; // troque pelo ID do Google Analytics 4
+    var CHAVE = 'consentimento-cookies';
+    var aviso = document.getElementById('aviso-cookies');
+
+    function carregarMedicao() {
+      if (window.__medicaoCarregada || ID_ANALYTICS.indexOf('XXXX') !== -1) return;
+      window.__medicaoCarregada = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID_ANALYTICS;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', ID_ANALYTICS);
+      // Outros (Clarity, Pixel) entram aqui, só depois do aceite.
+    }
+
+    function evento(nome, dados) {
+      if (typeof window.gtag === 'function') window.gtag('event', nome, dados || {});
+    }
+
+    var escolha = null;
+    try { escolha = window.localStorage.getItem(CHAVE); } catch (e) { /* navegação privada */ }
+    if (ID_ANALYTICS.indexOf('XXXX') !== -1) return; // sem ID configurado: nada aparece e nada é medido
+    if (escolha === 'aceito') carregarMedicao();
+    else if (escolha !== 'recusado' && aviso) aviso.hidden = false;
+
+    if (aviso) {
+      aviso.addEventListener('click', function (e) {
+        var botao = e.target.closest('[data-cookies]');
+        if (!botao) return;
+        var aceitou = botao.getAttribute('data-cookies') === 'aceitar';
+        try { window.localStorage.setItem(CHAVE, aceitou ? 'aceito' : 'recusado'); } catch (err) { /* sem armazenamento */ }
+        aviso.hidden = true;
+        if (aceitou) carregarMedicao();
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!(e.target instanceof Element)) return;
+      if (e.target.closest('[data-cookies-abrir]')) {
+        e.preventDefault();
+        if (aviso) aviso.hidden = false;
+        return;
+      }
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      var texto = (link.textContent || '').trim().slice(0, 60);
+      if (/wa\.me|api\.whatsapp\.com|^whatsapp:/i.test(href)) evento('clique_whatsapp', { link_text: texto });
+      else if (/^tel:/i.test(href)) evento('clique_telefone', { link_text: texto });
+      else if (/^mailto:/i.test(href)) evento('clique_email', { link_text: texto });
+    });
+
+    document.addEventListener('submit', function (e) {
+      evento('envio_formulario', { form_id: (e.target && e.target.id) || '' });
+    }, true);
+  })();
+</script>
 </body></html>
