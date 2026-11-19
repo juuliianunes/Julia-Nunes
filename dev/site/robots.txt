@@ -1,3 +1,21 @@
+# Buscadores e assistentes de IA podem ler o site (menos as páginas internas).
+# Busca do ChatGPT: OAI-SearchBot liberado para o site aparecer nas respostas.
+# Cada grupo repete os bloqueios, porque um robô com grupo próprio ignora o grupo "*".
+
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: Googlebot
+User-agent: Bingbot
+Allow: /
+Disallow: /leads/
+Disallow: /briefing/
+Disallow: /draandressa/
+Disallow: /parolar/
+
 User-agent: *
 Allow: /
 Disallow: /leads/
