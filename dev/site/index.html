@@ -1298,6 +1298,7 @@ h2.wsplit.win-in .wi{transform:none}
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Julia Nunes, web designer em Piracicaba">
 <meta name="google-site-verification" content="T97zJ0UcKh3dH1wELTC4tLQkhF9BTSh-QbG7navPV0I">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Por que uma empresa precisa de site se já tem Instagram?", "acceptedAnswer": {"@type": "Answer", "text": "O Instagram mostra o seu dia a dia. O site explica, de forma organizada, o que você faz, para quem, onde atende e como agendar. É nele que o Google e as IAs buscam informação para indicar empresas."}}, {"@type": "Question", "name": "O que é GEO?", "acceptedAnswer": {"@type": "Answer", "text": "GEO é o que faz o seu site aparecer quando alguém pergunta para uma IA, como o ChatGPT ou o Gemini, quem procurar. Se uma pessoa pergunta “qual psicóloga atende online e fala sobre ansiedade?”, a IA busca sites que expliquem isso com clareza. Eu crio o seu já pensando nessa pergunta."}}, {"@type": "Question", "name": "Qual a diferença entre SEO e GEO?", "acceptedAnswer": {"@type": "Answer", "text": "SEO é aparecer bem nas buscas do Google. GEO é ser citado nas respostas das IAs. Os dois dependem da mesma base: um site claro, organizado e com informação confiável."}}, {"@type": "Question", "name": "Preciso entender de site ou de tecnologia?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Essa parte é comigo. Você me conta sobre o seu trabalho e os seus clientes, e aprova o que eu criar."}}, {"@type": "Question", "name": "Quanto custa um site?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do que o seu negócio precisa: um site completo, uma página focada em um serviço ou um sistema. Me conta o que você tem em mente e eu te passo um valor fechado, sem surpresa no meio do caminho."}}, {"@type": "Question", "name": "Quem escreve os textos do site?", "acceptedAnswer": {"@type": "Answer", "text": "Eu organizo e escrevo a partir do que você me conta, sempre com o seu jeito de falar. Você revisa e aprova tudo antes de ir para o ar."}}, {"@type": "Question", "name": "Se você usa IA, o site fica parecido com os outros?", "acceptedAnswer": {"@type": "Answer", "text": "Não. A IA me ajuda a entregar mais rápido, mas cada site é criado a partir do seu negócio: a sua marca, os seus serviços e o que o seu cliente precisa ver para confiar em você."}}, {"@type": "Question", "name": "Já tenho um site. Você consegue refazer?", "acceptedAnswer": {"@type": "Answer", "text": "Consigo. A gente olha juntos o que funciona, o que está faltando, e eu crio um novo, aproveitando o seu domínio se você já tiver um."}}, {"@type": "Question", "name": "O que é domínio e hospedagem?", "acceptedAnswer": {"@type": "Answer", "text": "Domínio é o endereço do site, tipo seunome.com.br. Hospedagem é o lugar onde ele fica guardado para funcionar na internet. [Explique se está incluso ou como funciona.]"}}, {"@type": "Question", "name": "Posso pedir mudanças depois que o site estiver no ar?", "acceptedAnswer": {"@type": "Answer", "text": "Pode. Se você optar pela manutenção mensal, que é opcional, é só me avisar o que mudou e eu atualizo para você."}}, {"@type": "Question", "name": "Você atende só a minha cidade?", "acceptedAnswer": {"@type": "Answer", "text": "Atendo clientes de [cidade] e de todo o Brasil, tudo online."}}]}</script>
 </head>
 <body>
 <header class="nav" id="nav">
@@ -1636,14 +1637,7 @@ h2.wsplit.win-in .wi{transform:none}
     a.href=waLink(t);a.target="_blank";a.rel="noopener";a.classList.add("js-wa-ctx")});
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // FAQ schema
-  const faq = [...document.querySelectorAll("#faq-list details")].map(d=>({
-    "@type":"Question","name":d.querySelector("h3").textContent.trim(),
-    "acceptedAnswer":{"@type":"Answer","text":d.querySelector(".ans").textContent.trim()}
-  }));
-  const s=document.createElement("script");s.type="application/ld+json";
-  s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":faq});
-  document.head.appendChild(s);
+  // FAQ schema: fica fixo no <head> (gerado no build)
 
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
