@@ -1935,7 +1935,7 @@ const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.tar
 document.querySelectorAll(".post,.chat,.files").forEach(el=>{el.classList.add("unveil");el.classList.remove("reveal");io2.observe(el)});
 
 /* ---------- 4. parallax suave ---------- */
-const par=[...document.querySelectorAll(innerWidth<901?".post img":".h2c-band,.h2c-cards,.post img,.h2c-photo")].map(el=>({el,k:el.matches(".h2c-band,.h2c-cards")?-.12:el.matches(".h2c-photo")?.06:-.07}));
+const par=[...document.querySelectorAll(innerWidth<901?".post img":".h2c-band,.h2c-cards,.post img")].map(el=>({el,k:el.matches(".h2c-band,.h2c-cards")?-.12:el.matches(".h2c-photo")?.06:-.07}));
 let ticking=false;
 const para=()=>{ticking=false;const vh=innerHeight;
   par.forEach(({el,k})=>{const r=el.parentElement.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)return;
